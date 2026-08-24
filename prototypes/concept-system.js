@@ -349,6 +349,76 @@
   });
   activateStage("task");
 
+  const flowLinks = document.querySelector(".sys-links");
+  const flowCore = document.querySelector(".sys-core");
+  const flowTargets = [
+    ["flow-task", ".node-task", -.045],
+    ["flow-demand", ".node-demand", .035],
+    ["flow-structure", ".node-structure", -.035],
+    ["flow-site", ".node-site", .018],
+    ["flow-launch", ".node-launch", -.035],
+    ["flow-leads", ".node-leads", .035],
+    ["flow-growth", ".node-growth", -.045]
+  ];
+  let flowFrame = 0;
+
+  const updateFlowGeometry = () => {
+    flowFrame = 0;
+    const matrix = flowLinks?.getScreenCTM();
+    if (!matrix || !flowCore) return;
+    const inverse = matrix.inverse();
+    const toSvgPoint = (x, y) => {
+      const point = flowLinks.createSVGPoint();
+      point.x = x;
+      point.y = y;
+      return point.matrixTransform(inverse);
+    };
+    const coreRect = flowCore.getBoundingClientRect();
+    const start = toSvgPoint(
+      coreRect.left + coreRect.width / 2,
+      coreRect.top + coreRect.height / 2
+    );
+
+    flowTargets.forEach(([pathId, selector, bend]) => {
+      const path = document.getElementById(pathId);
+      const target = document.querySelector(selector);
+      if (!path || !target) return;
+      const targetRect = target.getBoundingClientRect();
+      const end = toSvgPoint(
+        targetRect.left + targetRect.width / 2,
+        targetRect.top + targetRect.height / 2
+      );
+      const dx = end.x - start.x;
+      const dy = end.y - start.y;
+      const length = Math.hypot(dx, dy);
+      const normalX = length ? -dy / length : 0;
+      const normalY = length ? dx / length : 0;
+      const offset = length * bend;
+      const control1 = {
+        x: start.x + dx * .34 + normalX * offset,
+        y: start.y + dy * .34 + normalY * offset
+      };
+      const control2 = {
+        x: start.x + dx * .7 + normalX * offset,
+        y: start.y + dy * .7 + normalY * offset
+      };
+      path.setAttribute(
+        "d",
+        `M${start.x.toFixed(2)} ${start.y.toFixed(2)} C${control1.x.toFixed(2)} ${control1.y.toFixed(2)} ${control2.x.toFixed(2)} ${control2.y.toFixed(2)} ${end.x.toFixed(2)} ${end.y.toFixed(2)}`
+      );
+    });
+  };
+
+  const scheduleFlowGeometry = () => {
+    if (flowFrame) return;
+    flowFrame = requestAnimationFrame(updateFlowGeometry);
+  };
+
+  scheduleFlowGeometry();
+  window.addEventListener("load", scheduleFlowGeometry, { once: true });
+  window.addEventListener("resize", scheduleFlowGeometry);
+  document.fonts?.ready.then(scheduleFlowGeometry);
+
   if (matchMedia("(pointer:fine)").matches) {
     canvas.addEventListener("pointermove", event => {
       const rect = canvas.getBoundingClientRect();
@@ -356,10 +426,12 @@
       const y = ((event.clientY - rect.top) / rect.height - .5) * 26;
       root.style.setProperty("--mx", `${x}px`);
       root.style.setProperty("--my", `${y}px`);
+      scheduleFlowGeometry();
     });
     canvas.addEventListener("pointerleave", () => {
       root.style.setProperty("--mx", "0px");
       root.style.setProperty("--my", "0px");
+      scheduleFlowGeometry();
     });
   }
 
