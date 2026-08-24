@@ -83,13 +83,13 @@ jobs:
 
       - name: Back up current production site
         run: |
-          ssh -p "$FORNEX_PORT" "$FORNEX_USER@$FORNEX_HOST" \
+          ssh -p "$FORNEX_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519 "$FORNEX_USER@$FORNEX_HOST" \
             "set -eu; test '$DEPLOY_PATH' = '/home/i54914/public_html/manul.studio'; test -d '$DEPLOY_PATH'; mkdir -p '$BACKUP_PATH'; stamp=\$(date -u +%Y%m%dT%H%M%SZ); tar -czf '$BACKUP_PATH/site-'\$stamp'.tar.gz' -C '$DEPLOY_PATH' ."
 
       - name: Publish verified files
         run: |
           rsync -az --delete --exclude='.well-known/' \
-            -e "ssh -p $FORNEX_PORT" \
+            -e "ssh -p $FORNEX_PORT -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519" \
             release/ "$FORNEX_USER@$FORNEX_HOST:$DEPLOY_PATH/"
 
       - name: Verify production
