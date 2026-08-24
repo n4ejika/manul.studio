@@ -90,6 +90,9 @@
     shellRoots.forEach(shell => shell.querySelectorAll("[data-ru][data-en]").forEach(element => {
       element.innerHTML = element.dataset[language];
     }));
+    shellRoots.forEach(shell => shell.querySelectorAll("img[data-ru-src][data-en-src]").forEach(image => {
+      image.src = image.dataset[`${language}Src`];
+    }));
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
   }
