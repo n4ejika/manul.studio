@@ -80,7 +80,6 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
-          ssh-keygen -lf ~/.ssh/id_ed25519
 
       - name: Back up current production site
         run: |
