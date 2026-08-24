@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="We audit the existing website, preserve valuable URLs, search demand and analytics, then build a new system without discarding accumulated results.">
+  <title>Website redesign with SEO and data migration | Manul</title>
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem("manul-system-theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  </script>
+  <link rel="stylesheet" href="/prototypes/concept-redesign.css?v=16">
+  <!-- MANUL_FAVICON --><link rel="icon" type="image/webp" href="/prototypes/assets/favicon-manul-mark.webp">
+  <!-- MANUL_DESIGN_SYSTEM --><link rel="stylesheet" href="/prototypes/manul-design-system.css?v=12">
+  <!-- MANUL_GLOBAL_CSS --><link rel="stylesheet" href="/prototypes/manul-global-shell.css?v=footer-1">
+  <link rel="canonical" href="https://manul.studio/en/redizajn-sajta/">
+  <link rel="alternate" hreflang="ru" href="https://manul.studio/redizajn-sajta/">
+  <link rel="alternate" hreflang="en" href="https://manul.studio/en/redizajn-sajta/">
+  <link rel="alternate" hreflang="x-default" href="https://manul.studio/redizajn-sajta/">
+  <meta name="yandex-verification" content="0daa2fd0f427bbf5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Manul">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Website redesign with SEO and data migration | Manul">
+  <meta property="og:description" content="We audit the existing website, preserve valuable URLs, search demand and analytics, then build a new system without discarding accumulated results.">
+  <meta property="og:url" content="https://manul.studio/en/redizajn-sajta/">
+  <meta property="og:image" content="https://manul.studio/assets/logo-manul.webp">
+  <meta property="og:image:alt" content="Manul">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Website redesign with SEO and data migration | Manul">
+  <meta name="twitter:description" content="We audit the existing website, preserve valuable URLs, search demand and analytics, then build a new system without discarding accumulated results.">
+  <meta name="twitter:image" content="https://manul.studio/assets/logo-manul.webp">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://manul.studio/#organization","name":"Manul","url":"https://manul.studio/","logo":"https://manul.studio/assets/logo-manul.webp","founder":{"@type":"Person","name":"Ilya Klychkov"}},{"@type":"WebSite","@id":"https://manul.studio/#website","url":"https://manul.studio/","name":"Manul","alternateName":"Манул","inLanguage":["ru-RU","en"],"publisher":{"@id":"https://manul.studio/#organization"}},{"@type":"WebPage","@id":"https://manul.studio/en/redizajn-sajta/#webpage","url":"https://manul.studio/en/redizajn-sajta/","name":"Website redesign with SEO and data migration | Manul","description":"We audit the existing website, preserve valuable URLs, search demand and analytics, then build a new system without discarding accumulated results.","inLanguage":"en","isPartOf":{"@id":"https://manul.studio/#website"}}]}</script>
+  <!-- Yandex.Metrika counter -->
+<script>
+  (function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+  })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=111853232","ym");
+  ym(111853232,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  document.addEventListener("click",function(event){
+    var link=event.target.closest&&event.target.closest('a[href*="t.me/hellomanul_bot"]');
+    if(!link||typeof ym!=="function"){return;}
+    ym(111853232,"reachGoal","telegram_click",{page:location.pathname,destination:link.href});
+  },true);
+</script>
+<!-- /Yandex.Metrika counter -->
+  <script>try{localStorage.setItem("manul-system-language","en");localStorage.setItem("manul-language","en")}catch(e){}document.documentElement.lang="en";</script>
+</head>
+<body class="manul-shell-installed">
+  <noscript><div><img src="https://mc.yandex.ru/watch/111853232" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<!-- MANUL_GLOBAL_HEADER_START -->
+<header class="manul-global-header">
+  <a class="brand" href="/" aria-label="Manul — главная"><span class="brand-crop"><img src="/prototypes/assets/logo-manul-header.webp?v=2" width="440" height="365" alt="Manul — сайты с характером"></span></a>
+  <p class="system-status"><i></i><span data-ru="Система готова" data-en="System ready">System ready</span><time id="manulGlobalClock">19:43:30</time></p>
+  <nav class="primary-nav" aria-label="Основная навигация">
+    <div class="nav-group"><button type="button" aria-expanded="false"><span data-ru="Сайты" data-en="Websites">Websites</span><b>04</b></button><div class="nav-popover"><a href="/sozdanie-saytov/"><span data-ru="Коммерческий запуск" data-en="Commercial launch">Commercial launch</span><small>01</small></a><a href="/korporativnyj-sajt/"><span data-ru="Корпоративный сайт" data-en="Corporate website">Corporate website</span><small>02</small></a><a href="/landing/"><span data-ru="Лендинг под рекламу" data-en="Advertising landing page">Advertising landing page</span><small>03</small></a><a href="/redizajn-sajta/"><span data-ru="Редизайн сайта" data-en="Website redesign">Website redesign</span><small>04</small></a></div></div>
+    <div class="nav-group"><button type="button" aria-expanded="false"><span data-ru="Развитие" data-en="Growth">Growth</span><b>04</b></button><div class="nav-popover"><a href="/seo-prodvizhenie/"><span data-ru="SEO-продвижение" data-en="SEO">SEO</span><small>01</small></a><a href="/nastrojka-yandex-direkt/"><span data-ru="Настройка Директа" data-en="Ads setup">Ads setup</span><small>02</small></a><a href="/podderzhka-sajta/"><span data-ru="Техническая поддержка" data-en="Technical support">Technical support</span><small>03</small></a><a href="/soprovozhdenie-sajta/"><span data-ru="Комплексное сопровождение" data-en="Website management">Website management</span><small>04</small></a></div></div>
+    <div class="nav-group"><button type="button" aria-expanded="false"><span data-ru="Медицина" data-en="Healthcare">Healthcare</span><b>02</b></button><div class="nav-popover"><a href="/medicinskie-sajty/"><span data-ru="Медицинские сайты" data-en="Healthcare websites">Healthcare websites</span><small>01</small></a><a href="/sajty-dlya-stomatologij/"><span data-ru="Сайты стоматологий" data-en="Dental websites">Dental websites</span><small>02</small></a></div></div>
+    <a href="/cases/" data-ru="Кейсы" data-en="Cases">Cases</a>
+    <a href="/studio/" data-ru="Студия" data-en="Studio">Studio</a>
+  </nav>
+  <button class="map-trigger" id="manulMapOpen" type="button" aria-expanded="false" aria-controls="manulSiteMap"><span data-ru="Карта" data-en="Map">Map</span><b>20</b><i></i></button>
+  <button class="utility theme-button" id="manulGlobalTheme" type="button" aria-label="Switch color theme"><i></i><span data-ru="Тема" data-en="Theme">Theme</span></button>
+  <a class="utility lang-button" id="manulGlobalLanguage" href="/redizajn-sajta/" aria-label="Переключить на русский">RU</a>
+  <a class="project-cta" href="https://t.me/hellomanul_bot"><span data-ru="Запустить проект" data-en="Start a project">Start a project</span><b>↗</b></a>
+</header>
+<aside class="manul-global-map" id="manulSiteMap" aria-hidden="true">
+  <header><p><i></i><span data-ru="Карта сайта / 20 страниц" data-en="Site map / 20 pages">Site map / 20 pages</span></p><button id="manulMapClose" type="button"><span data-ru="Закрыть" data-en="Close">Close</span><b>×</b></button></header>
+  <div class="map-grid">
+    <section><p>01 / <span data-ru="Сайты" data-en="Websites">Websites</span></p><a href="/sozdanie-saytov/"><b>01</b><span data-ru="Коммерческий запуск" data-en="Commercial launch">Commercial launch</span></a><a href="/korporativnyj-sajt/"><b>02</b><span data-ru="Корпоративный сайт" data-en="Corporate website">Corporate website</span></a><a href="/landing/"><b>03</b><span data-ru="Лендинг под рекламу" data-en="Advertising landing page">Advertising landing page</span></a><a href="/redizajn-sajta/"><b>04</b><span data-ru="Редизайн сайта" data-en="Website redesign">Website redesign</span></a></section>
+    <section><p>02 / <span data-ru="Развитие" data-en="Growth">Growth</span></p><a href="/seo-prodvizhenie/"><b>01</b><span data-ru="SEO-продвижение" data-en="SEO">SEO</span></a><a href="/nastrojka-yandex-direkt/"><b>02</b><span data-ru="Настройка Директа" data-en="Ads setup">Ads setup</span></a><a href="/podderzhka-sajta/"><b>03</b><span data-ru="Техническая поддержка" data-en="Technical support">Technical support</span></a><a href="/soprovozhdenie-sajta/"><b>04</b><span data-ru="Комплексное сопровождение" data-en="Website management">Website management</span></a></section>
+    <section><p>03 / <span data-ru="Отрасли" data-en="Industries">Industries</span></p><a href="/medicinskie-sajty/"><b>01</b><span data-ru="Медицинские сайты" data-en="Healthcare websites">Healthcare websites</span></a><a href="/sajty-dlya-stomatologij/"><b>02</b><span data-ru="Сайты стоматологий" data-en="Dental websites">Dental websites</span></a></section>
+    <section><p>04 / <span data-ru="Доказательства" data-en="Evidence">Evidence</span></p><a href="/cases/"><b>01</b><span data-ru="Все кейсы" data-en="All cases">All cases</span></a><a href="/cases/okean/"><b>02</b><span data-ru="Океан" data-en="Ocean">Ocean</span></a><a href="/cases/i-sev/"><b>03</b><span data-ru="i-Sev" data-en="i-Sev">i-Sev</span></a><a href="/cases/crimea-print/"><b>04</b><span data-ru="Крым-Печать" data-en="Crimea Print">Crimea Print</span></a><a href="/cases/luca-pacioli/"><b>05</b><span data-ru="Лука Пачоли" data-en="Luca Pacioli">Luca Pacioli</span></a></section>
+    <section><p>05 / MANUL</p><a href="/"><b>01</b><span data-ru="Главная" data-en="Home">Home</span></a><a href="/studio/"><b>02</b><span data-ru="О студии" data-en="Studio">Studio</span></a><a href="/contacts/"><b>03</b><span data-ru="Контакты" data-en="Contacts">Contacts</span></a><a href="/privacy/"><b>04</b><span data-ru="Политика данных" data-en="Privacy policy">Privacy policy</span></a><a href="/consent/"><b>05</b><span data-ru="Согласие" data-en="Consent">Consent</span></a></section>
+  </div>
+  <footer><p><span data-ru="Не знаете, с какой страницы начать?" data-en="Not sure where to begin?">Not sure where to begin?</span><small data-ru="Начнём с бизнес-задачи" data-en="We will start with the business task">We will start with the business task</small></p><a href="https://t.me/hellomanul_bot"><span data-ru="Запустить проект" data-en="Start a project">Start a project</span><b>↗</b></a></footer>
+</aside>
+<!-- MANUL_GLOBAL_HEADER_END -->
+  <header class="redesign-legacy" aria-hidden="true">
+    <a id="redesignLanguage" href="/redizajn-sajta/" aria-label="Переключить на русский">RU</a>
+    <button id="redesignTheme" type="button">Тема</button>
+  </header>
+
+  <main>
+    <section class="redesign-hero">
+      <div class="redesign-hero-copy">
+        <p class="code" data-ru="MANUL / РЕДИЗАЙН САЙТА" data-en="MANUL / WEBSITE REDESIGN">MANUL / WEBSITE REDESIGN</p>
+        <h1 data-ru="Меняем сайт.&lt;br&gt;&lt;mark&gt;Сохраняем накопленное.&lt;/mark&gt;" data-en="Change the website.&lt;br&gt;&lt;mark&gt;Keep what it has earned.&lt;/mark&gt;" style="font-size: 43px !important;">Change the website.<br><mark class="manul-highlight-nowrap">Keep what it has earned.</mark></h1>
+        <p class="lead" data-ru="Редизайн начинается с данных: какие страницы находят, откуда приходят обращения, что работает и что ограничивает развитие." data-en="A redesign starts with evidence: which pages are found, where enquiries come from, what works and what restricts growth.">A redesign starts with evidence: which pages are found, where enquiries come from, what works and what restricts growth.</p>
+        <div class="hero-meta">
+          <a href="#redesignDiagnosis"><span data-ru="Начать с диагностики" data-en="Start with diagnosis">Start with diagnosis</span><b>↓</b></a>
+          <p><span data-ru="Входная диагностика" data-en="Initial diagnosis">Initial diagnosis</span><strong data-price-ru="50 000 ₽" data-price-en="$800">$800</strong></p>
+        </div>
+      </div>
+
+      <div class="migration-console" aria-label="Интерактивная карта редизайна">
+        <header>
+          <span data-ru="СОЕДИНИ ПРАВИЛЬНО" data-en="MATCH THEM CORRECTLY">MATCH THEM CORRECTLY</span>
+          <b id="redesignAttempts" data-ru="ОШИБКИ 0 / 3" data-en="MISTAKES 0 / 3">MISTAKES 0 / 3</b>
+        </header>
+        <div class="migration-map" id="redesignMap">
+          <div class="site-state state-old">
+            <p data-ru="СТРАНИЦЫ СТАРОГО САЙТА" data-en="OLD WEBSITE PAGES">OLD WEBSITE PAGES</p>
+            <button type="button" data-node="article"><b>/article/</b><span data-ru="Статья" data-en="Article">Article</span></button>
+            <button type="button" data-node="home"><b>/</b><span data-ru="Главная" data-en="Home">Home</span></button>
+            <button type="button" data-node="form"><b>FORM</b><span data-ru="Обращение" data-en="Enquiry">Enquiry</span></button>
+            <button type="button" data-node="service"><b>/service/</b><span data-ru="Услуга" data-en="Service">Service</span></button>
+          </div>
+          <div class="migration-core">
+            <i></i>
+            <small data-ru="ДИАГНОСТИКА" data-en="DIAGNOSIS">DIAGNOSIS</small>
+            <strong id="redesignCoreValue">URL</strong>
+            <span id="redesignCoreStatus" data-ru="НАЙДИ 4 СВЯЗИ" data-en="FIND 4 LINKS">FIND 4 LINKS</span>
+          </div>
+          <div class="site-state state-new">
+            <p data-ru="СТРАНИЦЫ НОВОГО САЙТА" data-en="NEW WEBSITE PAGES">NEW WEBSITE PAGES</p>
+            <button type="button" data-node="form"><b>GOAL</b><span data-ru="Измеримое обращение" data-en="Measured enquiry">Measured enquiry</span></button>
+            <button type="button" data-node="service"><b>/service/</b><span data-ru="Новая услуга" data-en="New service">New service</span></button>
+            <button type="button" data-node="home"><b>/</b><span data-ru="Новая главная" data-en="New home">New home</span></button>
+            <button type="button" data-node="article"><b>/article/</b><span data-ru="Материалы" data-en="Content">Content</span></button>
+          </div>
+          <svg aria-hidden="true" viewBox="0 0 704 501" preserveAspectRatio="none">
+            <path data-route="home" d="M 183.015625 225.078125 C 234.70703125 225.078125, 225.30859375 196.5, 277 196.5 L 427 196.5 C 478.69140625 196.5, 469.29296875 359.125, 520.984375 359.125"></path>
+            <path data-route="service" d="M 183.015625 415.078125 C 234.70703125 415.078125, 225.30859375 232.5, 277 232.5 L 427 232.5 C 478.69140625 232.5, 469.29296875 257.125, 520.984375 257.125"></path>
+            <path data-route="article" d="M 183.015625 127.078125 C 234.70703125 127.078125, 225.30859375 268.5, 277 268.5 L 427 268.5 C 478.69140625 268.5, 469.29296875 445.125, 520.984375 445.125"></path>
+            <path data-route="form" d="M 183.015625 311.078125 C 234.70703125 311.078125, 225.30859375 304.5, 277 304.5 L 427 304.5 C 478.69140625 304.5, 469.29296875 171.125, 520.984375 171.125"></path>
+            <path class="error-route" data-route-error=""></path>
+          </svg>
+        </div>
+        <footer class="migration-guide">
+          <span data-ru="ВЫБЕРИТЕ СТРАНИЦУ СЛЕВА, ЗАТЕМ ЕЁ ПАРУ СПРАВА" data-en="CHOOSE A PAGE ON THE LEFT, THEN ITS MATCH ON THE RIGHT">CHOOSE A PAGE ON THE LEFT, THEN ITS MATCH ON THE RIGHT</span>
+          <button id="redesignReset" type="button" data-ru="НАЧАТЬ ЗАНОВО" data-en="RESET">RESET</button>
+        </footer>
+      </div>
+    </section>
+
+    <section class="redesign-thesis">
+      <p class="code" data-ru="ПРИЧИНА / 01" data-en="CAUSE / 01">CAUSE / 01</p>
+      <div>
+        <h2 data-ru="Сначала выясняем, &lt;mark&gt;что именно мешает сайту.&lt;/mark&gt;" data-en="First, identify &lt;mark&gt;what actually restricts the website.&lt;/mark&gt;">First, identify <mark class="manul-highlight-nowrap">what actually restricts the website.</mark></h2>
+        <div>
+          <p data-ru="Проблема может быть в структуре, содержании, технологии, скорости, аналитике или маршруте обращения — не только во внешнем виде." data-en="The constraint may be structure, content, technology, speed, analytics or the enquiry path — not only appearance.">The constraint may be structure, content, technology, speed, analytics or the enquiry path — not only appearance.</p>
+          <p data-ru="Поэтому решение о масштабе редизайна принимается после диагностики действующего сайта и его данных." data-en="That is why the redesign scope is decided only after reviewing the current website and its evidence.">That is why the redesign scope is decided only after reviewing the current website and its evidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="baseline" id="redesignDiagnosis">
+      <header>
+        <p class="code" data-ru="ИСХОДНАЯ ТОЧКА / 02" data-en="BASELINE / 02">BASELINE / 02</p>
+        <h2 data-ru="До изменений фиксируем, &lt;mark&gt;что уже работает.&lt;/mark&gt;" data-en="Before changing anything, record &lt;mark&gt;what already works.&lt;/mark&gt;">Before changing anything, record <mark class="manul-highlight-nowrap">what already works.</mark></h2>
+      </header>
+      <div class="baseline-grid">
+        <article><b>01</b><h3 class="manul-heading-contained" data-ru="Поисковый спрос" data-en="Organic demand">Organic demand</h3><p data-ru="Запросы, позиции, посадочные страницы, видимость и переходы из поиска." data-en="Queries, rankings, landing pages, visibility and organic visits.">Queries, rankings, landing pages, visibility and organic visits.</p></article>
+        <article><b>02</b><h3 class="manul-heading-contained" data-ru="Обращения" data-en="Enquiries">Enquiries</h3><p data-ru="Цели, формы, звонки, мессенджеры и путь пользователя до контакта." data-en="Goals, forms, calls, messengers and the user path to contact.">Goals, forms, calls, messengers and the user path to contact.</p></article>
+        <article><b>03</b><h3 class="manul-heading-contained" data-ru="Содержание" data-en="Content">Content</h3><p data-ru="Страницы и материалы, которые дают трафик, объясняют продукт или подтверждают компетентность." data-en="Pages and materials that generate traffic, explain the product or prove expertise.">Pages and materials that generate traffic, explain the product or prove expertise.</p></article>
+        <article><b>04</b><h3 class="manul-heading-contained" data-ru="Технология" data-en="Technology">Technology</h3><p data-ru="CMS, скорость, адаптивность, формы, данные, интеграции и ограничения поддержки." data-en="CMS, speed, responsiveness, forms, data, integrations and maintenance constraints.">CMS, speed, responsiveness, forms, data, integrations and maintenance constraints.</p></article>
+      </div>
+    </section>
+
+    <section class="triage">
+      <header>
+        <p class="code" data-ru="КАРТА ИЗМЕНЕНИЙ / 03" data-en="CHANGE MAP / 03">CHANGE MAP / 03</p>
+        <h2 data-ru="Для каждой части сайта выбираем &lt;mark&gt;одно из трёх действий.&lt;/mark&gt;" data-en="Choose &lt;mark&gt;one of three actions&lt;/mark&gt; for every part of the website.">Choose <mark class="manul-highlight-nowrap">one of three actions</mark> for every part of the website.</h2>
+      </header>
+      <div class="triage-board">
+        <article>
+          <span>01 / KEEP</span>
+          <h3 data-ru="Сохранить" data-en="Keep">Keep</h3>
+          <p data-ru="Работающие URL, данные, содержание, функции и интеграции." data-en="Working URLs, data, content, functions and integrations.">Working URLs, data, content, functions and integrations.</p>
+        </article>
+        <article>
+          <span>02 / REBUILD</span>
+          <h3 data-ru="Пересобрать" data-en="Rebuild">Rebuild</h3>
+          <p data-ru="Структуру, сценарии, содержание, дизайн и техническую реализацию." data-en="Architecture, journeys, content, design and technical implementation.">Architecture, journeys, content, design and technical implementation.</p>
+        </article>
+        <article>
+          <span>03 / REMOVE</span>
+          <h3 data-ru="Убрать" data-en="Remove">Remove</h3>
+          <p data-ru="Дубли, устаревшие страницы и функции, которые больше не решают задачу." data-en="Duplicates, outdated pages and functions that no longer solve a task.">Duplicates, outdated pages and functions that no longer solve a task.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="redesign-scope">
+      <header>
+        <p class="code" data-ru="СОСТАВ ПРОЕКТА / 04" data-en="PROJECT SCOPE / 04">PROJECT SCOPE / 04</p>
+        <h2 data-ru="Редизайн — это изменение системы, &lt;mark&gt;а не только макетов.&lt;/mark&gt;" data-en="A redesign changes the system, &lt;mark&gt;not only the layouts.&lt;/mark&gt;">A redesign changes the system, <mark class="manul-highlight-nowrap">not only the layouts.</mark></h2>
+        <div class="diagnosis-price">
+          <span data-ru="Входная диагностика" data-en="Initial diagnosis">Initial diagnosis</span>
+          <strong data-price-ru="50 000 ₽" data-price-en="$800">$800</strong>
+          <small data-ru="Стоимость засчитывается в основной проект при заключении договора в течение 14 дней." data-en="The fee is credited towards the main project when the agreement is signed within 14 days.">The fee is credited towards the main project when the agreement is signed within 14 days.</small>
+        </div>
+      </header>
+      <ol>
+        <li><b>01</b><div><strong data-ru="Диагностика" data-en="Diagnosis">Diagnosis</strong><p data-ru="Состояние сайта, данные, ограничения и обоснованный объём изменений." data-en="Current state, evidence, constraints and a justified scope of change.">Current state, evidence, constraints and a justified scope of change.</p></div></li>
+        <li><b>02</b><div><strong data-ru="Архитектура и дизайн" data-en="Architecture and design">Architecture and design</strong><p data-ru="Новая структура, прототипы, содержание и визуальная система." data-en="New structure, prototypes, content and visual system.">New structure, prototypes, content and visual system.</p></div></li>
+        <li><b>03</b><div><strong data-ru="Разработка и перенос" data-en="Build and migration">Build and migration</strong><p data-ru="Страницы, данные, формы, интеграции, карта URL и редиректы." data-en="Pages, data, forms, integrations, URL map and redirects.">Pages, data, forms, integrations, URL map and redirects.</p></div></li>
+        <li><b>04</b><div><strong data-ru="Контроль перезапуска" data-en="Relaunch control">Relaunch control</strong><p data-ru="Индексация, ошибки, аналитика и путь обращения после публикации." data-en="Indexing, errors, analytics and enquiry paths after publication.">Indexing, errors, analytics and enquiry paths after publication.</p></div></li>
+      </ol>
+    </section>
+
+    <div class="solution-gate">
+      <header>
+        <p class="code" data-ru="ПРОВЕРКА ЗАДАЧИ" data-en="TASK CHECK">TASK CHECK</p>
+        <h3 data-ru="Иногда редизайн — &lt;mark&gt;неправильное решение.&lt;/mark&gt;" data-en="Sometimes redesign is &lt;mark&gt;the wrong solution.&lt;/mark&gt;" style="font-size: 41px !important;">Sometimes redesign is <mark class="manul-highlight-nowrap">the wrong solution.</mark></h3>
+        <p data-ru="Диагностика сравнивает стоимость сохранения действующей системы с созданием нового сайта без лишнего наследия." data-en="Diagnosis compares the cost of preserving the current system with building a new website without unnecessary legacy.">Diagnosis compares the cost of preserving the current system with building a new website without unnecessary legacy.</p>
+      </header>
+      <article class="path-redesign">
+        <span>REDESIGN</span>
+        <strong>×1,5</strong>
+        <h3 data-ru="к стоимости разработки" data-en="of the development fee">of the development fee</h3>
+        <p data-ru="Редизайн включает всю разработку сопоставимого нового сайта, а также разбор существующей системы, сохранение ценного, перенос и контроль перехода. Поэтому к стоимости разработки применяется наценка 50%." data-en="A redesign includes the full development of a comparable new website plus analysis of the current system, preservation, migration and transition control. The development fee therefore carries a 50% premium.">A redesign includes the full development of a comparable new website plus analysis of the current system, preservation, migration and transition control. The development fee therefore carries a 50% premium.</p>
+        <small data-ru="Выбираем, когда у сайта есть ценные URL, данные, содержание, функции или накопленная поисковая видимость." data-en="Choose this when the website has valuable URLs, data, content, functions or accumulated organic visibility.">Choose this when the website has valuable URLs, data, content, functions or accumulated organic visibility.</small>
+      </article>
+      <article class="path-new">
+        <span>NEW WEBSITE</span>
+        <strong>×1,0</strong>
+        <h3 data-ru="новая разработка" data-en="new development">new development</h3>
+        <p data-ru="Если сохранять практически нечего, а старая архитектура и технология только добавляют ограничения, новый сайт с чистой структурой может быть дешевле и надёжнее редизайна." data-en="If there is little worth preserving and the old architecture and technology only add constraints, a new website with a clean structure may be cheaper and safer than a redesign.">If there is little worth preserving and the old architecture and technology only add constraints, a new website with a clean structure may be cheaper and safer than a redesign.</p>
+        <small data-ru="Новый сайт можно запустить и на действующем домене; необходимые редиректы и перенос данных всё равно учитываются в проекте." data-en="A new website may still launch on the current domain; required redirects and data migration remain part of the scope.">A new website may still launch on the current domain; required redirects and data migration remain part of the scope.</small>
+      </article>
+    </div>
+
+    <section class="launch-control">
+      <header>
+        <p class="code" data-ru="ПЕРЕЗАПУСК / 05" data-en="RELAUNCH / 05">RELAUNCH / 05</p>
+        <h2 data-ru="Публикация — это этап, &lt;mark&gt;а не конец проекта.&lt;/mark&gt;" data-en="Publication is a stage, &lt;mark&gt;not the end of the project.&lt;/mark&gt;">Publication is a stage, <mark class="manul-highlight-nowrap">not the end of the project.</mark></h2>
+      </header>
+      <div class="control-track">
+        <article><b>ДО</b><h3 data-ru="Карта переноса" data-en="Migration map">Migration map</h3><p data-ru="Сопоставляем старые и новые URL, проверяем контент, формы, цели и резервные копии." data-en="Map old and new URLs; verify content, forms, goals and backups.">Map old and new URLs; verify content, forms, goals and backups.</p></article>
+        <article><b>LIVE</b><h3 data-ru="Контроль публикации" data-en="Publication control">Publication control</h3><p data-ru="Проверяем ответы сервера, редиректы, индексацию, аналитику и основные сценарии." data-en="Check server responses, redirects, indexing, analytics and key journeys.">Check server responses, redirects, indexing, analytics and key journeys.</p></article>
+        <article><b>ПОСЛЕ</b><h3 data-ru="Проверка данных" data-en="Evidence review">Evidence review</h3><p data-ru="Следим за ошибками, поисковой видимостью и обращениями после перехода." data-en="Monitor errors, organic visibility and enquiries after the transition.">Monitor errors, organic visibility and enquiries after the transition.</p></article>
+      </div>
+    </section>
+
+    <section class="redesign-proof">
+      <header>
+        <p class="code" data-ru="СВЯЗАННЫЙ ОПЫТ / 06" data-en="RELATED EXPERIENCE / 06">RELATED EXPERIENCE / 06</p>
+        <h2 data-ru="Показываем проекты, где менялась &lt;mark&gt;структура и логика сайта.&lt;/mark&gt;" data-en="Projects where &lt;mark&gt;website structure and logic changed.&lt;/mark&gt;">Projects where <mark class="manul-highlight-nowrap">website structure and logic changed.</mark></h2>
+      </header>
+      <div>
+        <a href="/cases/i-sev/"><b>01</b><strong>i-Sev</strong><span data-ru="Расширение географии и контролируемое изменение структуры" data-en="Geographic expansion and controlled structural change">Geographic expansion and controlled structural change</span><i>↗</i></a>
+        <a href="/cases/crimea-print/"><b>02</b><strong data-ru="Крым-Печать" data-en="Crimea Print">Crimea Print</strong><span data-ru="Выделение продукта на отдельный домен после проверки первого решения" data-en="Moving a product to a separate domain after testing the first solution">Moving a product to a separate domain after testing the first solution</span><i>↗</i></a>
+      </div>
+    </section>
+
+    <section class="redesign-faq">
+      <header>
+        <p class="code">FAQ</p>
+        <h2 data-ru="Главные вопросы &lt;mark&gt;до начала редизайна.&lt;/mark&gt;" data-en="Key questions &lt;mark&gt;before a redesign begins.&lt;/mark&gt;">Key questions <mark class="manul-highlight-nowrap">before a redesign begins.</mark></h2>
+      </header>
+      <div>
+        <details open=""><summary><span data-ru="Можно гарантировать сохранение позиций?" data-en="Can current rankings be guaranteed?">Can current rankings be guaranteed?</span><b>+</b></summary><p data-ru="Нет. Диагностика, карта URL, редиректы и контроль после запуска снижают риск, но поисковая выдача не принадлежит разработчику." data-en="No. Diagnosis, URL mapping, redirects and post-launch control reduce risk, but search results cannot be guaranteed.">No. Diagnosis, URL mapping, redirects and post-launch control reduce risk, but search results cannot be guaranteed.</p></details>
+        <details><summary><span data-ru="Обязательно менять CMS?" data-en="Must the CMS be replaced?">Must the CMS be replaced?</span><b>+</b></summary><p data-ru="Нет. Решение зависит от ограничений текущей системы, стоимости поддержки и будущих задач сайта." data-en="No. The decision depends on current constraints, support costs and the website’s future tasks.">No. The decision depends on current constraints, support costs and the website’s future tasks.</p></details>
+        <details><summary><span data-ru="Можно менять сайт поэтапно?" data-en="Can the redesign be phased?">Can the redesign be phased?</span><b>+</b></summary><p data-ru="Да, если архитектура и технология позволяют выпускать изменения частями без разрыва данных и пользовательских сценариев." data-en="Yes, when the architecture and technology allow incremental releases without breaking data or user journeys.">Yes, when the architecture and technology allow incremental releases without breaking data or user journeys.</p></details>
+      </div>
+    </section>
+
+    <section class="redesign-cta">
+      <p class="code" data-ru="НАЧАТЬ / 07" data-en="START / 07">START / 07</p>
+      <h2 data-ru="Пришлите URL. &lt;mark&gt;Начнём с диагностики.&lt;/mark&gt;" data-en="Send the URL. &lt;mark&gt;Start with diagnosis.&lt;/mark&gt;">Send the URL. <mark class="manul-highlight-nowrap">Start with diagnosis.</mark></h2>
+      <p data-ru="Бот уточнит задачу, доступные данные, предполагаемый масштаб изменений и необходимость сохранить поиск, функции и интеграции." data-en="The bot clarifies the task, available evidence, likely scope and what must be preserved across search, functions and integrations.">The bot clarifies the task, available evidence, likely scope and what must be preserved across search, functions and integrations.</p>
+      <div class="redesign-start-system">
+        <div class="start-options" role="group" aria-label="What must be preserved during redesign">
+          <button type="button" data-preserve="search" aria-pressed="false"><b>01</b><span data-ru="Поисковый трафик" data-en="Organic traffic">Organic traffic</span><small>SEO</small></button>
+          <button type="button" data-preserve="analytics" aria-pressed="false"><b>02</b><span data-ru="Аналитика и цели" data-en="Analytics and goals">Analytics and goals</span><small>DATA</small></button>
+          <button type="button" data-preserve="integrations" aria-pressed="false"><b>03</b><span data-ru="Формы и интеграции" data-en="Forms and integrations">Forms and integrations</span><small>API</small></button>
+          <button type="button" data-preserve="content" aria-pressed="false"><b>04</b><span data-ru="URL и содержание" data-en="URLs and content">URLs and content</span><small>URL</small></button>
+        </div>
+        <div class="start-readout" id="redesignStartReadout" style="--progress: 0deg;">
+          <p class="code" data-ru="КОНТУР ДИАГНОСТИКИ" data-en="DIAGNOSIS SCOPE">DIAGNOSIS SCOPE</p>
+          <strong id="redesignStartCount">0 / 4</strong>
+          <p id="redesignStartStatus">Select what must be preserved.</p>
+          <a href="https://t.me/hellomanul_bot"><span data-ru="Обсудить действующий сайт" data-en="Discuss the current website">Discuss the current website</span><b>↗</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/prototypes/concept-redesign.js?v=6"></script>
+<!-- MANUL_GLOBAL_FOOTER_START -->
+<footer class="manul-global-footer">
+  <div class="footer-intro">
+    <div class="footer-logo"><img src="/prototypes/assets/logo-manul-footer.webp?v=2" width="1200" height="995" alt="Manul — сайты с характером"></div>
+    <p><span data-ru="Один контур — от бизнес-задачи до первых обращений" data-en="One system — from the business task to the first enquiries">One system — from the business task to the first enquiries</span><small>MANUL.STUDIO</small></p>
+    <a href="https://t.me/hellomanul_bot"><span data-ru="Запустить проект" data-en="Start a project">Start a project</span><b>↗</b></a>
+  </div>
+  <nav class="footer-map" aria-label="Карта сайта в подвале">
+    <section><p>01 / <span data-ru="Сайты" data-en="Websites">Websites</span></p><a href="/sozdanie-saytov/" data-ru="Коммерческий запуск" data-en="Commercial launch">Commercial launch</a><a href="/korporativnyj-sajt/" data-ru="Корпоративный сайт" data-en="Corporate website">Corporate website</a><a href="/landing/" data-ru="Лендинг под рекламу" data-en="Advertising landing page">Advertising landing page</a><a href="/redizajn-sajta/" data-ru="Редизайн сайта" data-en="Website redesign">Website redesign</a></section>
+    <section><p>02 / <span data-ru="Развитие" data-en="Growth">Growth</span></p><a href="/seo-prodvizhenie/" data-ru="SEO-продвижение" data-en="SEO">SEO</a><a href="/nastrojka-yandex-direkt/" data-ru="Настройка Директа" data-en="Ads setup">Ads setup</a><a href="/podderzhka-sajta/" data-ru="Техническая поддержка" data-en="Technical support">Technical support</a><a href="/soprovozhdenie-sajta/" data-ru="Комплексное сопровождение" data-en="Website management">Website management</a></section>
+    <section><p>03 / <span data-ru="Отрасли" data-en="Industries">Industries</span></p><a href="/medicinskie-sajty/" data-ru="Медицинские сайты" data-en="Healthcare websites">Healthcare websites</a><a href="/sajty-dlya-stomatologij/" data-ru="Сайты стоматологий" data-en="Dental websites">Dental websites</a></section>
+    <section><p>04 / <span data-ru="Проекты" data-en="Projects">Projects</span></p><a href="/cases/" data-ru="Все кейсы" data-en="All cases">All cases</a><a href="/cases/okean/" data-ru="Океан" data-en="Ocean">Ocean</a><a href="/cases/i-sev/" data-ru="i-Sev" data-en="i-Sev">i-Sev</a><a href="/cases/crimea-print/" data-ru="Крым-Печать" data-en="Crimea Print">Crimea Print</a><a href="/cases/luca-pacioli/" data-ru="Лука Пачоли" data-en="Luca Pacioli">Luca Pacioli</a></section>
+    <section><p>05 / MANUL</p><a href="/studio/" data-ru="О студии" data-en="Studio">Studio</a><a href="/contacts/" data-ru="Контакты" data-en="Contacts">Contacts</a><a href="/privacy/" data-ru="Политика данных" data-en="Privacy policy">Privacy policy</a><a href="/consent/" data-ru="Согласие" data-en="Consent">Consent</a></section>
+  </nav>
+  <div class="footer-bottom">
+    <p><i></i><span data-ru="Система готова" data-en="System ready">System ready</span><time id="manulFooterClock">19:43:30</time></p>
+    <p>ИП КЛЫЧКОВ ИЛЬЯ СЕРГЕЕВИЧ · ИНН 772167654262</p>
+    <a href="https://t.me/hellomanul_bot">@HELLOMANUL_BOT ↗</a>
+    <button id="manulToTop" type="button"><span data-ru="Наверх" data-en="Back to top">Back to top</span><b>↑</b></button>
+  </div>
+  <div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</footer>
+<!-- MANUL_GLOBAL_FOOTER_END -->
+  <!-- MANUL_GLOBAL_JS --><script src="/prototypes/manul-global-shell.js?v=5"></script>
+
+
+  <script src="/assets/production-router.js"></script>
+</body></html>

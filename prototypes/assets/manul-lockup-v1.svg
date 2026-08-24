@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Логотип «Манул — сайты с характером»</title>
+  <desc id="desc">Чёрный угловатый знак манула, название и слоган на тёплом светлом фоне.</desc>
+  <rect width="1200" height="1200" fill="#E7E2D6"/>
+
+  <g transform="translate(220 120) scale(.95 .61)" fill="#1A1A1A">
+    <path d="M118 70 267 76 276 132 189 128 190 224 118 217Z"/>
+    <path d="M682 70 533 76 524 132 611 128 610 224 682 217Z"/>
+    <path d="M210 246 370 270 350 326 310 333 278 319 257 292 209 287Z"/>
+    <path d="M590 246 430 270 450 326 490 333 522 319 543 292 591 287Z"/>
+    <path d="M110 350 263 330 303 379 111 397Z"/>
+    <path d="M690 350 537 330 497 379 689 397Z"/>
+    <path d="M109 425 292 383 310 430 120 486Z"/>
+    <path d="M691 425 508 383 490 430 680 486Z"/>
+    <path d="M351 388 449 388 452 435 422 440 421 511 461 522 455 561 400 548 345 561 339 522 379 511 378 440 348 435Z"/>
+  </g>
+
+  <text x="600" y="725" fill="#1A1A1A" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif" font-size="138" font-weight="700"
+        letter-spacing="38">МАНУЛ</text>
+  <text x="600" y="820" fill="#1A1A1A" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700"
+        letter-spacing="13">САЙТЫ С ХАРАКТЕРОМ</text>
+</svg>

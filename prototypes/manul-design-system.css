@@ -1,0 +1,362 @@
+@import url("/assets/fonts/manul-fonts.css");
+
+:root{
+  /* Font families */
+  --manul-font-text:Manrope,Arial,sans-serif;
+  --manul-font-system:"IBM Plex Mono",monospace;
+
+  /* Display hierarchy */
+  --manul-display-hero-size:clamp(52px,4.1vw,76px);
+  --manul-display-hero-weight:700;
+  --manul-display-hero-line:.9;
+  --manul-display-hero-tracking:-.06em;
+
+  --manul-display-section-size:clamp(40px,4vw,58px);
+  --manul-display-section-weight:700;
+  --manul-display-section-line:.94;
+  --manul-display-section-tracking:-.057em;
+
+  --manul-display-editorial-size:var(--manul-display-section-size);
+  --manul-display-editorial-weight:700;
+  --manul-display-editorial-line:var(--manul-display-section-line);
+  --manul-display-editorial-tracking:var(--manul-display-section-tracking);
+
+  --manul-heading-large-size:clamp(34px,3.4vw,52px);
+  --manul-heading-large-weight:700;
+  --manul-heading-large-line:.96;
+  --manul-heading-large-tracking:-.05em;
+
+  --manul-heading-medium-size:clamp(27px,2.5vw,38px);
+  --manul-heading-medium-weight:700;
+  --manul-heading-medium-line:1;
+  --manul-heading-medium-tracking:-.04em;
+  --manul-heading-small-size:clamp(22px,1.9vw,30px);
+  --manul-heading-small-weight:600;
+  --manul-heading-small-line:1.08;
+  --manul-heading-small-tracking:-.035em;
+  --manul-heading-minor-size:clamp(18px,1.45vw,24px);
+  --manul-heading-minor-weight:600;
+  --manul-heading-minor-line:1.15;
+  --manul-heading-minor-tracking:-.025em;
+
+  /* Multi-line heading with a cloned colour background */
+  --manul-highlight-line:1.04;
+  --manul-highlight-padding:.01em .08em .035em;
+
+  /* Reading hierarchy */
+  --manul-lead-size:clamp(18px,2.15cqw,25px);
+  --manul-lead-line:1.38;
+  --manul-body-large-size:20px;
+  --manul-body-large-line:1.5;
+  --manul-body-size:16px;
+  --manul-body-line:1.6;
+  --manul-body-small-size:14px;
+  --manul-body-small-line:1.65;
+
+  /* Interface hierarchy */
+  --manul-label-size:10px;
+  --manul-label-line:1.5;
+  --manul-label-weight:500;
+  --manul-label-tracking:.08em;
+  --manul-control-size:12px;
+  --manul-control-line:1.3;
+}
+
+html,body,button,input,select,textarea{font-family:var(--manul-font-text)}
+
+.manul-select__native{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.manul-select{
+  position:relative;
+  z-index:4;
+  grid-column:1/-1;
+  width:100%;
+  color:var(--fg);
+}
+.manul-select__trigger,
+.manul-select__option{
+  width:100%;
+  min-height:54px;
+  padding:0 16px;
+  border:1px solid var(--line);
+  border-radius:0;
+  background:var(--bg);
+  color:var(--fg);
+  text-align:left;
+  cursor:pointer;
+}
+.manul-select__trigger{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  font-size:18px;
+}
+.manul-select__trigger i{
+  font:normal 15px/1 var(--manul-font-system);
+  transition:transform .2s ease;
+}
+.manul-select.is-open .manul-select__trigger{
+  border-color:var(--acid);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--acid) 24%,transparent);
+}
+.manul-select.is-open .manul-select__trigger i{transform:rotate(180deg)}
+.manul-select__menu{
+  position:absolute;
+  z-index:20;
+  top:calc(100% - 1px);
+  left:0;
+  right:0;
+  border:1px solid var(--line);
+  background:var(--bg);
+  box-shadow:8px 8px 0 color-mix(in srgb,var(--fg) 18%,transparent);
+}
+.manul-select__menu[hidden]{display:none}
+.manul-select__option{
+  min-height:52px;
+  border:0;
+  border-bottom:1px solid color-mix(in srgb,var(--line) 28%,transparent);
+  font-size:17px;
+}
+.manul-select__option:last-child{border-bottom:0}
+.manul-select__option:hover,
+.manul-select__option:focus-visible,
+.manul-select__option[aria-selected=true]{
+  outline:0;
+  background:var(--acid);
+  color:var(--acid-ink);
+}
+
+.manul-type-display{
+  font-family:var(--manul-font-text);
+  font-size:var(--manul-display-hero-size);
+  font-weight:var(--manul-display-hero-weight);
+  line-height:var(--manul-display-hero-line);
+  letter-spacing:var(--manul-display-hero-tracking);
+}
+.manul-type-section{
+  font-family:var(--manul-font-text);
+  font-size:var(--manul-display-section-size);
+  font-weight:var(--manul-display-section-weight);
+  line-height:var(--manul-display-section-line);
+  letter-spacing:var(--manul-display-section-tracking);
+}
+.manul-type-heading{
+  font-family:var(--manul-font-text);
+  font-size:var(--manul-heading-large-size);
+  font-weight:var(--manul-heading-large-weight);
+  line-height:var(--manul-heading-large-line);
+  letter-spacing:var(--manul-heading-large-tracking);
+}
+
+/*
+ * A page-level heading is always subordinate to its H1.
+ * Component headings keep their local scale.
+ */
+:where(
+  main>section>header>h2,
+  main>section>h2,
+  main>section>article>h2,
+  main>section>div>h2
+){
+  font-size:var(--manul-display-section-size)!important;
+  font-weight:var(--manul-display-section-weight)!important;
+  line-height:var(--manul-display-section-line)!important;
+  letter-spacing:var(--manul-display-section-tracking)!important;
+}
+
+:where(main h3){font-size:var(--manul-heading-large-size)}
+:where(main h4){
+  font-size:var(--manul-heading-medium-size);
+  font-weight:var(--manul-heading-medium-weight);
+  line-height:var(--manul-heading-medium-line);
+  letter-spacing:var(--manul-heading-medium-tracking);
+}
+:where(main h5){font-size:var(--manul-heading-small-size)}
+:where(main h6){font-size:var(--manul-heading-minor-size)}
+
+/*
+ * Heading containment rule.
+ * Russian and English headings must never escape their own layout cell.
+ * Display headings never split a word or use dictionary hyphenation.
+ * A small global fitter may reduce highlighted headings when the semantic
+ * highlight can stay on one line without falling below the readability limit.
+ * URLs and other technical strings must opt into `.manul-break-anywhere`.
+ */
+:where(
+  main h1,
+  main h2,
+  main h3,
+  main h4,
+  main h5,
+  main h6,
+  .manul-type-display,
+  .manul-type-section,
+  .manul-type-heading
+){
+  min-inline-size:0;
+  max-inline-size:100%;
+  text-wrap:balance;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+
+.manul-break-anywhere{
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+
+/*
+ * Reusable heading for a bounded card or grid cell.
+ * The parent must establish an inline-size container.
+ */
+.manul-heading-contained{
+  font-size:clamp(20px,7cqi,var(--manul-heading-medium-size))!important;
+}
+.manul-type-lead{font-size:var(--manul-lead-size);line-height:var(--manul-lead-line)}
+.manul-type-body{font-size:var(--manul-body-size);line-height:var(--manul-body-line)}
+.manul-type-label{
+  font-family:var(--manul-font-system);
+  font-size:var(--manul-label-size);
+  font-weight:var(--manul-label-weight);
+  line-height:var(--manul-label-line);
+  letter-spacing:var(--manul-label-tracking);
+  text-transform:uppercase;
+}
+:where(h1,h2,h3)>mark,
+:where(h1,h2,h3)>.manul-heading-highlight{
+  padding:var(--manul-highlight-padding)!important;
+  line-height:var(--manul-highlight-line)!important;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+
+:where(h1,h2,h3)>mark.manul-highlight-nowrap{
+  white-space:nowrap;
+}
+
+/*
+ * Desktop hero contract
+ * ---------------------
+ * On a wide screen the opening composition must fit between the global
+ * 76px header and the lower edge of the visible viewport. Individual
+ * page architecture remains untouched; only fixed legacy minimum heights
+ * are neutralised. Tablet and mobile layouts keep their own sequential flow.
+ */
+@media(min-width:1201px){
+  :where(
+    .case-hero,
+    .cases-hero,
+    .corporate-hero,
+    .direct-hero,
+    .landing-hero,
+    .product-hero,
+    .redesign-hero,
+    .seo-hero,
+    .studio-hero,
+    .sys-hero
+  ){
+    height:calc(100svh - 76px)!important;
+    min-height:0!important;
+    max-height:calc(100svh - 76px);
+  }
+
+  :where(
+    .case-hero,
+    .cases-hero,
+    .corporate-hero,
+    .direct-hero,
+    .landing-hero,
+    .product-hero,
+    .redesign-hero,
+    .seo-hero,
+    .studio-hero,
+    .sys-hero
+  ) > *{
+    min-height:0!important;
+  }
+
+  /* Nested interactive canvases that carried their own legacy floor. */
+  .landing-hero .decision-console,
+  .seo-hero .field-canvas,
+  .direct-hero .system-field,
+  .case-hero .network-field,
+  .case-hero .route-field{
+    min-height:0!important;
+  }
+
+  .landing-hero .decision-scale > i{
+    min-height:0!important;
+  }
+
+  .landing-hero .decision-gates > button,
+  .landing-hero .decision-answer{
+    min-height:0!important;
+  }
+}
+
+.manul-mobile-calculator-total{
+  display:none;
+}
+
+@media(max-width:760px){
+  .manul-mobile-calculator-total{
+    position:sticky;
+    top:76px;
+    z-index:18;
+    order:-1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin:-10px -4px 8px;
+    padding:14px 12px;
+    background:var(--acid);
+    color:var(--acid-ink);
+    border:1px solid var(--fg);
+    box-shadow:0 8px 0 color-mix(in srgb,var(--fg) 16%,transparent);
+  }
+
+  .manul-mobile-calculator-total span{
+    font:9px/1.25 var(--manul-font-system);
+    text-transform:uppercase;
+  }
+
+  .manul-mobile-calculator-total output{
+    font:500 24px/1 var(--manul-font-system);
+    white-space:nowrap;
+  }
+
+  :root{
+    --manul-display-hero-size:clamp(43px,15.5cqw,58px);
+    --manul-display-hero-line:.92;
+    --manul-display-section-size:clamp(30px,9.4vw,38px);
+    --manul-display-section-line:.98;
+    --manul-display-section-tracking:-.045em;
+    --manul-display-editorial-size:var(--manul-display-section-size);
+    --manul-display-editorial-line:var(--manul-display-section-line);
+    --manul-display-editorial-tracking:var(--manul-display-section-tracking);
+    --manul-heading-large-size:clamp(28px,8.4vw,34px);
+    --manul-heading-medium-size:26px;
+    --manul-heading-small-size:22px;
+    --manul-heading-minor-size:18px;
+    --manul-highlight-line:1.09;
+  }
+}
+
+@media(max-width:360px){
+  :root{
+    --manul-display-hero-size:40px;
+    --manul-display-section-size:34px;
+  }
+}
