@@ -109,3 +109,69 @@ jobs:
           echo '- Source commit: `${{ github.sha }}`' >> "$GITHUB_STEP_SUMMARY"
           echo '- Production: https://manul.studio/' >> "$GITHUB_STEP_SUMMARY"
           echo '- Sitemap: https://manul.studio/sitemap.xml' >> "$GITHUB_STEP_SUMMARY"
+
+  deploy_reserve:
+    name: Deploy reserve to US VPS
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: [quality, deploy]
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      VPS_HOST: 81.85.77.42
+      VPS_PORT: "22"
+      VPS_USER: manul-deploy
+      DEPLOY_PATH: /srv/manul-studio/public
+      BACKUP_PATH: /srv/manul-studio/backups
+    steps:
+      - name: Check reserve configuration
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          test -n "$SSH_PRIVATE_KEY" || { echo 'Missing VPS_SSH_KEY'; exit 1; }
+          test -n "$SSH_KNOWN_HOSTS" || { echo 'Missing VPS_KNOWN_HOSTS'; exit 1; }
+
+      - name: Download verified site
+        uses: actions/download-artifact@v4
+        with:
+          name: manul-production-${{ github.sha }}
+          path: release
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Back up current reserve site
+        run: |
+          ssh -p "$VPS_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519 "$VPS_USER@$VPS_HOST" \
+            "set -eu; test '$DEPLOY_PATH' = '/srv/manul-studio/public'; test -d '$DEPLOY_PATH'; test -d '$BACKUP_PATH'; stamp=\$(date -u +%Y%m%dT%H%M%SZ); tar -czf '$BACKUP_PATH/site-'\$stamp'.tar.gz' -C '$DEPLOY_PATH' ."
+
+      - name: Publish verified files
+        run: |
+          rsync -az --delete --exclude='.well-known/' \
+            -e "ssh -p $VPS_PORT -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519" \
+            release/ "$VPS_USER@$VPS_HOST:$DEPLOY_PATH/"
+
+      - name: Verify reserve directly
+        run: |
+          curl --noproxy '*' --fail --silent --show-error --retry 5 --retry-delay 3 \
+            --resolve "manul.studio:80:$VPS_HOST" --output /tmp/manul-reserve-home.html http://manul.studio/
+          curl --noproxy '*' --fail --silent --show-error --retry 5 --retry-delay 3 \
+            --resolve "manul.studio:80:$VPS_HOST" --output /tmp/manul-reserve-sitemap.xml http://manul.studio/sitemap.xml
+          grep -q 'rel="canonical" href="https://manul.studio/"' /tmp/manul-reserve-home.html
+          grep -q '111853232' /tmp/manul-reserve-home.html
+          grep -q '<loc>https://manul.studio/' /tmp/manul-reserve-sitemap.xml
+
+      - name: Reserve deployment summary
+        run: |
+          echo '## US reserve published successfully' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Source commit: `${{ github.sha }}`' >> "$GITHUB_STEP_SUMMARY"
+          echo '- VPS: `81.85.77.42`' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validation: direct host-header request passed' >> "$GITHUB_STEP_SUMMARY"
