@@ -1,0 +1,111 @@
+name: Quality and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manul-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    name: Verify production files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify static site
+        run: node scripts/verify-static.mjs
+
+      - name: Save verified site
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: manul-production-${{ github.sha }}
+          path: |
+            .
+            !.git/**
+            !.github/**
+            !scripts/**
+            !README.md
+          include-hidden-files: true
+          retention-days: 14
+
+  deploy:
+    name: Deploy to Fornex
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: quality
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      FORNEX_HOST: i54914.hostru05.fornex.org
+      FORNEX_PORT: "20022"
+      FORNEX_USER: i54914
+      DEPLOY_PATH: /home/i54914/public_html/manul.studio
+      BACKUP_PATH: /home/i54914/.deploy-backups/manul.studio
+    steps:
+      - name: Check production configuration
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.FORNEX_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.FORNEX_KNOWN_HOSTS }}
+        run: |
+          test -n "$SSH_PRIVATE_KEY" || { echo 'Missing FORNEX_SSH_KEY'; exit 1; }
+          test -n "$SSH_KNOWN_HOSTS" || { echo 'Missing FORNEX_KNOWN_HOSTS'; exit 1; }
+
+      - name: Download verified site
+        uses: actions/download-artifact@v4
+        with:
+          name: manul-production-${{ github.sha }}
+          path: release
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.FORNEX_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.FORNEX_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Back up current production site
+        run: |
+          ssh -p "$FORNEX_PORT" "$FORNEX_USER@$FORNEX_HOST" \
+            "set -eu; test '$DEPLOY_PATH' = '/home/i54914/public_html/manul.studio'; test -d '$DEPLOY_PATH'; mkdir -p '$BACKUP_PATH'; stamp=\$(date -u +%Y%m%dT%H%M%SZ); tar -czf '$BACKUP_PATH/site-'\$stamp'.tar.gz' -C '$DEPLOY_PATH' ."
+
+      - name: Publish verified files
+        run: |
+          rsync -az --delete --exclude='.well-known/' \
+            -e "ssh -p $FORNEX_PORT" \
+            release/ "$FORNEX_USER@$FORNEX_HOST:$DEPLOY_PATH/"
+
+      - name: Verify production
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-home.html https://manul.studio/
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-sitemap.xml https://manul.studio/sitemap.xml
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-robots.txt https://manul.studio/robots.txt
+          grep -q 'rel="canonical" href="https://manul.studio/"' /tmp/manul-home.html
+          grep -q '0daa2fd0f427bbf5' /tmp/manul-home.html
+          grep -q '111853232' /tmp/manul-home.html
+          grep -q '<loc>https://manul.studio/' /tmp/manul-sitemap.xml
+          grep -q 'Sitemap: https://manul.studio/sitemap.xml' /tmp/manul-robots.txt
+
+      - name: Deployment summary
+        run: |
+          echo '## manul.studio published successfully' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Source commit: `${{ github.sha }}`' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Production: https://manul.studio/' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Sitemap: https://manul.studio/sitemap.xml' >> "$GITHUB_STEP_SUMMARY"
