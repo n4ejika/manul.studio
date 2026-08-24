@@ -5,6 +5,7 @@
   const rewrite = root => root.querySelectorAll?.("a[href]").forEach(anchor => {
     const raw = anchor.getAttribute("href");
     if (!raw || raw.startsWith("#") || raw.startsWith("http") || raw.startsWith("mailto:") || raw.startsWith("tel:")) return;
+    if (/Language$/.test(anchor.id) || anchor.matches(".lang,.case-lang,.language-button")) return;
     const match = Object.entries(routes).find(([file]) => raw.includes(file));
     if (match) {
       const hash = raw.includes("#") ? "#" + raw.split("#")[1] : "";
