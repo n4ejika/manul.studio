@@ -182,13 +182,43 @@
       });
     });
   }
-  const fitObserver = new ResizeObserver(fitDisplayHeadings);
-  document.querySelectorAll("main").forEach(main => fitObserver.observe(main));
-  new MutationObserver(fitDisplayHeadings).observe(document.documentElement, {
-    subtree: true,
-    childList: true,
-    characterData: true,
-  });
+  /*
+   * Do not observe the whole document or the full height of <main>.
+   * The clocks change every second and mobile browser chrome changes the
+   * visual viewport height during a swipe. Both used to retrigger heading
+   * measurement, briefly change content height and make scroll anchoring pull
+   * the page upwards. Refit only when the layout width or a fitted heading
+   * itself actually changes.
+   */
+  let fitViewportWidth = document.documentElement.clientWidth;
+  addEventListener("resize", () => {
+    const nextWidth = document.documentElement.clientWidth;
+    if (nextWidth === fitViewportWidth) return;
+    fitViewportWidth = nextWidth;
+    fitDisplayHeadings();
+  }, { passive: true });
+  document.fonts?.ready.then(fitDisplayHeadings);
+
+  const main = document.querySelector("main");
+  if (main) {
+    new MutationObserver(mutations => {
+      const affectsDisplayHeading = mutations.some(mutation => {
+        const target = mutation.target.nodeType === Node.TEXT_NODE
+          ? mutation.target.parentElement
+          : mutation.target;
+        if (target?.closest?.(headingSelector)) return true;
+        return [...mutation.addedNodes].some(node =>
+          node.nodeType === Node.ELEMENT_NODE &&
+          (node.matches?.(headingSelector) || node.querySelector?.(headingSelector))
+        );
+      });
+      if (affectsDisplayHeading) fitDisplayHeadings();
+    }).observe(main, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+    });
+  }
 
   applyShellLanguage(language);
   fitDisplayHeadings();
