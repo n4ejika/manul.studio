@@ -740,12 +740,23 @@
   window.addEventListener("resize", scheduleScrollColor);
   updateScrollColor();
 
+  // Infinite systems remain animated while visible, but stop consuming the
+  // mobile compositor after they leave the viewport.
+  const motionSections = [...document.querySelectorAll("main > section")];
+  const motionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("motion-paused", !entry.isIntersecting);
+    });
+  }, { rootMargin: "35% 0px 35% 0px", threshold: 0 });
+  motionSections.forEach(section => motionObserver.observe(section));
+
   const finalOrbit = document.getElementById("finalOrbit");
   const finalObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         finalOrbit.classList.remove("is-active");
         requestAnimationFrame(() => requestAnimationFrame(() => finalOrbit.classList.add("is-active")));
+        finalObserver.unobserve(finalOrbit);
       }
     });
   }, { threshold: .45 });
