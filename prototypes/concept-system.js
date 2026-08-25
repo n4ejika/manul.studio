@@ -319,6 +319,7 @@
   setInterval(updateClock, 1000);
 
   const setStageColor = key => {
+    if (!stageColors[key] || colorStageKey === key) return;
     colorStageKey = key;
     root.style.setProperty("--stage-color", stageColors[key]);
     root.style.setProperty("--stage-ink", key === "leads" ? "#ffffff" : "#090a09");

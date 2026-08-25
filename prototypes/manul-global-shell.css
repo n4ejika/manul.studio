@@ -90,12 +90,12 @@ html[data-theme=dark] .manul-global-footer .footer-logo img{filter:none;mix-blen
   .manul-global-map .map-grid section,.manul-global-footer .footer-map section{border-bottom:1px solid color-mix(in srgb,var(--m-bg) 30%,transparent)}
 }
 @media(max-width:800px){
-  .manul-global-header{height:68px;padding:0 10px;grid-template-columns:62px minmax(72px,1fr) auto auto;gap:7px}
-  .manul-global-header .brand{border-right:0}.manul-global-header .brand-crop{width:54px;height:60px}
-  .manul-global-header .system-status span{display:none}.manul-global-header .system-status{gap:8px}
-  .manul-global-header .theme-button,.manul-global-header .lang-button{display:none}
-  .manul-global-header .map-trigger{min-width:54px;padding:0 8px}.manul-global-header .map-trigger span{font-size:0}.manul-global-header .map-trigger span:after{content:"≡";font-size:16px}.manul-global-header .map-trigger b,.manul-global-header .map-trigger>i{display:none}
-  .manul-global-header .project-cta{min-width:62px;padding:0 10px;justify-content:center}.manul-global-header .project-cta span{font-size:0}.manul-global-header .project-cta span:after{content:"СТАРТ";font:9px "IBM Plex Mono",monospace}
+  .manul-global-header{height:68px;padding:0 8px;grid-template-columns:54px minmax(54px,1fr) 44px 44px 56px;gap:5px}
+  .manul-global-header .brand{border-right:0}.manul-global-header .brand-crop{width:50px;height:60px}
+  .manul-global-header .system-status span{display:none}.manul-global-header .system-status{gap:6px}.manul-global-header .system-status time{font-size:8px}
+  .manul-global-header .theme-button{display:none}.manul-global-header .lang-button{display:flex;width:44px;min-width:44px;padding:0}
+  .manul-global-header .map-trigger{width:44px;min-width:44px;padding:0}.manul-global-header .map-trigger span{font-size:0}.manul-global-header .map-trigger span:after{content:"≡";font-size:16px}.manul-global-header .map-trigger b,.manul-global-header .map-trigger>i{display:none}
+  .manul-global-header .project-cta{min-width:56px;padding:0 7px;justify-content:center}.manul-global-header .project-cta span{font-size:0}.manul-global-header .project-cta span:after{content:"СТАРТ";font:9px "IBM Plex Mono",monospace}
   .manul-global-map{grid-template-rows:68px 1fr auto}.manul-global-map>header{padding:0 15px}.manul-global-map .map-grid{grid-template-columns:1fr}.manul-global-map .map-grid section{padding:28px 20px;border-right:0}.manul-global-map .map-grid section>p{margin-bottom:30px}.manul-global-map .map-grid a{min-height:58px;font-size:18px}
   .manul-global-map>footer{padding:20px;grid-template-columns:1fr;gap:18px}.manul-global-map>footer a{min-height:60px}
   .manul-global-footer .footer-intro{padding:60px 20px;grid-template-columns:1fr;gap:38px}.manul-global-footer .footer-logo{width:150px;height:126px}.manul-global-footer .footer-intro p{font-size:var(--manul-display-section-size,clamp(30px,9.4vw,38px))}.manul-global-footer .footer-intro>a{min-height:72px}
