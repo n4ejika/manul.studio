@@ -20,29 +20,29 @@
     site: {
       index: 1,
       code: "02 / WEBSITE",
-      titleRu: "Готовый сайт, а не макет",
-      titleEn: "A working website, not a mockup",
-      textRu: "Прототипы, дизайн-система, подготовленный контент, адаптивная разработка, формы, редактор, проверка и публикация.",
-      textEn: "Concepts, design system, prepared content, responsive development, forms, editor, QA and publication.",
-      artifactsRu: ["3 прототипа", "дизайн-система", "опубликованный сайт"],
-      artifactsEn: ["3 concepts", "design system", "published website"]
+      titleRu: "Готовый сайт",
+      titleEn: "A complete website",
+      textRu: "Создаём три различающихся решения ключевой страницы, утверждаем одно направление и на его основе собираем дизайн-систему, содержание и адаптивную разработку.",
+      textEn: "We create three distinct concepts for the key page, approve one direction and use it to build the design system, content and responsive website.",
+      artifactsRu: ["3 решения ключевой страницы", "дизайн-система", "опубликованный сайт"],
+      artifactsEn: ["3 key-page concepts", "design system", "published website"]
     },
     seo: {
       index: 2,
       code: "03 / SEO",
-      titleRu: "Поисковая готовность с первого дня",
-      titleEn: "Search readiness from day one",
-      textRu: "Страницы получают запросы, метаданные, внутренние связи и техническую основу до публикации, а не после потери времени.",
-      textEn: "Pages receive queries, metadata, internal links and a technical foundation before publication, not after time is lost.",
+      titleRu: "Базовая подготовка к поиску",
+      titleEn: "Baseline search preparation",
+      textRu: "До публикации распределяем запросы по страницам, готовим метаданные, внутренние связи и технические требования. Это основа запуска, а не ежемесячное продвижение.",
+      textEn: "Before publication, we map queries to pages and prepare metadata, internal links and technical requirements. This is launch preparation, not ongoing monthly SEO.",
       artifactsRu: ["карта запросов", "метаданные", "техническая проверка"],
       artifactsEn: ["query map", "metadata", "technical review"]
     },
     ads: {
       index: 3,
       code: "04 / ACQUISITION",
-      titleRu: "Первый трафик под контролем",
-      titleEn: "First measurable traffic",
-      textRu: "Настраиваем Метрику, цели и первый рекламный контур, чтобы после публикации сразу получать данные и обращения.",
+      titleRu: "Первая рекламная кампания и аналитика",
+      titleEn: "Initial ad campaign and analytics",
+      textRu: "Настраиваем Метрику, цели и первую рекламную кампанию, чтобы после публикации видеть источники трафика и обращений.",
       textEn: "We set up analytics, goals and the initial ad campaign so the launch immediately begins producing data and leads.",
       artifactsRu: ["Метрика и цели", "рекламная кампания", "источники обращений"],
       artifactsEn: ["analytics and goals", "ad campaign", "lead sources"]
@@ -63,16 +63,16 @@
     site: {
       labelRu: "Только сайт",
       labelEn: "Website only",
-      descriptionRu: "Готовая цифровая платформа без контура привлечения",
-      descriptionEn: "A complete digital platform without the acquisition loop",
+      descriptionRu: "Готовый сайт без настройки SEO, аналитики и рекламы",
+      descriptionEn: "A complete website without SEO, analytics and advertising setup",
       price: 300000,
       included: 1
     },
     launch: {
       labelRu: "Коммерческий запуск",
       labelEn: "Commercial launch",
-      descriptionRu: "Сайт и обязательный первый контур привлечения",
-      descriptionEn: "Website plus the essential first acquisition loop",
+      descriptionRu: "Сайт, исследование, базовое SEO, аналитика и первый рекламный запуск",
+      descriptionEn: "Website, research, baseline SEO, analytics and the initial advertising launch",
       price: 500000,
       included: 5
     }

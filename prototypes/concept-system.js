@@ -32,118 +32,118 @@
   const stages = {
     task: {
       number: "01",
-      code: "MANUL / ЗАДАЧА",
-      title: "Сначала —<br>изменение в бизнесе.",
-      text: "Фиксируем, что должно измениться после запуска и по каким данным это можно увидеть.",
-      outputs: ["цель проекта", "критерий результата", "ограничения"],
-      console: ["Цель проекта зафиксирована", "Критерий результата определён", "Ограничения собраны"]
+      code: "MANUL / САЙТЫ",
+      title: "Сайты как<br>коммерческая система.",
+      text: "Исследуем спрос, определяем структуру, создаём сайт и готовим его к поиску, аналитике и рекламе.",
+      outputs: ["исследование", "создание сайта", "коммерческий запуск"],
+      console: ["Структура основана на спросе", "Сайт готов к привлечению", "Результаты можно измерять"]
     },
     demand: {
       number: "02",
       code: "MANUL / СПРОС",
-      title: "Спрос показывает,<br>что нужно создать.",
-      text: "Изучаем формулировки, конкурентов, регионы и реальные группы потребностей до проектирования страниц.",
-      outputs: ["семантика", "группы спроса", "карта конкурентов"],
-      console: ["Запросы собраны и очищены", "Интенты разделены", "Рыночные ответы проверены"]
+      title: "Исследование спроса<br>определяет структуру.",
+      text: "Проверяем формулировки, конкурентов и регионы, чтобы понять, какие страницы и предложения действительно нужны.",
+      outputs: ["поисковые запросы", "группы потребностей", "конкуренты"],
+      console: ["Спрос проверен", "Задачи разделены", "Страницы определены"]
     },
     structure: {
       number: "03",
       code: "MANUL / СТРУКТУРА",
-      title: "Каждая страница<br>получает задачу.",
-      text: "Распределяем спрос по URL, связываем страницы и считаем условный объём по сложности.",
-      outputs: ["карта URL", "роли страниц", "условный объём"],
-      console: ["Кластеры распределены", "Каннибализация исключена", "Объём рассчитан"]
+      title: "Структура отвечает<br>на реальные задачи.",
+      text: "Распределяем группы спроса по страницам, определяем их роли и связи до начала дизайна.",
+      outputs: ["карта URL", "роли страниц", "связи"],
+      console: ["Запросы распределены", "Дубли исключены", "Объём рассчитан"]
     },
     site: {
       number: "04",
       code: "MANUL / САЙТ",
-      title: "Решение становится<br>рабочим сайтом.",
-      text: "Три варианта ключевой страницы, дизайн-система, контент, адаптивная разработка и публикация.",
+      title: "Дизайн и разработка<br>собирают решение.",
+      text: "Утверждаем ключевые прототипы, создаём дизайн-систему, готовим содержание и адаптивную разработку.",
       outputs: ["3 прототипа", "дизайн-система", "готовый сайт"],
       console: ["Направление утверждено", "Компоненты собраны", "QA завершён"]
     },
     launch: {
       number: "05",
       code: "MANUL / ЗАПУСК",
-      title: "После публикации<br>появляются данные.",
-      text: "Подготавливаем поиск, Метрику, цели, первый рекламный контур и Яндекс Бизнес.",
+      title: "Сайт готов к поиску,<br>аналитике и рекламе.",
+      text: "Проверяем индексацию, настраиваем Метрику и цели, готовим первый рекламный запуск и Яндекс Бизнес.",
       outputs: ["базовое SEO", "аналитика", "первый трафик"],
       console: ["Индексация проверена", "События фиксируются", "Кампания запущена"]
     },
     leads: {
       number: "06",
       code: "MANUL / ОБРАЩЕНИЯ",
-      title: "У обращения<br>есть источник.",
-      text: "Заявки передаются в CRM вместе с контекстом, а реклама получает нижние бизнес-события.",
-      outputs: ["источник", "квалификация", "CRM-событие"],
-      console: ["Источник сохранён", "Заявка квалифицирована", "Событие передано"]
+      title: "Видно, откуда приходит<br>каждое обращение.",
+      text: "Сохраняем источник и контекст заявки, связываем аналитику с CRM, когда это необходимо.",
+      outputs: ["источник", "контекст заявки", "CRM"],
+      console: ["Источник сохранён", "Контекст передан", "Обращение учтено"]
     },
     growth: {
       number: "07",
       code: "MANUL / РАЗВИТИЕ",
-      title: "Данные запускают<br>следующий цикл.",
-      text: "Новые страницы и изменения появляются из наблюдаемой задачи, а не из календаря услуг.",
+      title: "Развитие опирается<br>на накопленные данные.",
+      text: "Корректируем страницы, SEO и рекламу, когда данные показывают конкретную точку роста.",
       outputs: ["данные", "вывод", "изменение"],
-      console: ["Данные накоплены", "Гипотеза сформирована", "Следующий шаг назначен"]
+      console: ["Данные накоплены", "Точка роста найдена", "Изменение запланировано"]
     }
   };
 
   const stagesEn = {
     task: {
       number: "01",
-      code: "MANUL / TASK",
-      title: "First —<br>a business change.",
-      text: "We define what must change after launch and which data will make that change visible.",
-      outputs: ["project goal", "success criterion", "constraints"],
-      console: ["Project goal recorded", "Success criterion defined", "Constraints collected"]
+      code: "MANUL / WEBSITES",
+      title: "Websites as<br>a commercial system.",
+      text: "We research demand, define the structure, build the website and prepare it for search, analytics and paid acquisition.",
+      outputs: ["research", "website creation", "commercial launch"],
+      console: ["Structure follows demand", "Website is ready to attract enquiries", "Results can be measured"]
     },
     demand: {
       number: "02",
       code: "MANUL / DEMAND",
-      title: "Demand shows<br>what to build.",
-      text: "We study search language, competitors, regions and real groups of needs before designing pages.",
-      outputs: ["semantics", "demand groups", "competitor map"],
-      console: ["Queries collected and cleaned", "Intents separated", "Market responses reviewed"]
+      title: "Demand research<br>defines the structure.",
+      text: "We examine search language, competitors and markets to identify the pages and propositions the website actually needs.",
+      outputs: ["search queries", "need groups", "competitors"],
+      console: ["Demand reviewed", "Tasks separated", "Pages defined"]
     },
     structure: {
       number: "03",
       code: "MANUL / STRUCTURE",
-      title: "Every page<br>gets a job.",
-      text: "We map demand to URLs, connect the pages and calculate weighted scope by complexity.",
-      outputs: ["URL map", "page roles", "weighted scope"],
-      console: ["Clusters distributed", "Cannibalization removed", "Scope calculated"]
+      title: "The structure answers<br>real customer needs.",
+      text: "We map demand groups to pages and define their roles and connections before design begins.",
+      outputs: ["URL map", "page roles", "connections"],
+      console: ["Queries distributed", "Duplicates removed", "Scope calculated"]
     },
     site: {
       number: "04",
       code: "MANUL / WEBSITE",
-      title: "The solution becomes<br>a working website.",
-      text: "Three key-page concepts, a design system, content, responsive development and publication.",
+      title: "Design and development<br>assemble the solution.",
+      text: "We approve the key concepts, build the design system, prepare content and complete responsive development.",
       outputs: ["3 concepts", "design system", "working website"],
       console: ["Direction approved", "Components assembled", "QA completed"]
     },
     launch: {
       number: "05",
       code: "MANUL / LAUNCH",
-      title: "Publication starts<br>the data flow.",
-      text: "We prepare search, analytics, goals, the initial ad campaign and a business profile.",
+      title: "Ready for search,<br>analytics and advertising.",
+      text: "We check indexing, configure analytics and goals, and prepare the first paid acquisition campaign and business profile.",
       outputs: ["baseline SEO", "analytics", "first traffic"],
       console: ["Indexing checked", "Events tracked", "Campaign launched"]
     },
     leads: {
       number: "06",
       code: "MANUL / LEADS",
-      title: "Every lead<br>has a source.",
-      text: "Leads reach the CRM with context, while advertising receives lower-funnel business events.",
-      outputs: ["source", "qualification", "CRM event"],
-      console: ["Source preserved", "Lead qualified", "Event delivered"]
+      title: "Every enquiry<br>has a visible source.",
+      text: "We preserve the source and context of each enquiry and connect analytics to the CRM when necessary.",
+      outputs: ["source", "enquiry context", "CRM"],
+      console: ["Source preserved", "Context delivered", "Enquiry recorded"]
     },
     growth: {
       number: "07",
       code: "MANUL / GROWTH",
-      title: "Data starts<br>the next cycle.",
-      text: "New pages and changes come from an observed need, not from a service calendar.",
+      title: "Growth follows<br>the accumulated data.",
+      text: "We adjust pages, SEO and advertising when the evidence points to a specific growth opportunity.",
       outputs: ["data", "insight", "change"],
-      console: ["Data accumulated", "Hypothesis formed", "Next step assigned"]
+      console: ["Data accumulated", "Opportunity identified", "Change scheduled"]
     }
   };
 
@@ -270,7 +270,44 @@
     "вашу задачу.":"your task.",
     "Начать в Telegram":"Start in Telegram",
     "телефона нет":"no phone",
-    "@hellomanul_bot · телефона нет":"@hellomanul_bot · no phone"
+    "@hellomanul_bot · телефона нет":"@hellomanul_bot · no phone",
+    "семантика и спрос":"semantics and demand",
+    "Что получает бизнес":"What the business gets",
+    "одна бизнес-задача":"one business objective",
+    "Принцип работы / единый проект":"Working principle / one project",
+    "Один проект —":"One project —",
+    "от исследования до запуска.":"from research to launch.",
+    "Спрос определяет структуру. Структура — содержание и сценарии страниц. Дизайн, разработка, SEO, аналитика и реклама собираются вокруг одной бизнес-задачи.":"Demand defines the structure. The structure defines content and page journeys. Design, development, SEO, analytics and advertising work around one business objective.",
+    "Результаты исследования переходят в карту страниц и требования к содержанию. Поэтому проект не начинается с произвольного числа страниц или выбранного шаблона.":"Research becomes a page map and clear content requirements. That is why a project does not begin with an arbitrary page count or a preselected template.",
+    "Ключевые решения принимаются в одном контексте: не приходится заново объяснять задачу отдельным подрядчикам по дизайну, разработке, SEO и рекламе.":"Key decisions stay in one context, so the business does not have to re-explain the task to separate design, development, SEO and advertising contractors.",
+    "Запросы объединяются по намерению пользователя. Для самостоятельной задачи создаётся отдельная страница; близкие формулировки могут вести на один сильный ответ.":"Queries are grouped by user intent. A distinct task receives its own page, while closely related wording can lead to one strong answer.",
+    "Wordstat · фиксированная частотность · июль 2026":"Google Search · demo data",
+    "Оцените масштаб":"Estimate the scope of",
+    "коммерческого запуска.":"a commercial launch.",
+    "Укажите ориентировочное число страниц, направлений и рекламных кампаний. Расчёт покажет порядок бюджета без интеграций, нестандартной логики и рекламного бюджета.":"Enter an approximate number of pages, business directions and advertising campaigns. The estimate excludes integrations, custom logic and media spend.",
+    "Как читать расчёт":"How to read the estimate",
+    "Страницы различаются по сложности: главная требует больше работы, чем типовая статья или карточка сотрудника.":"Pages differ in complexity: a homepage requires more work than a standard article or team profile.",
+    "Точная структура, объём SEO и рекламные контуры определяются после исследования спроса.":"The exact structure, SEO scope and advertising campaigns are defined after demand research.",
+    "После запуска начинаются":"After launch, measurement",
+    "измерения и развитие.":"and growth begin.",
+    "Источники обращений связаны":"Enquiry sources connected",
+    "Решения, которые":"Solutions that",
+    "можно проверить.":"can be verified.",
+    "до 300 первичных обращений в месяц в наиболее сильный период":"up to 300 first-time enquiries per month during the strongest period",
+    "небрендовый спрос выявил предел прежней структуры":"non-branded demand revealed the limit of the previous structure",
+    "два сайта разделили продукты и региональные задачи":"two websites separated products and regional objectives",
+    "сайты для разных продуктов и географий":"websites for different products and markets",
+    "сайт · SEO · реклама":"website · SEO · advertising",
+    "SEO · новая архитектура":"SEO · new architecture",
+    "структура · SEO":"structure · SEO",
+    "многосайтовая система":"multi-site system",
+    "Формат зависит":"The format depends",
+    "от задачи.":"on the task.",
+    "Один продукт можно запустить лендингом. Несколько направлений требуют структуры. Действующий сайт иногда нужно сначала исследовать и безопасно пересобрать.":"One product may be launched with a landing page. Several business directions require a structure. An existing website may need research and a safe rebuild first.",
+    "Нужно определить формат и масштаб":"The format and scope need to be defined",
+    "Обсудить задачу":"Discuss the task",
+    "и следующий шаг.":"and the next step.",
+    "Бот уточнит продукт, географию, функции, бюджет и срок — и поможет определить подходящий формат работы.":"The bot will clarify the product, market, functionality, budget and timeline, then help identify the right format for the project."
   };
   const originalTextNodes = new WeakMap();
 
@@ -446,7 +483,7 @@
     "/korporativnyj-sajt/": "Корпоративный сайт"
   };
   const pageRolesEn = {
-    "/sozdanie-saytov/": ["\/en\/website-development\/", "Commercial website launch"],
+    "/sozdanie-saytov/": ["/en/sozdanie-saytov/", "Commercial website launch"],
     "/seo-prodvizhenie/": ["\/en\/website-seo\/", "Website SEO"],
     "/nastrojka-yandex-direkt/": ["\/en\/google-ads-setup\/", "Google Ads setup"],
     "/redizajn-sajta/": ["\/en\/website-redesign\/", "Redesign and safe relaunch"],
@@ -480,12 +517,7 @@
         : button.dataset.ruVolume;
     });
   };
-  const prototypeHref = targetPath => {
-    if (targetPath === "/sozdanie-saytov/" || targetPath === "/en/website-development/") {
-      return "concept-product.html";
-    }
-    return targetPath;
-  };
+  const prototypeHref = targetPath => targetPath;
   const updateDemandPage = button => {
     const isEnglish = currentLanguage === "en";
     const targetPath = isEnglish ? pageRolesEn[button.dataset.page][0] : button.dataset.page;
@@ -530,14 +562,14 @@
         code: "02 / КОММЕРЧЕСКИЙ ЗАПУСК",
         title: "Многостраничный сайт",
         text: "Направления и поисковый спрос превращаются в структуру страниц, готовую к привлечению обращений.",
-        href: "concept-product.html",
+        href: "/sozdanie-saytov/",
         rule: "Количество страниц определяется спросом, а не заранее выбранным объёмом."
       },
       en: {
         code: "02 / COMMERCIAL LAUNCH",
         title: "Multi-page website",
         text: "Business directions and search demand become a page structure ready to generate enquiries.",
-        href: "concept-product.html",
+        href: "/en/sozdanie-saytov/",
         rule: "The number of pages follows demand rather than a predefined scope."
       }
     },
@@ -553,7 +585,7 @@
         code: "03 / REDESIGN",
         title: "Existing website rebuild",
         text: "We preserve useful assets, change the structure and relaunch the website safely.",
-        href: "/en/website-redesign/",
+        href: "/en/redizajn-sajta/",
         rule: "After the rebuild, the project can move into ongoing Manul development."
       }
     },
@@ -562,14 +594,14 @@
         code: "04 / ИССЛЕДОВАНИЕ",
         title: "Сначала определить задачу",
         text: "Проверяем спрос, продукт и ограничения до решения о формате и масштабе разработки.",
-        href: "concept-product.html#composition",
+        href: "/sozdanie-saytov/",
         rule: "Если сайт не является первым необходимым шагом, исследование должно это показать."
       },
       en: {
         code: "04 / RESEARCH",
         title: "Define the task first",
         text: "We examine demand, the product and constraints before choosing the format and scope of development.",
-        href: "concept-product.html#composition",
+        href: "/en/sozdanie-saytov/",
         rule: "If a website is not the necessary first step, research should make that clear."
       }
     },
@@ -685,8 +717,8 @@
       ? "/en/soprovozhdenie-sajta/"
       : "/soprovozhdenie-sajta/";
     document.title = language === "en"
-      ? "Manul — commercial website launch"
-      : "Manul OS — коммерческий запуск сайта";
+      ? "Manul — website creation and growth for business"
+      : "Manul — создание и развитие сайтов для бизнеса";
     nodeSitePrice.textContent = language === "en" ? "from $5,000" : "от 300 тыс. ₽";
     nodeLaunchPrice.textContent = language === "en" ? "from $8,300" : "от 500 тыс. ₽";
     liveBasePrice.textContent = language === "en" ? "$8,300" : "500";
