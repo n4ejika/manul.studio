@@ -5,7 +5,7 @@
   const closeButton = document.getElementById("manulMapClose");
   const languageButton = document.getElementById("manulGlobalLanguage");
   const themeButton = document.getElementById("manulGlobalTheme");
-  const shellRoots = document.querySelectorAll(".manul-global-header,.manul-global-map,.manul-global-footer");
+  const shellRoots = document.querySelectorAll(".manul-global-header,.manul-global-map,.manul-global-footer,main.legal");
   let language = "ru";
 
   const legacyLanguage = () => document.querySelector([
@@ -45,7 +45,9 @@
   const initialLanguageControl = legacyLanguage();
   language = initialLanguageControl instanceof HTMLAnchorElement
     ? (root.lang === "en" ? "en" : "ru")
-    : (initialLanguageControl?.textContent.trim() === "RU" ? "en" : "ru");
+    : initialLanguageControl
+      ? (initialLanguageControl.textContent.trim() === "RU" ? "en" : "ru")
+      : (root.lang === "en" || /^\/en(?:\/|$)/.test(location.pathname) ? "en" : "ru");
 
   function setMap(open) {
     if (!map) return;
@@ -93,6 +95,17 @@
     shellRoots.forEach(shell => shell.querySelectorAll("img[data-ru-src][data-en-src]").forEach(image => {
       image.src = image.dataset[`${language}Src`];
     }));
+    shellRoots.forEach(shell => shell.querySelectorAll("a[href^='/']").forEach(anchor => {
+      if (anchor.id === "manulGlobalLanguage") return;
+      const raw = anchor.getAttribute("href");
+      const route = raw.replace(/^\/en(?=\/)/, "") || "/";
+      anchor.setAttribute("href", language === "en" ? (route === "/" ? "/en/" : `/en${route}`) : route);
+    }));
+    const brand = document.querySelector(".manul-global-header .brand");
+    brand?.setAttribute("aria-label", language === "en" ? "Manul — home" : "Manul — главная");
+    document.querySelectorAll(".manul-global-footer .footer-operator").forEach(operator => {
+      operator.hidden = language === "en";
+    });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
   }

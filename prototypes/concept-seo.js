@@ -35,23 +35,23 @@
   const signalCopy = {
     visibility: {
       code: "01 / VISIBILITY",
-      ru: ["Спрос встречается со страницами.", "Проверяем, по каким группам запросов сайт виден и где структура не отвечает поисковому намерению."],
-      en: ["Demand meets the pages.", "We identify which demand groups can find the website and where its structure misses search intent."]
+      ru: ["Проверяем охват целевого спроса.", "Смотрим, по каким группам запросов сайт виден и где существующие страницы ещё не отвечают поисковому намерению."],
+      en: ["We check target demand coverage.", "We identify which query groups can find the website and where existing pages still miss search intent."]
     },
     indexing: {
       code: "02 / INDEXING",
-      ru: ["Поиск должен увидеть изменения.", "Контролируем обход, индексацию, технические ошибки и то, какие страницы поисковая система считает основными."],
-      en: ["Search must see the change.", "We control crawling, indexing, technical errors and which pages the search engine treats as canonical."]
+      ru: ["Проверяем доступность страниц для поиска.", "Контролируем обход, индексацию, технические ошибки и то, какие страницы поисковая система считает основными."],
+      en: ["We check page accessibility for search.", "We monitor crawling, indexing, technical errors and which pages the search engine treats as canonical."]
     },
     traffic: {
       code: "03 / TRAFFIC",
-      ru: ["Не любой переход имеет ценность.", "Разделяем информационный интерес и коммерческий спрос, оцениваем качество входящих маршрутов."],
-      en: ["Not every visit has value.", "We separate informational interest from commercial demand and assess the quality of incoming journeys."]
+      ru: ["Оцениваем качество поискового трафика.", "Разделяем информационный интерес и коммерческий спрос, проверяем страницы входа и поведение посетителей."],
+      en: ["We assess organic traffic quality.", "We separate informational interest from commercial demand and review landing pages and visitor behaviour."]
     },
     leads: {
       code: "04 / ENQUIRIES",
-      ru: ["Страница должна продолжать путь.", "Сверяем поисковый трафик с обращениями и понимаем, какие группы спроса действительно работают на бизнес."],
-      en: ["The page must continue the journey.", "We connect organic traffic with enquiries to see which demand groups create business value."]
+      ru: ["Связываем поисковый трафик с обращениями.", "Проверяем, какие страницы и группы запросов приводят целевых посетителей к обращению."],
+      en: ["We connect organic traffic with enquiries.", "We identify which pages and query groups bring qualified visitors to an enquiry."]
     }
   };
 
@@ -63,8 +63,8 @@
     },
     price: {
       code: "02 / SCOPE",
-      ru: ["Стоимость определяет масштаб задачи.", "Учитываются группы спроса, продвигаемые страницы, конкуренция и география. Поэтому рынок выбирается прямо в расчёте."],
-      en: ["The task scale determines the price.", "Demand groups, promoted pages, competition and geography all matter. That is why the market is selected inside the estimate."]
+      ru: ["Масштаб задачи определяет стоимость.", "Учитываются количество запросов, продвигаемые страницы, конкуренция и география. Поэтому рынок выбирается прямо в расчёте."],
+      en: ["Task scale determines the price.", "The number of queries, promoted pages, competition and geography all matter. That is why the market is selected inside the estimate."]
     },
     pages: {
       code: "03 / PRODUCTION",
@@ -76,23 +76,23 @@
   const growthCopy = {
     visibility: {
       index: "01 / 04", code: "01 / VISIBILITY",
-      ru: ["Найти потерянный спрос.", "Смотрим, по каким группам запросов сайт перестал расти или ещё не представлен."],
-      en: ["Find missed demand.", "We identify demand groups where the website has stopped growing or is not yet visible."]
+      ru: ["Расширить видимость по целевым запросам.", "Определяем группы спроса, где сайт перестал расти или ещё не представлен."],
+      en: ["Expand visibility for target queries.", "We identify demand groups where the website has stopped growing or is not yet visible."]
     },
     indexing: {
       index: "02 / 04", code: "02 / INDEXING",
-      ru: ["Убрать барьер для поиска.", "Проверяем обход, индексацию, дубли и технические ограничения, мешающие страницам участвовать в поиске."],
-      en: ["Remove the search barrier.", "We check crawling, indexing, duplicates and technical constraints that keep pages out of search."]
+      ru: ["Устранить проблемы индексации.", "Проверяем обход, индексацию, дубли и технические ограничения, мешающие страницам участвовать в поиске."],
+      en: ["Resolve indexing issues.", "We check crawling, indexing, duplicates and technical constraints that keep pages out of search."]
     },
     traffic: {
       index: "03 / 04", code: "03 / TRAFFIC",
-      ru: ["Привести нужного посетителя.", "Отделяем рост целевого трафика от общего увеличения посещаемости и выбираем работающие входные страницы."],
-      en: ["Attract the right visitor.", "We separate qualified traffic growth from a general increase in visits and identify effective entry pages."]
+      ru: ["Увеличить целевой поисковый трафик.", "Отделяем рост целевого трафика от общего увеличения посещаемости и определяем работающие страницы входа."],
+      en: ["Increase qualified organic traffic.", "We separate qualified traffic growth from a general increase in visits and identify effective landing pages."]
     },
     leads: {
       index: "04 / 04", code: "04 / ENQUIRIES",
-      ru: ["Связать спрос с обращениями.", "Сверяем страницы входа и обращения, чтобы следующий цикл работал на бизнес-задачу, а не на абстрактный трафик."],
-      en: ["Connect demand with enquiries.", "We compare entry pages with enquiries so the next cycle serves a business task rather than abstract traffic."]
+      ru: ["Повысить вклад поиска в обращения.", "Сверяем страницы входа с обращениями и определяем, какие изменения нужны в следующем цикле."],
+      en: ["Increase organic search contribution to enquiries.", "We compare landing pages with enquiries and define the changes required in the next cycle."]
     }
   };
 
@@ -185,7 +185,7 @@
     document.querySelector(".faq-rail").setAttribute("aria-label", language === "ru" ? "Вопросы перед стартом" : "Questions before the start");
     document.querySelector(".growth-switch").setAttribute("aria-label", language === "ru" ? "Приоритет следующего цикла" : "Next-cycle priority");
     document.title = language === "ru"
-      ? "SEO-продвижение — от 50 000 ₽ в месяц | Manul"
+      ? "SEO-продвижение сайта — от 50 000 ₽ в месяц | Manul"
       : "SEO services — from $800 per month | Manul";
     selectMarket(market);
     selectSignal(document.querySelector("[data-signal].active")?.dataset.signal || "visibility");

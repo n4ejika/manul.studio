@@ -33,4 +33,6 @@ html[data-theme="dark"]{--bg:#080a09;--fg:#f0f2ec;--panel:#171a18;--soft:#a6aaa5
 }
 
 @media(max-width:360px){.hero-story h1{font-size:40px}.system-node{width:101px}.system-core{width:53%}.system-core h2{font-size:16px}.result-copy h3,.build-stage h3{font-size:40px}.result-business h3{font-size:43px}}
+.case-related{display:flex;flex-wrap:wrap;gap:10px;max-width:760px;margin-top:28px}.case-related a{border:1px solid;padding:10px 13px;font:10px "IBM Plex Mono";text-transform:uppercase;text-decoration:none;color:inherit;background:var(--bg)}
+@media(max-width:760px){.case-related{display:grid;grid-template-columns:1fr}.case-related a{min-height:44px;display:flex;align-items:center}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}

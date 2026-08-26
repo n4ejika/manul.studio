@@ -8,8 +8,8 @@
     nodes: {
       goal: {
         code: "01 / BUSINESS GOAL",
-        ru: ["Сначала определяем, за что готов платить бизнес.", "Не оптимизируем рекламу по кликам на кнопку, если бизнесу нужны квалифицированные обращения."],
-        en: ["First, we define what the business is willing to pay for.", "We do not optimise for button clicks when the business needs qualified leads."]
+        ru: ["Определяем, какое обращение важно бизнесу.", "Фиксируем целевое действие и критерии качества, по которым можно проверять результат рекламы."],
+        en: ["Define which enquiry matters to the business.", "We establish the target action and quality criteria used to evaluate advertising results."]
       },
       signal: {
         code: "02 / DEMAND SIGNAL",
@@ -50,8 +50,8 @@
       },
       control: {
         code: "04 / FIRST 30 DAYS",
-        ru: ["Даём стратегии обучиться и проверяем реальность результата.", "Контролируем расход, конверсии, запросы, модерацию и качество обращений. Первый месяц нужен не для суеты, а для накопления данных и решений.", ["контроль бюджета", "качество лидов", "решения по данным"]],
-        en: ["Let bidding learn and verify the outcome.", "We control spend, conversions, queries, moderation and lead quality. The first month is for collecting evidence and making decisions.", ["budget control", "lead quality", "data-led decisions"]]
+        ru: ["Контролируем первые 30 дней после запуска.", "Проверяем расход, конверсии, запросы, модерацию и качество обращений. Накопленные данные становятся основой для следующих решений.", ["контроль бюджета", "качество лидов", "решения по данным"]],
+        en: ["Control the first 30 days after launch.", "We review spend, conversions, queries, moderation and lead quality. Accumulated data becomes the basis for further decisions.", ["budget control", "lead quality", "data-led decisions"]]
       }
     }
   };

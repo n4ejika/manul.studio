@@ -8,14 +8,14 @@
     system: {
       code: "SYSTEM / 00",
       value: "300",
-      titleRu: "Обращения — результат системы.",
-      titleEn: "Enquiries are a system outcome.",
-      textRu: "Каналы не конкурируют за авторство результата. Они работают как один контур.",
-      textEn: "Channels do not compete for credit. They work as one connected system."
+      titleRu: "Обращения — результат комплексной работы.",
+      titleEn: "Enquiries are the outcome of integrated work.",
+      textRu: "Обращения формировались совместной работой сайта, поискового продвижения, рекламы и самой клиники.",
+      textEn: "Enquiries were shaped by the website, SEO, advertising and the clinic's own work."
     },
     site: {
       code: "WEBSITE / 01",
-      value: "21",
+      value: "САЙТ",
       titleRu: "Направление получает точку входа.",
       titleEn: "Each service gets an entry point.",
       textRu: "Услуги, врачи, оборудование, цены и отделения собраны в понятную структуру выбора.",
@@ -26,8 +26,8 @@
       value: "67,2%",
       titleRu: "Зрелое ядро занимает выдачу.",
       titleEn: "The mature query set gains visibility.",
-      textRu: "Пиковый цельный срез: 186 запросов, две трети — в ТОП‑10 Яндекса.",
-      textEn: "One coherent peak snapshot: 186 queries, two thirds in Yandex Top 10."
+      textRu: "Единый срез периода работы: 186 коммерческих запросов, 67,2% — в ТОП‑10 Яндекса.",
+      textEn: "One consistent snapshot during the engagement: 186 commercial-intent queries, with 67.2% in Yandex Top 10."
     },
     ads: {
       code: "ADS / 03",
@@ -59,8 +59,8 @@
     },
     seo: {
       code: "02 / SEARCH",
-      titleRu: "Спрос становится архитектурой сайта.",
-      titleEn: "Demand becomes website architecture.",
+      titleRu: "Структуру сайта собрали по спросу.",
+      titleEn: "The website structure was built around demand.",
       textRu: "Запросы группируются по задаче и интенту. Каждая значимая группа получает релевантную страницу и возможность расти отдельно.",
       textEn: "Queries are grouped by need and intent. Each meaningful group gets a relevant page and room to grow.",
       listRu: ["зрелое ядро 186 запросов", "страницы под направления", "контроль ТОП‑3 / 10 / 30"],
@@ -70,10 +70,10 @@
       code: "03 / ADS",
       titleRu: "Реклама подключается к готовым ответам.",
       titleEn: "Ads connect to prepared answers.",
-      textRu: "Поиск, сети, ретаргетинг и оптимизация по конверсиям ведут не на случайную страницу, а в согласованный сценарий.",
-      textEn: "Search, networks, retargeting and conversion optimisation lead into a coherent journey, not a random page.",
-      listRu: ["поиск и сети", "оптимизация по целям", "контроль CPA и CR"],
-      listEn: ["search and networks", "goal-based optimisation", "CPA and CR monitoring"]
+      textRu: "Рекламные кампании связывали спрос с подходящими страницами услуг. Цели и аналитика позволяли оценивать качество визитов.",
+      textEn: "Advertising campaigns connected demand with relevant service pages. Goals and analytics helped assess visit quality.",
+      listRu: ["структура кампаний по услугам", "релевантные посадочные страницы", "контроль целевых визитов и CPA"],
+      listEn: ["service-based campaign structure", "relevant landing pages", "target-visit and CPA monitoring"]
     },
     analytics: {
       code: "04 / ANALYTICS",

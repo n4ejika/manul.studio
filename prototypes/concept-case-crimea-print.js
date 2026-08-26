@@ -6,16 +6,16 @@
 
   const cities = {
     sev: {
-      codeRu: "01 / ШИРОКИЙ КАТАЛОГ", codeEn: "01 / BROAD CATALOGUE", value: "67",
+      codeRu: "01 / ЯНДЕКС · ТОП‑10", codeEn: "01 / YANDEX · TOP 10", value: "34",
       titleRu: "Печати, полиграфия и дизайн.", titleEn: "Stamps, print and design.",
-      textRu: "Первый сайт охватывает несколько товарных и сервисных направлений Севастополя.",
-      textEn: "The first website covers several product and service categories in Sevastopol."
+      textRu: "34 из 67 запросов находятся в ТОП‑10; сайт охватывает печати, визитки, листовки и дизайн.",
+      textEn: "34 of 67 queries rank in the Top 10; the website covers stamps, business cards, leaflets and design."
     },
     simf: {
-      codeRu: "02 / СФОКУСИРОВАННЫЙ", codeEn: "02 / FOCUSED", value: "38",
+      codeRu: "02 / ЯНДЕКС · ТОП‑10", codeEn: "02 / YANDEX · TOP 10", value: "81",
       titleRu: "Изготовление печатей и быстрый заказ.", titleEn: "Stamp production and fast ordering.",
-      textRu: "Второй сайт отвечает на спрос Симферополя собственными ценами, сроками и коммерческими страницами.",
-      textEn: "The second website answers Simferopol demand with its own prices, lead times and commercial pages."
+      textRu: "81 из 110 запросов находятся в ТОП‑10; сайт отвечает на спрос Симферополя своими ценами, сроками и страницами.",
+      textEn: "81 of 110 queries rank in the Top 10; the website answers Simferopol demand with its own prices, lead times and pages."
     }
   };
 

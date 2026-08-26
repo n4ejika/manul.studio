@@ -9,93 +9,93 @@
 
   const engines = {
     yandex: {
-      code: "YANDEX / 230 QUERY",
-      value: "85,7%",
-      top10: "32,6%",
-      top30: "77%",
-      absent: "33",
-      labelRu: "ядра с позицией",
+      code: "YANDEX / 355 QUERIES",
+      value: "82,5%",
+      top10: "56,3%",
+      top30: "77,5%",
+      absent: "62",
+      labelRu: "запросов с позицией",
       labelEn: "of queries with a rank",
-      noteRu: "Яндекс сформировал широкий локальный охват. Верх выдачи менялся внутри периода.",
-      noteEn: "Yandex built broad local reach. Top positions fluctuated during the period."
+      noteRu: "293 запроса имеют позиции в Яндексе; 200 из них находятся в ТОП‑10.",
+      noteEn: "293 queries rank in Yandex; 200 of them are in the Top 10."
     },
     google: {
-      code: "GOOGLE / 230 QUERY",
-      value: "3,5%",
-      top10: "0%",
-      top30: "3,5%",
-      absent: "222",
-      labelRu: "ядра с позицией",
+      code: "GOOGLE / 355 QUERIES",
+      value: "14,4%",
+      top10: "1,1%",
+      top30: "14,4%",
+      absent: "304",
+      labelRu: "запросов с позицией",
       labelEn: "of queries with a rank",
-      noteRu: "Google не сформировался как рабочий поисковый канал в измеряемом периоде.",
-      noteEn: "Google did not develop into an effective search channel during the measured period."
+      noteRu: "51 запрос имеет позицию в Google; четыре находятся в ТОП‑10.",
+      noteEn: "51 queries rank in Google; four are in the Top 10."
     }
   };
 
   const devices = {
     iphone: {
-      code: "IPHONE / 82 QUERY",
+      code: "IPHONE / 82 QUERIES",
       titleRu: "Ремонт iPhone",
       titleEn: "iPhone repair",
-      top10: "53,7%",
-      top30: "92,7%",
-      noteRu: "Самое крупное направление ядра и самый устойчивый результат среди категорий.",
-      noteEn: "The largest category in the set and the most stable result across device types.",
+      top10: "79,3%",
+      top30: "96,3%",
+      noteRu: "65 из 82 запросов находятся в ТОП‑10; 79 — в ТОП‑30.",
+      noteEn: "65 of 82 queries rank in the Top 10; 79 rank in the Top 30.",
       device: "iPhone",
       page: "/remont-iphone/"
     },
     samsung: {
-      code: "SAMSUNG / 22 QUERY",
+      code: "SAMSUNG / 18 QUERIES",
       titleRu: "Ремонт Samsung",
       titleEn: "Samsung repair",
-      top10: "36,4%",
-      top30: "81,8%",
-      noteRu: "Направление выросло с нулевой доли ТОП‑10 и сформировало заметную видимость.",
-      noteEn: "The category grew from zero Top 10 share and established visible search presence.",
+      top10: "38,9%",
+      top30: "88,9%",
+      noteRu: "7 из 18 запросов находятся в ТОП‑10; 16 — в ТОП‑30.",
+      noteEn: "7 of 18 queries rank in the Top 10; 16 rank in the Top 30.",
       device: "Samsung",
-      page: "/remont-samsung/"
+      page: "/remont-telefonov/samsung/"
     },
     xiaomi: {
-      code: "XIAOMI / 19 QUERY",
+      code: "XIAOMI / 19 QUERIES",
       titleRu: "Ремонт Xiaomi",
       titleEn: "Xiaomi repair",
-      top10: "15,8%",
-      top30: "94,7%",
-      noteRu: "Почти всё направление вошло в первые тридцать результатов, но верх выдачи остался точкой роста.",
-      noteEn: "Almost the entire category entered the Top 30, while top rankings remained an opportunity.",
+      top10: "100%",
+      top30: "100%",
+      noteRu: "Все 19 запросов направления находятся в ТОП‑10 Яндекса.",
+      noteEn: "All 19 queries in this category rank in Yandex Top 10.",
       device: "Xiaomi",
-      page: "/remont-xiaomi/"
+      page: "/service/servisnyj-centr-xiaomi-v-sevastopole/remont-telefonov-xiaomi-v-sevastopole/"
     },
     laptop: {
-      code: "LAPTOP / 13 QUERY",
+      code: "LAPTOP / 46 QUERIES",
       titleRu: "Ремонт ноутбуков",
       titleEn: "Laptop repair",
-      top10: "15,4%",
-      top30: "69,2%",
-      noteRu: "Направление получило охват, но требует более сильной коммерческой посадочной.",
-      noteEn: "The category gained reach but requires a stronger commercial landing page.",
+      top10: "28,3%",
+      top30: "58,7%",
+      noteRu: "13 из 46 запросов находятся в ТОП‑10; 27 — в ТОП‑30.",
+      noteEn: "13 of 46 queries rank in the Top 10; 27 rank in the Top 30.",
       device: "Laptop",
       page: "/remont-noutbukov/"
     },
     tv: {
-      code: "TV / 31 QUERY",
+      code: "TV / 49 QUERIES",
       titleRu: "Ремонт телевизоров",
       titleEn: "TV repair",
-      top10: "6,5%",
-      top30: "35,5%",
-      noteRu: "Спрос присутствует, но текущая структура раскрывает его слабее телефонных направлений.",
-      noteEn: "Demand exists, but the current structure covers it less effectively than phone repair.",
+      top10: "28,6%",
+      top30: "55,1%",
+      noteRu: "14 из 49 запросов находятся в ТОП‑10; 27 — в ТОП‑30.",
+      noteEn: "14 of 49 queries rank in the Top 10; 27 rank in the Top 30.",
       device: "TV",
       page: "/remont-televizorov/"
     },
     computer: {
-      code: "COMPUTER / 12 QUERY",
+      code: "COMPUTER / 17 QUERIES",
       titleRu: "Ремонт компьютеров",
       titleEn: "Computer repair",
-      top10: "0%",
-      top30: "0%",
-      noteRu: "Неосвоенное направление, которое нельзя прятать внутри общей страницы сервиса.",
-      noteEn: "An unserved category that should not be buried inside a generic service page.",
+      top10: "11,8%",
+      top30: "23,5%",
+      noteRu: "2 из 17 запросов находятся в ТОП‑10; 4 — в ТОП‑30.",
+      noteEn: "2 of 17 queries rank in the Top 10; 4 rank in the Top 30.",
       device: "Computer",
       page: "/remont-kompyuterov/"
     }
@@ -103,34 +103,34 @@
 
   const stages = {
     start: {
-      codeRu: "01 / СТАРТ ИЗМЕРЕНИЯ",
-      codeEn: "01 / MEASUREMENT START",
-      titleRu: "Сайт уже имел сильное телефонное ядро.",
-      titleEn: "The website already had a strong phone-repair core.",
-      textRu: "31,3% стабильного небрендового ядра находилось в ТОП‑10 Яндекса.",
-      textEn: "31.3% of the stable non-brand set ranked in Yandex Top 10.",
-      value: "31,3%",
-      gauge: "31.3%"
+      codeRu: "01 / ТОП‑3 ЯНДЕКСА",
+      codeEn: "01 / YANDEX TOP 3",
+      titleRu: "Самая заметная зона выдачи.",
+      titleEn: "The most visible area of the results page.",
+      textRu: "44 из 355 локальных запросов находятся в первых трёх результатах.",
+      textEn: "44 of 355 local queries rank in the first three results.",
+      value: "44",
+      gauge: "12.4%"
     },
     peak: {
-      codeRu: "02 / ПИК ПЕРИОДА",
-      codeEn: "02 / PERIOD PEAK",
-      titleRu: "Верх выдачи достиг максимума.",
-      titleEn: "Top rankings reached their maximum.",
-      textRu: "При широком охвате 60,4% стабильного ядра находилось в ТОП‑10 Яндекса.",
-      textEn: "With broad reach established, 60.4% of the stable set ranked in Yandex Top 10.",
-      value: "60,4%",
-      gauge: "60.4%"
+      codeRu: "02 / ТОП‑10 ЯНДЕКСА",
+      codeEn: "02 / YANDEX TOP 10",
+      titleRu: "Основная зона коммерческой видимости.",
+      titleEn: "The main area of commercial visibility.",
+      textRu: "200 из 355 локальных запросов находятся на первой странице результатов.",
+      textEn: "200 of 355 local queries rank on the first results page.",
+      value: "200",
+      gauge: "56.3%"
     },
     finish: {
-      codeRu: "03 / КОНЕЦ ПЕРИОДА",
-      codeEn: "03 / PERIOD END",
-      titleRu: "Охват сохранился, верхние позиции снизились.",
-      titleEn: "Reach remained broad while top rankings declined.",
-      textRu: "85,7% ядра имело позиции, но доля ТОП‑10 вернулась к 32,6%. Это и стало сигналом к пересборке структуры.",
-      textEn: "85.7% of the set had rankings, but the Top 10 share returned to 32.6%. This became a signal to rebuild the structure.",
-      value: "32,6%",
-      gauge: "32.6%"
+      codeRu: "03 / ТОП‑30 ЯНДЕКСА",
+      codeEn: "03 / YANDEX TOP 30",
+      titleRu: "Широкий контур поискового присутствия.",
+      titleEn: "The broader search-presence layer.",
+      textRu: "275 из 355 локальных запросов находятся в пределах первых тридцати результатов.",
+      textEn: "275 of 355 local queries rank within the first thirty results.",
+      value: "275",
+      gauge: "77.5%"
     }
   };
 
