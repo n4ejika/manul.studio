@@ -47,7 +47,7 @@
     ? (root.lang === "en" ? "en" : "ru")
     : initialLanguageControl
       ? (initialLanguageControl.textContent.trim() === "RU" ? "en" : "ru")
-      : (root.lang === "en" || /^\/en(?:\/|$)/.test(location.pathname) ? "en" : "ru");
+      : (root.lang === "en" || /^\/ru(?:\/|$)/.test(location.pathname) ? "en" : "ru");
 
   function setMap(open) {
     if (!map) return;
@@ -95,17 +95,8 @@
     shellRoots.forEach(shell => shell.querySelectorAll("img[data-ru-src][data-en-src]").forEach(image => {
       image.src = image.dataset[`${language}Src`];
     }));
-    shellRoots.forEach(shell => shell.querySelectorAll("a[href^='/']").forEach(anchor => {
-      if (anchor.id === "manulGlobalLanguage") return;
-      const raw = anchor.getAttribute("href");
-      const route = raw.replace(/^\/en(?=\/)/, "") || "/";
-      anchor.setAttribute("href", language === "en" ? (route === "/" ? "/en/" : `/en${route}`) : route);
-    }));
-    const brand = document.querySelector(".manul-global-header .brand");
-    brand?.setAttribute("aria-label", language === "en" ? "Manul — home" : "Manul — главная");
-    document.querySelectorAll(".manul-global-footer .footer-operator").forEach(operator => {
-      operator.hidden = language === "en";
-    });
+    // Astro renders canonical internal links for the active language.
+    // Do not rewrite them in the browser.
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
   }

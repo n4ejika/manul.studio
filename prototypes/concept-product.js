@@ -65,7 +65,7 @@
       labelEn: "Website only",
       descriptionRu: "Готовый сайт без настройки SEO, аналитики и рекламы",
       descriptionEn: "A complete website without SEO, analytics and advertising setup",
-      price: 300000,
+      priceKey: "websiteDevelopment",
       included: 1
     },
     launch: {
@@ -73,7 +73,7 @@
       labelEn: "Commercial launch",
       descriptionRu: "Сайт, исследование, базовое SEO, аналитика и первый рекламный запуск",
       descriptionEn: "Website, research, baseline SEO, analytics and the initial advertising launch",
-      price: 500000,
+      priceKey: "commercialLaunch",
       included: 5
     }
   };
@@ -105,8 +105,9 @@
     document.querySelectorAll("[data-ru][data-en]").forEach(element => {
       element.innerHTML = element.dataset[language];
     });
-    document.querySelectorAll("[data-price]").forEach(element => {
-      element.textContent = money(Number(element.dataset.price));
+    const baseline = ManulCalculator.calculate({ pages: 15, services: 10, contours: 1, complexity: 1 }, language);
+    document.querySelectorAll("[data-calculator-part]").forEach(element => {
+      element.textContent = money(baseline[element.dataset.calculatorPart]);
     });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
@@ -176,7 +177,7 @@
         item.setAttribute("aria-selected", String(active));
       });
       heroProductLabel.textContent = product[`label${language === "ru" ? "Ru" : "En"}`];
-      const formatted = money(product.price);
+      const formatted = money(ManulCalculator.getPrice(product.priceKey, language));
       if (language === "ru") {
         heroPrice.textContent = formatted.replace(/\s?₽$/, "");
         heroCurrency.textContent = "₽";
@@ -243,7 +244,8 @@
       business: "#productBusiness",
       total: "#productTotal"
     },
-    formatMoney: money
+    formatMoney: money,
+    language: () => language
   });
   ManulCalculator.bindMobileTotal({ source: "#productTotal", target: "#productMobileTotal" });
   function updateEstimate() {

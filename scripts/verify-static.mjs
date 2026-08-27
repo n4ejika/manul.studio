@@ -34,6 +34,11 @@ for (const required of ["index.html", "404.html", "robots.txt", "sitemap.xml"]) 
 }
 
 const pages = await collectHtml(root);
+const sitemap = await readFile(join(root, "sitemap.xml"), "utf8");
+if (!sitemap.includes("<loc>https://manul.studio/</loc>")) failures.push("sitemap: English root missing");
+if (!sitemap.includes("<loc>https://manul.studio/ru/</loc>")) failures.push("sitemap: Russian root missing");
+if (sitemap.includes("<loc>https://manul.studio/en/")) failures.push("sitemap: legacy /en/ URLs must not be indexed");
+
 for (const file of pages) {
   const relative = file.slice(root.length).replaceAll("\\", "/") || "/index.html";
   const html = await readFile(file, "utf8");
@@ -46,6 +51,11 @@ for (const file of pages) {
   if (!/<meta[^>]+name=["']description["'][^>]+content=["'][^"']+/i.test(html)) failures.push(`${relative}: description missing`);
   if (!html.includes('name="yandex-verification" content="0daa2fd0f427bbf5"')) failures.push(`${relative}: Yandex verification missing`);
   if (!html.includes("111853232")) failures.push(`${relative}: Metrika missing`);
+
+  const expectedLanguage = relative.startsWith("/ru/") ? "ru" : "en";
+  if (!new RegExp(`<html[^>]+lang=["']${expectedLanguage}["']`, "i").test(html)) {
+    failures.push(`${relative}: expected html lang=${expectedLanguage}`);
+  }
 
   for (const match of html.matchAll(/(?:href|src)=["']([^"']+)["']/gi)) {
     const target = localTarget(file, match[1]);

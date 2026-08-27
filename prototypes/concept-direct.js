@@ -65,14 +65,14 @@
     document.querySelectorAll("[data-ru][data-en]").forEach(element => {
       element.innerHTML = element.dataset[language];
     });
-    document.querySelectorAll("[data-price]").forEach(element => {
-      element.textContent = formatMoney(Number(element.dataset.price));
+    document.querySelectorAll("[data-price-key]").forEach(element => {
+      element.textContent = formatMoney(ManulCalculator.getPrice(element.dataset.priceKey, language));
     });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
     document.title = language === "ru"
       ? "Настройка Яндекс Директа — от 50 000 ₽ | Manul"
-      : "Google Ads setup — from $800 | Manul";
+      : "Google Ads setup — from $1,500 | Manul";
     selectNode(document.querySelector(".system-node.active")?.dataset.node || "goal");
     selectScope(document.querySelector(".scope-tabs button.active")?.dataset.scope || "research");
   }

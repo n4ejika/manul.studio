@@ -1,9 +1,57 @@
+Options -Indexes
 ErrorDocument 404 /404.html
+RewriteEngine On
+
+# Language migration: English root, Russian /ru/.
+RewriteRule ^en/?$ / [R=301,L,NE]
+RewriteRule ^sozdanie-saytov/?$ /ru/sozdanie-saytov/ [R=301,L,NE]
+RewriteRule ^en/sozdanie-saytov/?$ /website-development/ [R=301,L,NE]
+RewriteRule ^korporativnyj-sajt/?$ /ru/korporativnyj-sajt/ [R=301,L,NE]
+RewriteRule ^en/korporativnyj-sajt/?$ /corporate-website-development/ [R=301,L,NE]
+RewriteRule ^landing/?$ /ru/landing/ [R=301,L,NE]
+RewriteRule ^en/landing/?$ /landing-page-development/ [R=301,L,NE]
+RewriteRule ^redizajn-sajta/?$ /ru/redizajn-sajta/ [R=301,L,NE]
+RewriteRule ^en/redizajn-sajta/?$ /website-redesign/ [R=301,L,NE]
+RewriteRule ^seo-prodvizhenie/?$ /ru/seo-prodvizhenie/ [R=301,L,NE]
+RewriteRule ^en/seo-prodvizhenie/?$ /seo-services/ [R=301,L,NE]
+RewriteRule ^nastrojka-yandex-direkt/?$ /ru/nastrojka-yandex-direkt/ [R=301,L,NE]
+RewriteRule ^en/nastrojka-yandex-direkt/?$ /google-ads-management/ [R=301,L,NE]
+RewriteRule ^podderzhka-sajta/?$ /ru/podderzhka-sajta/ [R=301,L,NE]
+RewriteRule ^en/podderzhka-sajta/?$ /website-support/ [R=301,L,NE]
+RewriteRule ^soprovozhdenie-sajta/?$ /ru/soprovozhdenie-sajta/ [R=301,L,NE]
+RewriteRule ^en/soprovozhdenie-sajta/?$ /website-management/ [R=301,L,NE]
+RewriteRule ^medicinskie-sajty/?$ /ru/medicinskie-sajty/ [R=301,L,NE]
+RewriteRule ^en/medicinskie-sajty/?$ /medical-website-development/ [R=301,L,NE]
+RewriteRule ^sajty-dlya-stomatologij/?$ /ru/sajty-dlya-stomatologij/ [R=301,L,NE]
+RewriteRule ^en/sajty-dlya-stomatologij/?$ /dental-website-development/ [R=301,L,NE]
+RewriteRule ^cases/?$ /ru/cases/ [R=301,L,NE]
+RewriteRule ^en/cases/?$ /case-studies/ [R=301,L,NE]
+RewriteRule ^cases/okean/?$ /ru/cases/okean/ [R=301,L,NE]
+RewriteRule ^en/cases/okean/?$ /case-studies/ocean-dental-clinic/ [R=301,L,NE]
+RewriteRule ^cases/i-sev/?$ /ru/cases/i-sev/ [R=301,L,NE]
+RewriteRule ^en/cases/i-sev/?$ /case-studies/i-sev/ [R=301,L,NE]
+RewriteRule ^cases/crimea-print/?$ /ru/cases/crimea-print/ [R=301,L,NE]
+RewriteRule ^en/cases/crimea-print/?$ /case-studies/crimea-print/ [R=301,L,NE]
+RewriteRule ^cases/luca-pacioli/?$ /ru/cases/luca-pacioli/ [R=301,L,NE]
+RewriteRule ^en/cases/luca-pacioli/?$ /case-studies/luca-pacioli/ [R=301,L,NE]
+RewriteRule ^studio/?$ /ru/studio/ [R=301,L,NE]
+RewriteRule ^en/studio/?$ /about/ [R=301,L,NE]
+RewriteRule ^contacts/?$ /ru/contacts/ [R=301,L,NE]
+RewriteRule ^en/contacts/?$ /contact/ [R=301,L,NE]
+RewriteRule ^privacy/?$ /ru/privacy/ [R=301,L,NE]
+RewriteRule ^en/privacy/?$ /privacy-policy/ [R=301,L,NE]
+RewriteRule ^consent/?$ /ru/consent/ [R=301,L,NE]
+RewriteRule ^en/consent/?$ /data-processing-consent/ [R=301,L,NE]
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.html?$">
-    Header always set Cache-Control "no-cache, no-store, must-revalidate"
-    Header always set Pragma "no-cache"
-    Header always set Expires "0"
-  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
 </IfModule>

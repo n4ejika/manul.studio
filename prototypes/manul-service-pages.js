@@ -50,6 +50,52 @@
     const label = link.querySelector('span');
     if (label) label.textContent = button.dataset.label;
   });
+  document.querySelectorAll('.contact-form').forEach(form => {
+    const startedAt = form.querySelector('[name="form_started_at"]');
+    const status = form.querySelector('.contact-form-status');
+    const submit = form.querySelector('[type="submit"]');
+    if (startedAt) startedAt.value = String(Date.now());
+    const returnedState = new URLSearchParams(location.search).get('status');
+    if (status && returnedState === 'sent') {
+      status.classList.add('is-success');
+      status.textContent = 'Thank you. Your enquiry has been sent to hello@manul.studio.';
+    } else if (status && returnedState === 'error') {
+      status.classList.add('is-error');
+      status.innerHTML = 'The form could not send your enquiry. Please email <a href="mailto:hello@manul.studio">hello@manul.studio</a>.';
+    }
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      if (submit) submit.disabled = true;
+      if (status) {
+        status.className = 'contact-form-status contact-form-wide';
+        status.textContent = 'Sending…';
+      }
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {'Accept':'application/json'}
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !payload.ok) throw new Error(payload.message || 'Could not send the enquiry.');
+        form.reset();
+        if (startedAt) startedAt.value = String(Date.now());
+        if (status) {
+          status.classList.add('is-success');
+          status.textContent = 'Thank you. Your enquiry has been sent to hello@manul.studio.';
+        }
+        if (typeof window.ym === 'function') window.ym(111853232, 'reachGoal', 'enquiry_submit_success');
+      } catch (error) {
+        if (status) {
+          status.classList.add('is-error');
+          status.innerHTML = 'The form could not send your enquiry. Please email <a href="mailto:hello@manul.studio">hello@manul.studio</a>.';
+        }
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+  });
   if (matchMedia('(pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
     document.querySelectorAll('.industry-system-final').forEach(section => {
       section.addEventListener('pointermove', event => {

@@ -1,43 +1,283 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://manul.studio/</loc></url>
-  <url><loc>https://manul.studio/en/</loc></url>
-  <url><loc>https://manul.studio/sozdanie-saytov/</loc></url>
-  <url><loc>https://manul.studio/en/sozdanie-saytov/</loc></url>
-  <url><loc>https://manul.studio/korporativnyj-sajt/</loc></url>
-  <url><loc>https://manul.studio/en/korporativnyj-sajt/</loc></url>
-  <url><loc>https://manul.studio/landing/</loc></url>
-  <url><loc>https://manul.studio/en/landing/</loc></url>
-  <url><loc>https://manul.studio/redizajn-sajta/</loc></url>
-  <url><loc>https://manul.studio/en/redizajn-sajta/</loc></url>
-  <url><loc>https://manul.studio/seo-prodvizhenie/</loc></url>
-  <url><loc>https://manul.studio/en/seo-prodvizhenie/</loc></url>
-  <url><loc>https://manul.studio/nastrojka-yandex-direkt/</loc></url>
-  <url><loc>https://manul.studio/en/nastrojka-yandex-direkt/</loc></url>
-  <url><loc>https://manul.studio/podderzhka-sajta/</loc></url>
-  <url><loc>https://manul.studio/en/podderzhka-sajta/</loc></url>
-  <url><loc>https://manul.studio/soprovozhdenie-sajta/</loc></url>
-  <url><loc>https://manul.studio/en/soprovozhdenie-sajta/</loc></url>
-  <url><loc>https://manul.studio/medicinskie-sajty/</loc></url>
-  <url><loc>https://manul.studio/en/medicinskie-sajty/</loc></url>
-  <url><loc>https://manul.studio/sajty-dlya-stomatologij/</loc></url>
-  <url><loc>https://manul.studio/en/sajty-dlya-stomatologij/</loc></url>
-  <url><loc>https://manul.studio/cases/</loc></url>
-  <url><loc>https://manul.studio/en/cases/</loc></url>
-  <url><loc>https://manul.studio/cases/okean/</loc></url>
-  <url><loc>https://manul.studio/en/cases/okean/</loc></url>
-  <url><loc>https://manul.studio/cases/i-sev/</loc></url>
-  <url><loc>https://manul.studio/en/cases/i-sev/</loc></url>
-  <url><loc>https://manul.studio/cases/crimea-print/</loc></url>
-  <url><loc>https://manul.studio/en/cases/crimea-print/</loc></url>
-  <url><loc>https://manul.studio/cases/luca-pacioli/</loc></url>
-  <url><loc>https://manul.studio/en/cases/luca-pacioli/</loc></url>
-  <url><loc>https://manul.studio/studio/</loc></url>
-  <url><loc>https://manul.studio/en/studio/</loc></url>
-  <url><loc>https://manul.studio/contacts/</loc></url>
-  <url><loc>https://manul.studio/en/contacts/</loc></url>
-  <url><loc>https://manul.studio/privacy/</loc></url>
-  <url><loc>https://manul.studio/en/privacy/</loc></url>
-  <url><loc>https://manul.studio/consent/</loc></url>
-  <url><loc>https://manul.studio/en/consent/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://manul.studio/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/website-development/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/sozdanie-saytov/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/sozdanie-saytov/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/sozdanie-saytov/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/corporate-website-development/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/corporate-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/korporativnyj-sajt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/corporate-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/korporativnyj-sajt/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/corporate-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/korporativnyj-sajt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/corporate-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/landing-page-development/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/landing-page-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/landing/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/landing-page-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/landing/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/landing-page-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/landing/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/landing-page-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/website-redesign/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-redesign/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/redizajn-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-redesign/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/redizajn-sajta/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-redesign/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/redizajn-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-redesign/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/seo-services/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/seo-services/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/seo-prodvizhenie/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/seo-services/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/seo-prodvizhenie/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/seo-services/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/seo-prodvizhenie/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/seo-services/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/google-ads-management/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/google-ads-management/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/nastrojka-yandex-direkt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/google-ads-management/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/nastrojka-yandex-direkt/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/google-ads-management/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/nastrojka-yandex-direkt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/google-ads-management/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/website-support/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-support/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/podderzhka-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-support/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/podderzhka-sajta/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-support/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/podderzhka-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-support/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/website-management/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-management/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/soprovozhdenie-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-management/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/soprovozhdenie-sajta/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/website-management/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/soprovozhdenie-sajta/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/website-management/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/medical-website-development/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/medical-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/medicinskie-sajty/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/medical-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/medicinskie-sajty/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/medical-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/medicinskie-sajty/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/medical-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/dental-website-development/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/dental-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/sajty-dlya-stomatologij/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/dental-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/sajty-dlya-stomatologij/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/dental-website-development/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/sajty-dlya-stomatologij/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/dental-website-development/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/case-studies/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/cases/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/case-studies/ocean-dental-clinic/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/ocean-dental-clinic/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/okean/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/ocean-dental-clinic/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/cases/okean/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/ocean-dental-clinic/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/okean/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/ocean-dental-clinic/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/case-studies/i-sev/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/i-sev/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/i-sev/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/i-sev/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/cases/i-sev/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/i-sev/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/i-sev/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/i-sev/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/case-studies/crimea-print/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/crimea-print/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/crimea-print/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/crimea-print/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/cases/crimea-print/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/crimea-print/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/crimea-print/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/crimea-print/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/case-studies/luca-pacioli/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/luca-pacioli/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/luca-pacioli/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/luca-pacioli/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/cases/luca-pacioli/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/case-studies/luca-pacioli/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/cases/luca-pacioli/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/case-studies/luca-pacioli/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/about/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/about/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/studio/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/about/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/studio/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/about/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/studio/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/about/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/contact/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/contact/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/contacts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/contact/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/contacts/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/contact/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/contacts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/contact/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/privacy-policy/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/privacy/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/data-processing-consent/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/data-processing-consent/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/consent/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/data-processing-consent/" />
+  </url>
+  <url>
+    <loc>https://manul.studio/ru/consent/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://manul.studio/data-processing-consent/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://manul.studio/ru/consent/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://manul.studio/data-processing-consent/" />
+  </url>
 </urlset>

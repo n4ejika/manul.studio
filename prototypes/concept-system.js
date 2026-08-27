@@ -170,8 +170,8 @@
     "точка старта":"starting point",
     "2 212 фраз":"2,212 phrases",
     "карта URL":"URL map",
-    "от 300 тыс. ₽":"from $5,000",
-    "от 500 тыс. ₽":"from $8,300",
+    "от 300 тыс. ₽":"from $10,000",
+    "от 500 тыс. ₽":"from $15,000",
     "источник известен":"source known",
     "следующий цикл":"next cycle",
     "единый контекст":"shared context",
@@ -268,9 +268,9 @@
     "Новый контур / 07":"New loop / 07",
     "Подключить":"Connect",
     "вашу задачу.":"your task.",
-    "Начать в Telegram":"Start in Telegram",
+    "Начать в Telegram":"Open the enquiry form",
     "телефона нет":"no phone",
-    "@hellomanul_bot · телефона нет":"@hellomanul_bot · no phone",
+    "@hellomanul_bot · телефона нет":"hello@manul.studio · email first",
     "семантика и спрос":"semantics and demand",
     "Что получает бизнес":"What the business gets",
     "одна бизнес-задача":"one business objective",
@@ -307,7 +307,7 @@
     "Нужно определить формат и масштаб":"The format and scope need to be defined",
     "Обсудить задачу":"Discuss the task",
     "и следующий шаг.":"and the next step.",
-    "Бот уточнит продукт, географию, функции, бюджет и срок — и поможет определить подходящий формат работы.":"The bot will clarify the product, market, functionality, budget and timeline, then help identify the right format for the project."
+    "Бот уточнит продукт, географию, функции, бюджет и срок — и поможет определить подходящий формат работы.":"In the enquiry form, tell us about the product, market, functionality, budget and timeline. We will use that context to identify the right format for the project."
   };
   const originalTextNodes = new WeakMap();
 
@@ -699,7 +699,8 @@
       business: "#businessPrice",
       total: "#launchPrice"
     },
-    formatMoney
+    formatMoney,
+    language: () => currentLanguage
   });
   ManulCalculator.bindMobileTotal({ source: "#launchPrice", target: "#mobileLaunchPrice" });
   const updateCalculation = () => systemCalculator.update();
@@ -719,9 +720,15 @@
     document.title = language === "en"
       ? "Manul — website creation and growth for business"
       : "Manul — создание и развитие сайтов для бизнеса";
-    nodeSitePrice.textContent = language === "en" ? "from $5,000" : "от 300 тыс. ₽";
-    nodeLaunchPrice.textContent = language === "en" ? "from $8,300" : "от 500 тыс. ₽";
-    liveBasePrice.textContent = language === "en" ? "$8,300" : "500";
+    nodeSitePrice.textContent = language === "en"
+      ? `from ${formatMoney(ManulCalculator.getPrice("websiteDevelopment", language))}`
+      : "от 300 тыс. ₽";
+    nodeLaunchPrice.textContent = language === "en"
+      ? `from ${formatMoney(ManulCalculator.getPrice("commercialLaunch", language))}`
+      : "от 500 тыс. ₽";
+    liveBasePrice.textContent = language === "en"
+      ? formatMoney(ManulCalculator.getPrice("commercialLaunch", language))
+      : "500";
     liveBaseUnit.textContent = language === "en" ? "baseline launch" : "тыс. ₽ · базовый запуск";
     themeToggle.setAttribute(
       "aria-label",

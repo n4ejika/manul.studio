@@ -95,13 +95,20 @@ jobs:
       - name: Verify production
         run: |
           curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-home.html https://manul.studio/
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-ru-home.html https://manul.studio/ru/
           curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-sitemap.xml https://manul.studio/sitemap.xml
           curl --fail --silent --show-error --retry 5 --retry-delay 3 --output /tmp/manul-robots.txt https://manul.studio/robots.txt
           grep -q 'rel="canonical" href="https://manul.studio/"' /tmp/manul-home.html
+          grep -q '<html lang="en"' /tmp/manul-home.html
+          grep -q 'rel="canonical" href="https://manul.studio/ru/"' /tmp/manul-ru-home.html
+          grep -q '<html lang="ru"' /tmp/manul-ru-home.html
           grep -q '0daa2fd0f427bbf5' /tmp/manul-home.html
           grep -q '111853232' /tmp/manul-home.html
-          grep -q '<loc>https://manul.studio/' /tmp/manul-sitemap.xml
+          grep -q '<loc>https://manul.studio/</loc>' /tmp/manul-sitemap.xml
+          grep -q '<loc>https://manul.studio/ru/</loc>' /tmp/manul-sitemap.xml
           grep -q 'Sitemap: https://manul.studio/sitemap.xml' /tmp/manul-robots.txt
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' https://manul.studio/en/)" = '301'
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' https://manul.studio/sozdanie-saytov/)" = '301'
 
       - name: Deployment summary
         run: |

@@ -1,30 +1,64 @@
 (() => {
   const config = Object.freeze({
-    rublesPerDollar: 60,
     pageMinimum: 15,
     pageMaximum: 100,
     serviceMinimum: 10,
     serviceMaximum: 60,
     contourMinimum: 1,
     contourMaximum: 6,
-    roundingStep: 5000
+    roundingSteps: Object.freeze({ ru: 5000, en: 100 })
   });
 
-  const roundUp = (value, step = config.roundingStep) => Math.ceil(value / step) * step;
+  const priceBooks = Object.freeze({
+    ru: Object.freeze({
+      websiteDevelopment: 300000,
+      commercialLaunch: 500000,
+      landing: 350000,
+      redesignDiagnosis: 50000,
+      adsSetup: 50000,
+      adsManagementStable: 10000,
+      adsManagementRegional: 20000,
+      adsManagementScale: 40000,
+      supportMonthly: 20000,
+      managementMonthly: 85000
+    }),
+    en: Object.freeze({
+      websiteDevelopment: 10000,
+      commercialLaunch: 15000,
+      landing: 7500,
+      redesignDiagnosis: 1500,
+      adsSetup: 1500,
+      adsManagementStable: 750,
+      adsManagementRegional: 1500,
+      adsManagementScale: 3000,
+      supportMonthly: 1000,
+      managementMonthly: 3500
+    })
+  });
 
-  const formatMoney = (value, language = "ru") => language === "en"
-    ? `$${(Math.round((value / config.rublesPerDollar) / 100) * 100).toLocaleString("en-US")}`
+  const normalizeLanguage = language => language === "en" ? "en" : "ru";
+  const roundUp = (value, step) => Math.ceil(value / step) * step;
+  const getPrice = (key, language = "ru") => priceBooks[normalizeLanguage(language)][key];
+
+  const formatMoney = (value, language = "ru") => normalizeLanguage(language) === "en"
+    ? `$${Math.round(value).toLocaleString("en-US")}`
     : `${Math.round(value).toLocaleString("ru-RU")} ₽`;
 
-  const developmentPrice = pages => {
+  const developmentPrice = (pages, language = "ru") => {
+    const activeLanguage = normalizeLanguage(language);
     let raw;
-    if (pages <= 15) raw = 300000;
+    if (activeLanguage === "en") {
+      if (pages <= 15) raw = 10000;
+      else if (pages <= 50) raw = 10000 + (pages - 15) * 400;
+      else raw = 24000 + (pages - 50) * 320;
+    } else if (pages <= 15) raw = 300000;
     else if (pages <= 50) raw = 300000 + (pages - 15) * 12000;
     else raw = 720000 + (pages - 50) * 9600;
-    return roundUp(raw);
+    return roundUp(raw, config.roundingSteps[activeLanguage]);
   };
 
-  const calculate = ({ pages, services, contours, complexity = 1 }) => {
+  const calculate = ({ pages, services, contours, complexity = 1 }, language = "ru") => {
+    const activeLanguage = normalizeLanguage(language);
     const pageCount = Number(pages);
     const serviceCount = Number(services);
     const contourCount = Number(contours);
@@ -33,17 +67,29 @@
     const pageSteps = Math.ceil(Math.max(0, pageCount - 15) / 15);
     const serviceSteps = Math.ceil(Math.max(0, serviceCount - 10) / 10);
     const keywordSteps = Math.ceil(Math.max(0, keywordCount - 100) / 100);
-    const research = 40000 + pageSteps * 10000 + serviceSteps * 10000 + keywordSteps * 10000;
-    const development = roundUp(developmentPrice(pageCount) * complexityMultiplier);
-    const seo = 80000 + pageSteps * 10000 + keywordSteps * 15000;
-    const advertising = 50000 + (contourCount - 1) * 15000;
-    const business = 30000 + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 5000;
+    const research = activeLanguage === "en"
+      ? 1000 + pageSteps * 300 + serviceSteps * 300 + keywordSteps * 300
+      : 40000 + pageSteps * 10000 + serviceSteps * 10000 + keywordSteps * 10000;
+    const development = roundUp(
+      developmentPrice(pageCount, activeLanguage) * complexityMultiplier,
+      config.roundingSteps[activeLanguage]
+    );
+    const seo = activeLanguage === "en"
+      ? 2000 + pageSteps * 300 + keywordSteps * 500
+      : 80000 + pageSteps * 10000 + keywordSteps * 15000;
+    const advertising = activeLanguage === "en"
+      ? 1500 + (contourCount - 1) * 500
+      : 50000 + (contourCount - 1) * 15000;
+    const business = activeLanguage === "en"
+      ? 500 + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 200
+      : 30000 + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 5000;
 
     return Object.freeze({
       pages: pageCount,
       services: serviceCount,
       contours: contourCount,
       complexity: complexityMultiplier,
+      currency: activeLanguage === "en" ? "USD" : "RUB",
       research,
       development,
       seo,
@@ -54,25 +100,40 @@
   };
 
   const seoMarkets = Object.freeze({
-    local: Object.freeze({ multiplier: 1, minimum: 50000 }),
-    major: Object.freeze({ multiplier: 1.4, minimum: 70000 }),
-    country: Object.freeze({ multiplier: 1.8, minimum: 90000 }),
-    international: Object.freeze({ multiplier: 2.4, minimum: 120000 })
+    ru: Object.freeze({
+      local: Object.freeze({ multiplier: 1, minimum: 50000 }),
+      major: Object.freeze({ multiplier: 1.4, minimum: 70000 }),
+      country: Object.freeze({ multiplier: 1.8, minimum: 90000 }),
+      international: Object.freeze({ multiplier: 2.4, minimum: 120000 })
+    }),
+    en: Object.freeze({
+      local: Object.freeze({ multiplier: 1, minimum: 2000 }),
+      major: Object.freeze({ multiplier: 1.25, minimum: 2500 }),
+      country: Object.freeze({ multiplier: 1.5, minimum: 3000 }),
+      international: Object.freeze({ multiplier: 2, minimum: 4000 })
+    })
   });
 
-  const calculateSeo = ({ queries = 100, pages = 15, market = "local" }) => {
+  const calculateSeo = ({ queries = 100, pages = 15, market = "local" }, language = "ru") => {
+    const activeLanguage = normalizeLanguage(language);
     const queryCount = Math.max(100, Number(queries));
     const pageCount = Math.max(15, Number(pages));
-    const marketConfig = seoMarkets[market] || seoMarkets.local;
+    const marketConfig = seoMarkets[activeLanguage][market] || seoMarkets[activeLanguage].local;
     const querySteps = Math.ceil(Math.max(0, queryCount - 100) / 100);
     const pageSteps = Math.ceil(Math.max(0, pageCount - 15) / 15);
-    const base = 50000 + querySteps * 15000 + pageSteps * 10000;
-    const total = Math.max(marketConfig.minimum, Math.round((base * marketConfig.multiplier) / 5000) * 5000);
+    const base = activeLanguage === "en"
+      ? 2000 + querySteps * 500 + pageSteps * 300
+      : 50000 + querySteps * 15000 + pageSteps * 10000;
+    const total = Math.max(
+      marketConfig.minimum,
+      roundUp(base * marketConfig.multiplier, config.roundingSteps[activeLanguage])
+    );
     return Object.freeze({
       queries: queryCount,
       pages: pageCount,
       market,
       multiplier: marketConfig.multiplier,
+      currency: activeLanguage === "en" ? "USD" : "RUB",
       base,
       total
     });
@@ -174,7 +235,7 @@
     return api;
   };
 
-  const mount = ({ inputs, outputs, formatMoney }) => {
+  const mount = ({ inputs, outputs, formatMoney, language = "ru" }) => {
     const fields = Object.fromEntries(Object.entries(inputs).map(([key, target]) => [key, element(target)]));
     const destinations = Object.fromEntries(Object.entries(outputs).map(([key, target]) => [key, element(target)]));
     const missing = [...Object.entries(fields), ...Object.entries(destinations)]
@@ -184,12 +245,13 @@
     enhanceSelect(fields.complexity);
 
     const update = () => {
+      const activeLanguage = normalizeLanguage(typeof language === "function" ? language() : language);
       const result = calculate({
         pages: fields.pages.value,
         services: fields.services.value,
         contours: fields.contours.value,
         complexity: fields.complexity.value
-      });
+      }, activeLanguage);
       destinations.pages.textContent = result.pages;
       destinations.services.textContent = result.services;
       destinations.contours.textContent = result.contours;
@@ -225,6 +287,8 @@
 
   globalThis.ManulCalculator = Object.freeze({
     config,
+    priceBooks,
+    getPrice,
     calculate,
     calculateSeo,
     seoMarkets,

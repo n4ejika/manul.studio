@@ -106,8 +106,9 @@
     document.querySelector(".architecture").setAttribute("aria-label", language === "ru" ? "Интерактивная карта корпоративного сайта" : "Interactive corporate website map");
     document.querySelector(".architecture-switch").setAttribute("aria-label", language === "ru" ? "Способ организации сайта" : "Website organisation mode");
     languageButton.textContent = language === "ru" ? "EN" : "RU";
-    document.getElementById("corporateHeroPrice").textContent = language === "ru" ? "500 000 ₽" : "$8,300";
-    document.getElementById("corporateScopePrice").textContent = language === "ru" ? "от 500 000 ₽" : "from $8,300";
+    const launchPrice = money(ManulCalculator.getPrice("commercialLaunch", language));
+    document.getElementById("corporateHeroPrice").textContent = launchPrice;
+    document.getElementById("corporateScopePrice").textContent = language === "ru" ? `от ${launchPrice}` : `from ${launchPrice}`;
     renderMode(mode);
     updatePrices();
   }
@@ -141,7 +142,8 @@
       business: "#corpBusiness",
       total: "#corpTotal"
     },
-    formatMoney: money
+    formatMoney: money,
+    language: () => language
   });
   ManulCalculator.bindMobileTotal({ source: "#corpTotal", target: "#corpMobileTotal" });
   document.querySelectorAll("details").forEach(details => details.addEventListener("toggle", () => {

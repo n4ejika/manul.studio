@@ -77,8 +77,9 @@
       element.innerHTML = element.dataset[language];
     });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
-    document.getElementById("landingHeroPrice").textContent = language === "ru" ? "от 350 000 ₽" : "from $5,000";
-    document.getElementById("landingScopePrice").textContent = language === "ru" ? "от 350 000 ₽" : "from $5,000";
+    const price = ManulCalculator.formatMoney(ManulCalculator.getPrice("landing", language), language);
+    document.getElementById("landingHeroPrice").textContent = language === "ru" ? `от ${price}` : `from ${price}`;
+    document.getElementById("landingScopePrice").textContent = language === "ru" ? `от ${price}` : `from ${price}`;
     renderMode(mode);
   }
 

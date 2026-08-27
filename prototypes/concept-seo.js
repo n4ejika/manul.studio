@@ -103,14 +103,14 @@
       queries: queryInput.value,
       pages: pageInput.value,
       market
-    });
+    }, language);
     document.getElementById("queriesOutput").textContent = result.queries;
     document.getElementById("pagesOutput").textContent = result.pages;
     document.getElementById("seoTotal").textContent = formatMoney(result.total);
-    document.getElementById("heroPrice").textContent = formatMoney(ManulCalculator.seoMarkets[market].minimum);
+    document.getElementById("heroPrice").textContent = formatMoney(ManulCalculator.seoMarkets[language][market].minimum);
     document.getElementById("resultScope").textContent = language === "ru"
       ? `${result.queries} запросов · ${result.pages} страниц · ×${result.multiplier.toFixed(1)}`
-      : `${result.queries} queries · ${result.pages} pages · ×${result.multiplier.toFixed(1)}`;
+      : `${result.queries} queries · ${result.pages} pages · ×${result.multiplier}`;
   }
 
   function selectMarket(nextMarket) {
@@ -124,7 +124,7 @@
     if (marketSelect.value !== market) marketSelect.value = market;
     marketSelect.manulSelect?.refresh();
     document.getElementById("marketCode").textContent = item.code;
-    document.getElementById("marketFactor").textContent = item.factor;
+    document.getElementById("marketFactor").textContent = `×${ManulCalculator.seoMarkets[language][market].multiplier}`;
     document.getElementById("marketName").textContent = item[language][0];
     document.getElementById("marketNote").textContent = item[language][1];
     field.style.setProperty("--scale", ({ local: .63, major: .82, country: 1.05, international: 1.3 })[market]);
@@ -186,7 +186,7 @@
     document.querySelector(".growth-switch").setAttribute("aria-label", language === "ru" ? "Приоритет следующего цикла" : "Next-cycle priority");
     document.title = language === "ru"
       ? "SEO-продвижение сайта — от 50 000 ₽ в месяц | Manul"
-      : "SEO services — from $800 per month | Manul";
+      : "SEO services — from $2,000 per month | Manul";
     selectMarket(market);
     selectSignal(document.querySelector("[data-signal].active")?.dataset.signal || "visibility");
     selectFaq(document.querySelector("[data-seo-faq].active")?.dataset.seoFaq || "term");

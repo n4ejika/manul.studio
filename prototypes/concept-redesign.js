@@ -225,8 +225,8 @@
     document.querySelectorAll("main [data-ru][data-en]").forEach(element => {
       element.innerHTML = element.dataset[language];
     });
-    document.querySelectorAll("[data-price-ru][data-price-en]").forEach(element => {
-      element.textContent = element.dataset[`price${language === "ru" ? "Ru" : "En"}`];
+    document.querySelectorAll("[data-price-key]").forEach(element => {
+      element.textContent = ManulCalculator.formatMoney(ManulCalculator.getPrice(element.dataset.priceKey, language), language);
     });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     updateLabels(core.classList.contains("success") ? "success" : core.classList.contains("failed") ? "failed" : matched.size ? "progress" : selection ? "selected" : "ready");
