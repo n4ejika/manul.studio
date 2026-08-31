@@ -169,8 +169,8 @@ mark{background:var(--acid);color:var(--acid-ink);padding:0 .08em}
   .sys-author h2 mark{white-space:normal}
 }
 
-/* The solution rail has one anchored state marker. A detached travelling dot made
-   the active option and the line communicate two different states. */
+/* The option nodes show the selected solution. The separate signal travels along
+   the rail to keep the system visibly active without changing that selection. */
 .choice-system:after{display:none;animation:none}
 @media(min-width:721px){
   .choice-system:before{z-index:1}
