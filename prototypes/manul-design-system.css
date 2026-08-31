@@ -11,7 +11,8 @@
   --manul-display-hero-line:.9;
   --manul-display-hero-tracking:-.06em;
 
-  --manul-display-section-size:clamp(40px,4vw,58px);
+  /* Section headings are derived from, and remain visibly below, H1. */
+  --manul-display-section-size:clamp(34px,3.05vw,44px);
   --manul-display-section-weight:700;
   --manul-display-section-line:.94;
   --manul-display-section-tracking:-.057em;
@@ -21,20 +22,20 @@
   --manul-display-editorial-line:var(--manul-display-section-line);
   --manul-display-editorial-tracking:var(--manul-display-section-tracking);
 
-  --manul-heading-large-size:clamp(34px,3.4vw,52px);
+  --manul-heading-large-size:clamp(30px,2.6vw,44px);
   --manul-heading-large-weight:700;
   --manul-heading-large-line:.96;
   --manul-heading-large-tracking:-.05em;
 
-  --manul-heading-medium-size:clamp(27px,2.5vw,38px);
+  --manul-heading-medium-size:clamp(25px,2.05vw,34px);
   --manul-heading-medium-weight:700;
   --manul-heading-medium-line:1;
   --manul-heading-medium-tracking:-.04em;
-  --manul-heading-small-size:clamp(22px,1.9vw,30px);
+  --manul-heading-small-size:clamp(21px,1.65vw,28px);
   --manul-heading-small-weight:600;
   --manul-heading-small-line:1.08;
   --manul-heading-small-tracking:-.035em;
-  --manul-heading-minor-size:clamp(18px,1.45vw,24px);
+  --manul-heading-minor-size:clamp(18px,1.3vw,22px);
   --manul-heading-minor-weight:600;
   --manul-heading-minor-line:1.15;
   --manul-heading-minor-tracking:-.025em;
@@ -183,6 +184,20 @@ html,body,button,input,select,textarea{font-family:var(--manul-font-text)}
 }
 :where(main h5){font-size:var(--manul-heading-small-size)}
 :where(main h6){font-size:var(--manul-heading-minor-size)}
+
+/*
+ * Runtime hierarchy guard.
+ * The shell measures the fitted H1 and only adds these classes when a local
+ * page style would make a lower-level heading visually larger than it.
+ * Ratios preserve the semantic hierarchy without changing the approved H1.
+ */
+:where(
+  .manul-heading-cap-h2,
+  .manul-heading-cap-h3,
+  .manul-heading-cap-h4,
+  .manul-heading-cap-h5,
+  .manul-heading-cap-h6
+){font-size:var(--manul-heading-cap-size)!important}
 
 /*
  * Heading containment rule.
@@ -340,15 +355,15 @@ html,body,button,input,select,textarea{font-family:var(--manul-font-text)}
   :root{
     --manul-display-hero-size:clamp(43px,15.5cqw,58px);
     --manul-display-hero-line:.92;
-    --manul-display-section-size:clamp(30px,9.4vw,38px);
+    --manul-display-section-size:clamp(26px,7vw,28px);
     --manul-display-section-line:.98;
     --manul-display-section-tracking:-.045em;
     --manul-display-editorial-size:var(--manul-display-section-size);
     --manul-display-editorial-line:var(--manul-display-section-line);
     --manul-display-editorial-tracking:var(--manul-display-section-tracking);
-    --manul-heading-large-size:clamp(28px,8.4vw,34px);
-    --manul-heading-medium-size:26px;
-    --manul-heading-small-size:22px;
+    --manul-heading-large-size:clamp(23px,6.3vw,26px);
+    --manul-heading-medium-size:22px;
+    --manul-heading-small-size:20px;
     --manul-heading-minor-size:18px;
     --manul-highlight-line:1.09;
   }
@@ -357,6 +372,6 @@ html,body,button,input,select,textarea{font-family:var(--manul-font-text)}
 @media(max-width:360px){
   :root{
     --manul-display-hero-size:40px;
-    --manul-display-section-size:34px;
+    --manul-display-section-size:28px;
   }
 }

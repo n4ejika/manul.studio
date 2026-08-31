@@ -46,14 +46,26 @@ for (const file of pages) {
     if (!/name=["']robots["'][^>]*noindex/i.test(html)) failures.push(`${relative}: 404 must be noindex`);
     continue;
   }
+  // Astro emits small HTML redirect documents for legacy URLs. They are not
+  // indexable content pages, so H1, description and analytics checks do not
+  // apply to them.
+  if (/<meta[^>]+http-equiv=["']refresh["']/i.test(html)) continue;
   if ((html.match(/<h1\b/gi) || []).length !== 1) failures.push(`${relative}: expected one H1`);
   if (!/<link[^>]+rel=["']canonical["'][^>]+href=["']https:\/\/manul\.studio\//i.test(html)) failures.push(`${relative}: canonical missing`);
   if (!/<meta[^>]+name=["']description["'][^>]+content=["'][^"']+/i.test(html)) failures.push(`${relative}: description missing`);
   if (!html.includes('name="yandex-verification" content="0daa2fd0f427bbf5"')) failures.push(`${relative}: Yandex verification missing`);
   if (!html.includes("111853232")) failures.push(`${relative}: Metrika missing`);
 
-  const expectedLanguage = relative.startsWith("/ru/") ? "ru" : "en";
-  if (!new RegExp(`<html[^>]+lang=["']${expectedLanguage}["']`, "i").test(html)) {
+  const expectedLanguage = relative.startsWith("/ru/")
+    ? "ru"
+    : relative.startsWith("/de/")
+      ? "de"
+      : relative.startsWith("/fr/")
+        ? "fr"
+        : relative.startsWith("/ar/")
+          ? "ar"
+          : "en";
+  if (!new RegExp(`<html[^>]+lang=["']${expectedLanguage}(?:-[a-z]+)?["']`, "i").test(html)) {
     failures.push(`${relative}: expected html lang=${expectedLanguage}`);
   }
 

@@ -1,6 +1,7 @@
 (() => {
   const config = Object.freeze({
-    pageMinimum: 15,
+    pageMinimum: 5,
+    pageMinimumByLanguage: Object.freeze({ ru: 5, en: 5 }),
     pageMaximum: 100,
     serviceMinimum: 10,
     serviceMaximum: 60,
@@ -13,7 +14,10 @@
     ru: Object.freeze({
       websiteDevelopment: 300000,
       commercialLaunch: 500000,
+      landingDevelopment: 300000,
       landing: 350000,
+      corporateDevelopment: 300000,
+      corporateLaunch: 500000,
       redesignDiagnosis: 50000,
       adsSetup: 50000,
       adsManagementStable: 10000,
@@ -23,9 +27,12 @@
       managementMonthly: 85000
     }),
     en: Object.freeze({
-      websiteDevelopment: 10000,
-      commercialLaunch: 15000,
-      landing: 7500,
+      websiteDevelopment: 4000,
+      commercialLaunch: 6000,
+      landingDevelopment: 3000,
+      landing: 5000,
+      corporateDevelopment: 10000,
+      corporateLaunch: 14000,
       redesignDiagnosis: 1500,
       adsSetup: 1500,
       adsManagementStable: 750,
@@ -48,18 +55,31 @@
     const activeLanguage = normalizeLanguage(language);
     let raw;
     if (activeLanguage === "en") {
-      if (pages <= 15) raw = 10000;
-      else if (pages <= 50) raw = 10000 + (pages - 15) * 400;
-      else raw = 24000 + (pages - 50) * 320;
+      if (pages <= 7) raw = 4000;
+      else if (pages <= 15) raw = 7000;
+      else if (pages <= 50) raw = 7000 + (pages - 15) * 300;
+      else raw = 17500 + (pages - 50) * 250;
     } else if (pages <= 15) raw = 300000;
     else if (pages <= 50) raw = 300000 + (pages - 15) * 12000;
     else raw = 720000 + (pages - 50) * 9600;
     return roundUp(raw, config.roundingSteps[activeLanguage]);
   };
 
-  const calculate = ({ pages, services, contours, complexity = 1 }, language = "ru") => {
+  const introductoryPrice = (value, language = "ru") => normalizeLanguage(language) === "en"
+    ? roundUp(value * .7, config.roundingSteps.en)
+    : value;
+
+  const redesignBands = Object.freeze([
+    Object.freeze({ key: "visual", minimum: 0, maximum: .1 }),
+    Object.freeze({ key: "preservation", minimum: .1, maximum: .2 }),
+    Object.freeze({ key: "migration", minimum: .2, maximum: .35 }),
+    Object.freeze({ key: "legacy", minimum: null, maximum: .5 })
+  ]);
+
+  const calculate = ({ pages, services, contours, complexity = 1, mode = "launch" }, language = "ru") => {
     const activeLanguage = normalizeLanguage(language);
-    const pageCount = Number(pages);
+    const minimumPages = config.pageMinimumByLanguage[activeLanguage];
+    const pageCount = Math.max(minimumPages, Number(pages));
     const serviceCount = Number(services);
     const contourCount = Number(contours);
     const complexityMultiplier = Number(complexity);
@@ -68,34 +88,46 @@
     const serviceSteps = Math.ceil(Math.max(0, serviceCount - 10) / 10);
     const keywordSteps = Math.ceil(Math.max(0, keywordCount - 100) / 100);
     const research = activeLanguage === "en"
-      ? 1000 + pageSteps * 300 + serviceSteps * 300 + keywordSteps * 300
+      ? (pageCount <= 15
+        ? (pageCount <= 7 ? 500 : 700)
+        : 700 + pageSteps * 500 + serviceSteps * 300 + keywordSteps * 300)
       : 40000 + pageSteps * 10000 + serviceSteps * 10000 + keywordSteps * 10000;
     const development = roundUp(
       developmentPrice(pageCount, activeLanguage) * complexityMultiplier,
       config.roundingSteps[activeLanguage]
     );
     const seo = activeLanguage === "en"
-      ? 2000 + pageSteps * 300 + keywordSteps * 500
+      ? (pageCount <= 15
+        ? (pageCount <= 7 ? 700 : 1000)
+        : 1000 + pageSteps * 500 + keywordSteps * 500)
       : 80000 + pageSteps * 10000 + keywordSteps * 15000;
     const advertising = activeLanguage === "en"
-      ? 1500 + (contourCount - 1) * 500
+      ? (pageCount <= 7 ? 600 : 1000) + (contourCount - 1) * 500
       : 50000 + (contourCount - 1) * 15000;
     const business = activeLanguage === "en"
-      ? 500 + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 200
+      ? (pageCount <= 7 ? 200 : 300) + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 200
       : 30000 + Math.ceil(Math.max(0, serviceCount - 20) / 20) * 5000;
+
+    const launchTotal = research + development + seo + advertising + business;
+    const activeMode = mode === "development" ? "development" : "launch";
+    const total = activeMode === "development" ? development : launchTotal;
 
     return Object.freeze({
       pages: pageCount,
       services: serviceCount,
       contours: contourCount,
       complexity: complexityMultiplier,
+      mode: activeMode,
       currency: activeLanguage === "en" ? "USD" : "RUB",
       research,
       development,
       seo,
       advertising,
       business,
-      total: research + development + seo + advertising + business
+      developmentTotal: development,
+      launchTotal,
+      total,
+      introductoryTotal: introductoryPrice(total, activeLanguage)
     });
   };
 
@@ -143,7 +175,13 @@
 
   const enhanceSelect = target => {
     const select = element(target);
-    if (!select || select.dataset.manulSelect === "ready") return select?.manulSelect || null;
+    if (!select) return null;
+    if (select.dataset.manulSelect === "ready" && select.manulSelect) return select.manulSelect;
+    if (select.dataset.manulSelect === "ready") {
+      select.nextElementSibling?.matches(".manul-select") && select.nextElementSibling.remove();
+      delete select.dataset.manulSelect;
+      select.classList.remove("manul-select__native");
+    }
 
     select.dataset.manulSelect = "ready";
     select.classList.add("manul-select__native");
@@ -235,7 +273,7 @@
     return api;
   };
 
-  const mount = ({ inputs, outputs, formatMoney, language = "ru" }) => {
+  const mount = ({ inputs, outputs, formatMoney, language = "ru", mode = "launch", introductory = false }) => {
     const fields = Object.fromEntries(Object.entries(inputs).map(([key, target]) => [key, element(target)]));
     const destinations = Object.fromEntries(Object.entries(outputs).map(([key, target]) => [key, element(target)]));
     const missing = [...Object.entries(fields), ...Object.entries(destinations)]
@@ -250,7 +288,8 @@
         pages: fields.pages.value,
         services: fields.services.value,
         contours: fields.contours.value,
-        complexity: fields.complexity.value
+        complexity: fields.complexity.value,
+        mode: typeof mode === "function" ? mode() : mode
       }, activeLanguage);
       destinations.pages.textContent = result.pages;
       destinations.services.textContent = result.services;
@@ -260,7 +299,9 @@
       destinations.seo.textContent = formatMoney(result.seo);
       destinations.advertising.textContent = formatMoney(result.advertising);
       destinations.business.textContent = formatMoney(result.business);
-      destinations.total.textContent = formatMoney(result.total);
+      const showIntroductory = typeof introductory === "function" ? introductory() : introductory;
+      destinations.total.textContent = formatMoney(showIntroductory ? result.introductoryTotal : result.total);
+      if (destinations.standardTotal) destinations.standardTotal.textContent = formatMoney(result.total);
       return result;
     };
 
@@ -292,7 +333,9 @@
     calculate,
     calculateSeo,
     seoMarkets,
+    redesignBands,
     developmentPrice,
+    introductoryPrice,
     formatMoney,
     enhanceSelect,
     mount,

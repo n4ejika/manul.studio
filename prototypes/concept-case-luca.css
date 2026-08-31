@@ -56,3 +56,6 @@ mark{background:var(--acid);color:var(--acid-ink);padding:0 .08em;box-decoration
 }
 @media(max-width:360px){.hero-copy h1{font-size:40px}.network-node{width:43%;padding:9px}.network-core h2{font-size:15px}.product-stage h3,.evidence-copy h3,.evidence-small h3{font-size:39px}.evidence-copy strong{font-size:78px}.delta span,.delta strong{font-size:34px}.delta i{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+/* Diagram layering contract: decorative field below the statement, nodes above it. */
+.network-rings{z-index:1}.network-core{z-index:2}.network-node{z-index:3}

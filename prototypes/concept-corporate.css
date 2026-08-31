@@ -52,3 +52,6 @@ mark{background:var(--acid);color:var(--acid-ink);-webkit-box-decoration-break:c
 .route-track b,.route-track small,.scope-price span,.scope-price small,.scope-list b,.scope-list small,.corporate-weight-head,.calculator-inputs label>span,.calculator-total>p{font-family:var(--manul-font-system);font-size:var(--manul-label-size);font-weight:var(--manul-label-weight);line-height:var(--manul-label-line);letter-spacing:var(--manul-label-tracking);text-transform:uppercase}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @keyframes faqPanelIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+
+/* Diagram layering contract: routes below the statement, controls above it. */
+.architecture-canvas svg{z-index:1;pointer-events:none}.map-center{z-index:2}.map-node{z-index:3}

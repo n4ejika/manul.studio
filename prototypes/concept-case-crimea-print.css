@@ -21,3 +21,6 @@
 @media(max-width:360px){.hero-copy h1{font-size:39px}.hero-result strong{font-size:62px}.route-console h2{font-size:16px}.compare-copy h3,.result-copy h3,.direction-state h3{font-size:39px}.result-copy strong{font-size:78px}.direction-bars p{grid-template-columns:92px 1fr 44px;font-size:8px}}
 @media(max-width:360px){.city-node{grid-template-columns:1fr;gap:4px}.city-node small{grid-column:1;overflow-wrap:anywhere}.decision-path article,.compare-screen>*{min-width:0}.decision-path h3,.compare-screen span,.compare-screen strong,.compare-screen p{overflow-wrap:anywhere}.case-limits>header{grid-template-columns:minmax(0,1fr)}.case-limits h2{font-size:36px;overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+/* Diagram layering contract: route below the statement, city nodes above it. */
+.route-line{z-index:1}.route-console{z-index:2}.city-node{z-index:3}

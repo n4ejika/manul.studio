@@ -4,8 +4,13 @@
   const openButton = document.getElementById("manulMapOpen");
   const closeButton = document.getElementById("manulMapClose");
   const languageButton = document.getElementById("manulGlobalLanguage");
+  const languageSwitcher = languageButton?.closest("[data-language-switcher]");
   const themeButton = document.getElementById("manulGlobalTheme");
   const shellRoots = document.querySelectorAll(".manul-global-header,.manul-global-map,.manul-global-footer,main.legal");
+  const shellLanguage = document.body.dataset.shellLanguage;
+  const shellLocale = document.body.dataset.shellLocale;
+  const languageTarget = document.body.dataset.languageTarget;
+  const languageLabel = document.body.dataset.languageLabel;
   let language = "ru";
 
   const legacyLanguage = () => document.querySelector([
@@ -43,11 +48,13 @@
     "body>.topbar .theme",
   ].join(","));
   const initialLanguageControl = legacyLanguage();
-  language = initialLanguageControl instanceof HTMLAnchorElement
-    ? (root.lang === "en" ? "en" : "ru")
-    : initialLanguageControl
-      ? (initialLanguageControl.textContent.trim() === "RU" ? "en" : "ru")
-      : (root.lang === "en" || /^\/ru(?:\/|$)/.test(location.pathname) ? "en" : "ru");
+  language = shellLanguage
+    ? shellLanguage
+    : initialLanguageControl instanceof HTMLAnchorElement
+      ? (root.lang.toLowerCase().startsWith("en") ? "en" : "ru")
+      : initialLanguageControl
+        ? (initialLanguageControl.textContent.trim() === "RU" ? "en" : "ru")
+        : (root.lang.toLowerCase().startsWith("en") || /^\/ru(?:\/|$)/.test(location.pathname) ? "en" : "ru");
 
   function setMap(open) {
     if (!map) return;
@@ -61,6 +68,11 @@
   closeButton?.addEventListener("click", () => setMap(false));
   addEventListener("keydown", event => {
     if (event.key === "Escape" && map?.classList.contains("open")) setMap(false);
+    if (event.key === "Escape" && languageSwitcher?.classList.contains("is-open")) {
+      languageSwitcher.classList.remove("is-open");
+      languageButton.setAttribute("aria-expanded", "false");
+      languageButton.focus();
+    }
   });
 
   document.querySelectorAll(".manul-global-header .nav-group>button").forEach(button => {
@@ -78,6 +90,10 @@
     });
   });
   addEventListener("click", event => {
+    if (!event.target.closest("[data-language-switcher]") && languageSwitcher?.classList.contains("is-open")) {
+      languageSwitcher.classList.remove("is-open");
+      languageButton.setAttribute("aria-expanded", "false");
+    }
     if (event.target.closest(".manul-global-header .nav-group")) return;
     document.querySelectorAll(".manul-global-header .nav-group").forEach(group => {
       group.classList.remove("open");
@@ -87,21 +103,42 @@
 
   function applyShellLanguage(next) {
     language = next;
-    root.lang = language;
+    const shellCopyLanguage = language === "ru" || language === "en" ? language : null;
+    root.lang = shellLocale || language;
+    root.dir = language === "ar" ? "rtl" : "ltr";
     localStorage.setItem("manul-system-language", language);
-    shellRoots.forEach(shell => shell.querySelectorAll("[data-ru][data-en]").forEach(element => {
-      element.innerHTML = element.dataset[language];
-    }));
+    if (shellCopyLanguage) {
+      shellRoots.forEach(shell => shell.querySelectorAll("[data-ru][data-en]").forEach(element => {
+        const value = element.dataset[shellCopyLanguage];
+        if (value != null) element.innerHTML = value;
+      }));
+    }
     shellRoots.forEach(shell => shell.querySelectorAll("img[data-ru-src][data-en-src]").forEach(image => {
-      image.src = image.dataset[`${language}Src`];
+      image.src = image.dataset[`${shellCopyLanguage === "ru" ? "ru" : "en"}Src`];
     }));
     // Astro renders canonical internal links for the active language.
     // Do not rewrite them in the browser.
-    languageButton.textContent = language === "ru" ? "EN" : "RU";
-    themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
+    if (languageButton && !languageSwitcher) languageButton.textContent = languageLabel || (language === "ru" ? "EN" : "RU");
+    languageButton?.setAttribute(
+      "aria-label",
+      language === "ar" ? "التبديل إلى الإنجليزية" : language === "en" && languageLabel === "العربية" ? "Switch to Arabic" : "Переключить язык",
+    );
+    themeButton.setAttribute("aria-label", language === "ar" ? "تبديل السمة" : language === "ru" ? "Переключить тему" : "Switch color theme");
   }
 
   languageButton?.addEventListener("click", event => {
+    if (languageSwitcher) {
+      event.preventDefault();
+      const open = !languageSwitcher.classList.contains("is-open");
+      languageSwitcher.classList.toggle("is-open", open);
+      languageButton.setAttribute("aria-expanded", String(open));
+      return;
+    }
+    if (languageTarget) {
+      event.preventDefault();
+      location.href = languageTarget;
+      return;
+    }
     const control = legacyLanguage();
     if (control instanceof HTMLAnchorElement) {
       event.preventDefault();
@@ -124,7 +161,8 @@
 
   const clocks = [document.getElementById("manulGlobalClock"), document.getElementById("manulFooterClock")];
   function updateClock() {
-    const value = new Date().toLocaleTimeString(language === "ru" ? "ru-RU" : "en-GB", { hour12: false });
+    const locale = language === "ar" ? "ar-AE-u-nu-latn" : language === "ru" ? "ru-RU" : "en-GB";
+    const value = new Date().toLocaleTimeString(locale, { hour12: false });
     clocks.forEach(clock => { if (clock) clock.textContent = value; });
   }
 
@@ -136,6 +174,15 @@
    * - long phrases still wrap at spaces instead of becoming unreadably small.
    */
   const headingSelector = "main h1:has(mark),main h2:has(mark),main h3:has(mark)";
+  const hierarchySelector = "main h2,main h3,main h4,main h5,main h6";
+  const hierarchyCaps = {
+    H2: { ratio: .88, className: "manul-heading-cap-h2" },
+    H3: { ratio: .78, className: "manul-heading-cap-h3" },
+    H4: { ratio: .68, className: "manul-heading-cap-h4" },
+    H5: { ratio: .58, className: "manul-heading-cap-h5" },
+    H6: { ratio: .5, className: "manul-heading-cap-h6" },
+  };
+  const hierarchyClasses = Object.values(hierarchyCaps).map(cap => cap.className);
   let fitFrame = 0;
   function measureNoWrap(element, headingStyle) {
     const probe = document.createElement("span");
@@ -161,9 +208,45 @@
     probe.remove();
     return width;
   }
+  function clearHeadingHierarchy() {
+    document.querySelectorAll(hierarchySelector).forEach(heading => {
+      if (heading.dataset.manulHierarchyCapped === "true") {
+        const baseValue = heading.dataset.manulHierarchyBaseValue || "";
+        const basePriority = heading.dataset.manulHierarchyBasePriority || "";
+        if (baseValue) heading.style.setProperty("font-size", baseValue, basePriority);
+        else heading.style.removeProperty("font-size");
+        delete heading.dataset.manulHierarchyCapped;
+        delete heading.dataset.manulHierarchyBaseValue;
+        delete heading.dataset.manulHierarchyBasePriority;
+      }
+      heading.classList.remove(...hierarchyClasses);
+      heading.style.removeProperty("--manul-heading-cap-size");
+    });
+  }
+  function applyHeadingHierarchy() {
+    clearHeadingHierarchy();
+    const pageH1 = document.querySelector("main h1");
+    const h1Size = pageH1 ? parseFloat(getComputedStyle(pageH1).fontSize) : 0;
+    if (!h1Size) return;
+    document.documentElement.style.setProperty("--manul-page-h1-size", `${h1Size}px`);
+    document.querySelectorAll(hierarchySelector).forEach(heading => {
+      if (heading.classList.contains("manul-allow-over-h1")) return;
+      const cap = hierarchyCaps[heading.tagName];
+      if (!cap) return;
+      const currentSize = parseFloat(getComputedStyle(heading).fontSize);
+      if (currentSize > h1Size * cap.ratio) {
+        heading.dataset.manulHierarchyCapped = "true";
+        heading.dataset.manulHierarchyBaseValue = heading.style.getPropertyValue("font-size");
+        heading.dataset.manulHierarchyBasePriority = heading.style.getPropertyPriority("font-size");
+        heading.style.setProperty("font-size", `${h1Size * cap.ratio}px`, "important");
+        heading.classList.add(cap.className);
+      }
+    });
+  }
   function fitDisplayHeadings() {
     cancelAnimationFrame(fitFrame);
     fitFrame = requestAnimationFrame(() => {
+      clearHeadingHierarchy();
       document.querySelectorAll(headingSelector).forEach(heading => {
         heading.style.removeProperty("font-size");
         heading.querySelectorAll(":scope > mark").forEach(mark => mark.classList.remove("manul-highlight-nowrap"));
@@ -184,6 +267,8 @@
           highlights.forEach(mark => mark.classList.add("manul-highlight-nowrap"));
         }
       });
+      applyHeadingHierarchy();
+      requestAnimationFrame(applyHeadingHierarchy);
     });
   }
   /*
@@ -202,6 +287,7 @@
     fitDisplayHeadings();
   }, { passive: true });
   document.fonts?.ready.then(fitDisplayHeadings);
+  addEventListener("load", () => setTimeout(applyHeadingHierarchy, 250), { once: true });
 
   const main = document.querySelector("main");
   if (main) {
@@ -226,6 +312,7 @@
 
   applyShellLanguage(language);
   fitDisplayHeadings();
+  setTimeout(applyHeadingHierarchy, 300);
   updateClock();
   setInterval(updateClock, 1000);
 })();

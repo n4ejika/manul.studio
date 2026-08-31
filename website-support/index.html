@@ -1,9 +1,12 @@
 <!DOCTYPE html><html lang="en" data-theme="light" style="--acid:#d946ff"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><title>Technical website support from $1,000 per month | Manul</title><meta name="description" content="We support websites built or rebuilt by Manul: availability, forms, backups, updates and an agreed monthly scope of technical work."><link rel="stylesheet" href="/prototypes/manul-service-pages.css?v=20260822-2">  <!-- MANUL_FAVICON --><link rel="icon" type="image/webp" href="/prototypes/assets/favicon-manul-mark.webp">
   <!-- MANUL_DESIGN_SYSTEM --><link rel="stylesheet" href="/prototypes/manul-design-system.css?v=12">
-  <!-- MANUL_GLOBAL_CSS --><link rel="stylesheet" href="/prototypes/manul-global-shell.css?v=mobile-lang-2">
+  <!-- MANUL_GLOBAL_CSS --><link rel="stylesheet" href="/prototypes/manul-global-shell.css?v=languages-4">
   <link rel="canonical" href="https://manul.studio/website-support/">
-  <link rel="alternate" hreflang="ru" href="https://manul.studio/ru/podderzhka-sajta/">
   <link rel="alternate" hreflang="en" href="https://manul.studio/website-support/">
+  <link rel="alternate" hreflang="ru" href="https://manul.studio/ru/podderzhka-sajta/">
+  <link rel="alternate" hreflang="de" href="https://manul.studio/de/website-wartung/">
+  <link rel="alternate" hreflang="fr" href="https://manul.studio/fr/maintenance-site-web/">
+  <link rel="alternate" hreflang="ar" href="https://manul.studio/ar/صيانة-المواقع/">
   <link rel="alternate" hreflang="x-default" href="https://manul.studio/website-support/">
   <meta name="yandex-verification" content="0daa2fd0f427bbf5">
   <meta property="og:type" content="website">
@@ -18,7 +21,7 @@
   <meta name="twitter:title" content="Technical website support from $1,000 per month | Manul">
   <meta name="twitter:description" content="We support websites built or rebuilt by Manul: availability, forms, backups, updates and an agreed monthly scope of technical work.">
   <meta name="twitter:image" content="https://manul.studio/assets/social/en-podderzhka-sajta.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://manul.studio/#organization","name":"Manul","url":"https://manul.studio/","logo":"https://manul.studio/assets/logo-manul-en.webp","founder":{"@type":"Person","name":"Ilya Klychkov"}},{"@type":"WebSite","@id":"https://manul.studio/#website","url":"https://manul.studio/","name":"Manul","alternateName":"Манул","inLanguage":["ru-RU","en"],"publisher":{"@id":"https://manul.studio/#organization"}},{"@type":"WebPage","@id":"https://manul.studio/website-support/#webpage","url":"https://manul.studio/website-support/","name":"Technical website support from $1,000 per month | Manul","description":"We support websites built or rebuilt by Manul: availability, forms, backups, updates and an agreed monthly scope of technical work.","inLanguage":"en","isPartOf":{"@id":"https://manul.studio/#website"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://manul.studio/website-support/#webpage","url":"https://manul.studio/website-support/","name":"Technical website support from $1,000 per month | Manul","description":"We support websites built or rebuilt by Manul: availability, forms, backups, updates and an agreed monthly scope of technical work.","inLanguage":"en","isPartOf":{"@id":"https://manul.studio/#website"}}]}</script>
   <!-- Yandex.Metrika counter -->
 <script>
   (function(m,e,t,r,i,k,a){
@@ -40,7 +43,30 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="twitter:image:alt" content="Technical support and website reliability. — Manul"><style>/* Route-migration compatibility rules that must survive snapshot refreshes. */
+  <meta name="twitter:image:alt" content="Technical support and website reliability. — Manul"><style>.manul-enquiry-modal{width:min(1040px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid #4a4a4a;border-radius:0;background:#0a0b0a;color:#f1f0ea;overflow:auto}
+  .manul-enquiry-modal::backdrop{background:rgba(5,6,5,.78);backdrop-filter:blur(5px)}
+  .manul-enquiry-form{padding:clamp(22px,3vw,46px);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px}
+  .manul-enquiry-form>header{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid #484848}
+  .manul-enquiry-form small,.manul-enquiry-form label>span{font:500 10px/1.4 var(--manul-font-system);letter-spacing:.065em;text-transform:uppercase}
+  .manul-enquiry-form h2{max-width:780px;margin:18px 0 0;font:var(--manul-display-section-weight) var(--manul-display-section-size)/var(--manul-display-section-line) var(--manul-font-text);letter-spacing:var(--manul-display-section-tracking)}
+  .manul-enquiry-language-note{max-width:760px;margin:18px 0 0;color:#aaa;font:500 10px/1.55 var(--manul-font-system);letter-spacing:.025em}
+  .manul-enquiry-close{width:54px;height:54px;border:1px solid #555;background:#0a0b0a;color:#f1f0ea;font:300 32px/1 var(--manul-font-system);cursor:pointer}
+  .manul-enquiry-close:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}
+  .manul-enquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;padding-top:30px}
+  .manul-enquiry-grid label{min-width:0}.manul-enquiry-grid label>span{display:block;margin-bottom:7px}
+  .manul-enquiry-grid input:not([type=checkbox]),.manul-enquiry-grid select,.manul-enquiry-grid textarea{width:100%;min-height:50px;padding:10px 12px;border:1px solid #505050;border-radius:0;background:#111;color:#f1f0ea;font:400 16px/1.4 var(--manul-font-text)}
+  .manul-enquiry-grid textarea{min-height:120px;resize:vertical}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1/-1}
+  .manul-enquiry-grid .consent{display:grid;grid-template-columns:24px 1fr;gap:10px}.manul-enquiry-grid .consent input{width:18px;height:18px;accent-color:var(--acid,#d43dff)}.manul-enquiry-grid .consent span{margin:0;text-transform:none;line-height:1.55}.manul-enquiry-grid .consent a{text-decoration:underline;text-underline-offset:3px}
+  .manul-enquiry-grid .trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+  .manul-enquiry-grid .submit{min-height:64px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid currentColor;background:transparent;color:inherit;font:500 19px var(--manul-font-text);cursor:pointer}.manul-enquiry-grid .submit:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}.manul-enquiry-grid .submit:disabled{opacity:.55;cursor:wait}
+  .manul-enquiry-grid .status{min-height:22px;margin:0;font:500 11px/1.5 var(--manul-font-system)}.manul-enquiry-grid .status.is-success{color:var(--acid,#d43dff)}.manul-enquiry-grid .status.is-error{color:#ff7373}
+  @media(max-width:680px){.manul-enquiry-modal{width:100vw;max-width:none;max-height:100svh;height:100svh;margin:0}.manul-enquiry-form{padding:22px 18px}.manul-enquiry-form h2{font-size:clamp(38px,12vw,58px)}.manul-enquiry-grid{grid-template-columns:1fr}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1}.manul-enquiry-close{width:46px;height:46px}.manul-enquiry-grid textarea{min-height:140px}}/* Route-migration compatibility rules that must survive snapshot refreshes. */
+html,
+body {
+  margin: 0;
+  min-width: 0;
+}
+
 @media (max-width: 360px) {
   html[lang="en"] .sys-author h2 {
     font-size: clamp(26px, 8.3vw, 30px) !important;
@@ -58,7 +84,12 @@
   </nav>
   <button class="map-trigger" id="manulMapOpen" type="button" aria-expanded="false" aria-controls="manulSiteMap"><span data-ru="Карта" data-en="Map">Map</span><b>20</b><i></i></button>
   <button class="utility theme-button" id="manulGlobalTheme" type="button" aria-label="Переключить тему"><i></i><span data-ru="Тема" data-en="Theme">Theme</span></button>
-  <a class="utility lang-button" id="manulGlobalLanguage" href="/ru/podderzhka-sajta/" aria-label="Переключить на русский">RU</a>
+  <div class="language-switcher" data-language-switcher>
+  <button class="utility lang-button" id="manulGlobalLanguage" type="button" aria-label="Choose language" aria-expanded="false" aria-controls="manulLanguageMenu">EN</button>
+  <nav class="language-menu" id="manulLanguageMenu" aria-label="Languages">
+    <a href="/website-support/" hreflang="en" lang="en" aria-current="page" data-language-route>EN<span>English</span></a><a href="/de/website-wartung/" hreflang="de" lang="de" data-language-route>DE<span>Deutsch</span></a><a href="/fr/maintenance-site-web/" hreflang="fr" lang="fr" data-language-route>FR<span>Français</span></a><a href="/ar/صيانة-المواقع/" hreflang="ar" lang="ar" dir="rtl" data-language-route>AR<span>العربية</span></a>
+  </nav>
+</div>
   <a class="project-cta" href="/contact/#enquiry"><span data-ru="Запустить проект" data-en="Start a project">Start a project</span><b>↗</b></a>
 </header>
 <aside class="manul-global-map" id="manulSiteMap" aria-hidden="true">
@@ -92,4 +123,84 @@
     <button id="manulToTop" type="button"><span data-ru="Наверх" data-en="Back to top">Back to top</span><b>↑</b></button>
   </div>
   <div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-</footer> <script src="/prototypes/manul-global-shell.js?v=astro-routes-1"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>
+</footer> <dialog class="manul-enquiry-modal" id="manulEnquiryModal" aria-labelledby="manulEnquiryTitle"> <form class="manul-enquiry-form contact-form" action="/api/enquiry.php" method="post"> <header> <div> <small>PROJECT ENQUIRY / FORM</small> <h2 id="manulEnquiryTitle">Start with the business task.</h2> </div> <button class="manul-enquiry-close" type="button" aria-label="Close enquiry form">×</button> </header>  <div class="manul-enquiry-grid"> <label><span>Your name *</span><input name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required></label> <label><span>Work email *</span><input name="email" type="email" autocomplete="email" maxlength="254" required></label> <label><span>Company or website</span><input name="company" type="text" autocomplete="organization" maxlength="180"></label> <label><span>Country / target market *</span><input name="country" type="text" autocomplete="country-name" minlength="2" maxlength="100" required></label> <label> <span>Service *</span> <select name="service" required> <option value="">Choose a service</option> <option value="new_site">New website</option> <option value="redesign">Website redesign</option> <option value="seo">SEO / organic growth</option> <option value="ads">Paid acquisition</option> <option value="support">Ongoing support</option> <option value="other">Other</option> </select> </label> <label> <span>Approximate budget</span> <select name="budget"> <option value="not_sure">Not sure yet</option> <option value="under_5000">Up to $5,000</option><option value="5000_10000">$5,000–10,000</option><option value="10000_20000">$10,000–20,000</option><option value="20000_plus">$20,000+</option> </select> </label> <label class="wide"><span>Project details *</span><textarea name="message" minlength="40" maxlength="4000" required placeholder="What should change, what already exists, and when would you like to launch?"></textarea></label> <label class="wide"><span>WhatsApp / Telegram</span><input name="messenger" type="text" maxlength="180" placeholder="Number, username or link (optional)"></label> <label class="consent wide"><input name="consent" type="checkbox" value="yes" required><span>I agree to the <a href="/privacy-policy/">privacy policy</a> and <a href="/data-processing-consent/">data processing consent</a>.</span></label> <div class="trap" aria-hidden="true"><label>Website<input name="website_url" type="text" tabindex="-1" autocomplete="off"></label></div> <input name="form_started_at" type="hidden" value=""> <input name="source" type="hidden" value="en_modal"> <button class="submit" type="submit"><span>Send project enquiry</span><b>↗</b></button> <p class="status wide" role="status" aria-live="polite"></p> </div> </form> </dialog> <script>(function(){const isEnglish = true;
+const isArabic = false;
+const isRussian = false;
+const isGerman = false;
+const isFrench = false;
+const languageCode = "en";
+
+  (() => {
+    const dialog = document.getElementById("manulEnquiryModal");
+    if (!dialog) return;
+    const form = dialog.querySelector("form");
+    const close = dialog.querySelector(".manul-enquiry-close");
+    const startedAt = form.querySelector('[name="form_started_at"]');
+    const source = form.querySelector('[name="source"]');
+    const status = form.querySelector(".status");
+    const submit = form.querySelector('[type="submit"]');
+    const service = form.querySelector('[name="service"]');
+    const openSelector = 'a[href*="/contact/#enquiry"],a[href*="/contacts/#enquiry"],a[data-enquiry-modal]';
+    const serviceByPath = [
+      ["redesign", "redesign"], ["seo", "seo"], ["direkt", "ads"], ["ads", "ads"],
+      ["support", "support"], ["podderzhka", "support"], ["soprovozhdenie", "support"],
+      ["wartung", "support"], ["betreuung", "support"], ["maintenance", "support"],
+      ["accompagnement", "support"], ["صيانة", "support"], ["إدارة", "support"]
+    ];
+
+    const openDialog = (trigger) => {
+      const currentPath = decodeURIComponent(location.pathname);
+      if (source) source.value = `${languageCode}_modal:${currentPath}`;
+      if (service && !service.value) {
+        const explicit = trigger?.dataset?.enquiryService;
+        const inferred = serviceByPath.find(([part]) => currentPath.includes(part))?.[1];
+        service.value = explicit || inferred || "new_site";
+      }
+      if (startedAt) startedAt.value = String(Date.now());
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+      requestAnimationFrame(() => form.querySelector('input[name="name"]')?.focus());
+    };
+
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest(openSelector);
+      if (!trigger) return;
+      event.preventDefault();
+      openDialog(trigger);
+    });
+    close?.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      submit.disabled = true;
+      status.className = "status wide";
+      status.textContent = isArabic ? "جارٍ الإرسال…" : isRussian ? "Отправляем…" : isGerman ? "Wird gesendet…" : isFrench ? "Envoi en cours…" : "Sending…";
+      try {
+        const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !payload.ok) throw new Error();
+        form.reset();
+        status.classList.add("is-success");
+        status.textContent = isArabic ? "شكراً. تم إرسال طلبك." : isRussian ? "Спасибо. Заявка отправлена." : isGerman ? "Vielen Dank. Ihre Anfrage wurde gesendet." : isFrench ? "Merci. Votre demande a été envoyée." : "Thank you. Your enquiry has been sent.";
+        if (typeof window.ym === "function") window.ym(111853232, "reachGoal", "enquiry_submit_success");
+      } catch {
+        status.classList.add("is-error");
+        status.innerHTML = isArabic
+          ? 'تعذر إرسال الطلب. راسلنا على <a href="mailto:hello@manul.studio">hello@manul.studio</a>.'
+          : isRussian
+          ? 'Не удалось отправить заявку. Напишите на <a href="mailto:hello@manul.studio">hello@manul.studio</a>.'
+          : isGerman
+          ? 'Die Anfrage konnte nicht gesendet werden. Schreiben Sie bitte an <a href="mailto:hello@manul.studio">hello@manul.studio</a>.'
+          : isFrench
+          ? 'Le formulaire n’a pas pu envoyer votre demande. Écrivez-nous à <a href="mailto:hello@manul.studio">hello@manul.studio</a>.'
+          : 'The form could not send your enquiry. Please email <a href="mailto:hello@manul.studio">hello@manul.studio</a>.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  })();
+})();</script>  <script src="/prototypes/manul-global-shell.js?v=languages-4"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>

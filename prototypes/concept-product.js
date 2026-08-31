@@ -2,7 +2,11 @@
   const root = document.documentElement;
   const languageButton = document.getElementById("productLanguage");
   const themeButton = document.getElementById("productTheme");
-  let language = localStorage.getItem("manul-system-language") === "en" ? "en" : "ru";
+  const storedLanguage = localStorage.getItem("manul-system-language");
+  let language = storedLanguage === "en" || storedLanguage === "ru"
+    ? storedLanguage
+    : (root.lang.startsWith("en") ? "en" : "ru");
+  let estimateMode = "launch";
 
   const money = value => ManulCalculator.formatMoney(value, language);
 
@@ -77,6 +81,39 @@
       included: 5
     }
   };
+  const pagesInput = document.getElementById("productPages");
+  const siteFormatButtons = [...document.querySelectorAll("[data-site-format]")];
+  const siteFormatForPages = value => {
+    const pages = Number(value);
+    if (language === "ru") {
+      if (pages <= 15) return "focused";
+      if (pages <= 35) return "business";
+      if (pages <= 65) return "corporate";
+      return "large";
+    }
+    if (pages <= 7) return "focused";
+    if (pages <= 15) return "business";
+    if (pages <= 30) return "corporate";
+    return "large";
+  };
+  const syncSiteFormat = () => {
+    const activeFormat = siteFormatForPages(pagesInput.value);
+    siteFormatButtons.forEach(button => {
+      const active = button.dataset.siteFormat === activeFormat;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  };
+  siteFormatButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      pagesInput.value = button.dataset[language === "ru" ? "pagesRu" : "pagesEn"];
+      pagesInput.dispatchEvent(new Event("input", { bubbles: true }));
+      syncSiteFormat();
+    });
+  });
+  pagesInput.addEventListener("input", syncSiteFormat);
+  const introOffer = document.getElementById("heroIntroOffer");
+  const introPrice = document.getElementById("heroIntroPrice");
   const moduleTones = ["#bfff35", "#bfff35", "#bfff35", "#bfff35", "#bfff35"];
   const assembly = document.getElementById("launchAssembly");
   const assemblyNodes = [...document.querySelectorAll("[data-assembly]")];
@@ -105,16 +142,26 @@
     document.querySelectorAll("[data-ru][data-en]").forEach(element => {
       element.innerHTML = element.dataset[language];
     });
-    const baseline = ManulCalculator.calculate({ pages: 15, services: 10, contours: 1, complexity: 1 }, language);
+    const minimumPages = ManulCalculator.config.pageMinimumByLanguage[language];
+    pagesInput.min = String(minimumPages);
+    if (!pagesInput.dataset.languageInitialised) {
+      pagesInput.value = String(minimumPages);
+      pagesInput.dataset.languageInitialised = "true";
+    } else if (Number(pagesInput.value) < minimumPages) {
+      pagesInput.value = String(minimumPages);
+    }
+    const baseline = ManulCalculator.calculate({ pages: minimumPages, services: 10, contours: 1, complexity: 1 }, language);
     document.querySelectorAll("[data-calculator-part]").forEach(element => {
       element.textContent = money(baseline[element.dataset.calculatorPart]);
     });
     languageButton.textContent = language === "ru" ? "EN" : "RU";
     themeButton.setAttribute("aria-label", language === "ru" ? "Переключить тему" : "Switch color theme");
+    document.getElementById("productIntroOffer").hidden = language !== "en";
     document.querySelector(".price-switch button.active")?.click();
     document.querySelector(".module-line button.active")?.click();
     const selectedAssembly = document.querySelector(".assembly-node.selected");
     selectAssemblyModule(selectedAssembly?.dataset.assembly || "research");
+    syncSiteFormat();
     updateEstimate();
   };
 
@@ -186,6 +233,9 @@
         heroCurrency.textContent = "";
       }
       heroDescription.textContent = product[`description${language === "ru" ? "Ru" : "En"}`];
+      const introductory = ManulCalculator.introductoryPrice(ManulCalculator.getPrice(product.priceKey, language), language);
+      introOffer.hidden = language !== "en";
+      introPrice.textContent = money(introductory);
       heroIncludes.forEach((item, index) => {
         const included = button.dataset.product === "launch" || index === 1;
         item.classList.toggle("muted", !included);
@@ -242,15 +292,37 @@
       seo: "#productSeo",
       advertising: "#productAds",
       business: "#productBusiness",
-      total: "#productTotal"
+      total: "#productTotal",
+      standardTotal: "#productStandardTotal"
     },
     formatMoney: money,
-    language: () => language
+    language: () => language,
+    mode: () => estimateMode,
+    introductory: () => language === "en"
   });
   ManulCalculator.bindMobileTotal({ source: "#productTotal", target: "#productMobileTotal" });
   function updateEstimate() {
     productCalculator.update();
   }
+
+  const estimateLabel = document.getElementById("productEstimateLabel");
+  const estimateIntro = document.getElementById("productIntroOffer");
+  document.querySelectorAll("[data-estimate-mode]").forEach(button => {
+    button.addEventListener("click", () => {
+      estimateMode = button.dataset.estimateMode;
+      document.querySelectorAll("[data-estimate-mode]").forEach(item => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+      estimateLabel.textContent = estimateMode === "development"
+        ? (language === "ru" ? "Ориентир разработки" : "Development estimate")
+        : (language === "ru" ? "Ориентир запуска" : "Launch estimate");
+      estimateIntro.hidden = language !== "en";
+      document.querySelector(".estimate-output").dataset.mode = estimateMode;
+      updateEstimate();
+    });
+  });
 
   applyLanguage(language);
 })();

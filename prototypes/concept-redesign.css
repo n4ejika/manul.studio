@@ -212,3 +212,6 @@ mark{background:var(--acid);color:var(--acid-ink)}
 @keyframes matchSignal{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--acid) 35%,transparent)}55%{box-shadow:0 0 0 9px transparent}}
 @keyframes matchArrow{0%,100%{transform:translateY(0)}45%,70%{transform:translateY(5px)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.migration-console>header>span:first-child,.migration-console>header>span:first-child:before,.migration-console>header>span:first-child:after{animation:none!important}}
+
+/* Diagram layering contract: routes below the statement, controls above it. */
+.migration-map svg{z-index:1}.migration-core{z-index:2}.site-state{z-index:3}

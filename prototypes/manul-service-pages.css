@@ -228,3 +228,6 @@
 .medical-entry-screen>p{height:41px;margin:0;display:flex;align-items:flex-end;font:500 8px/1.2 var(--manul-font-system);letter-spacing:.05em;color:#777772}.medical-entry-screen>p:before{content:"";width:7px;height:7px;margin:0 9px 1px 0;background:var(--page-acid);box-shadow:0 0 9px var(--page-acid);animation:medical-entry-pulse 1.5s ease-in-out infinite}@keyframes medical-entry-pulse{50%{opacity:.35}}
 @media(max-width:1100px){.medical-entry-screen{right:-7vw;width:min(58vw,620px);opacity:.72}.medical-entry-final>a{width:min(70vw,620px)}}
 @media(max-width:700px){.medical-entry-final h2{max-width:92%;font-size:clamp(32px,9vw,42px)!important}.medical-entry-screen{right:-38vw;width:104vw;height:430px;opacity:.2;pointer-events:none}.medical-entry-final>p:not(.svc-index){max-width:90%}}
+
+/* Diagram layering contract: links below the statement, reasons above it. */
+.trust-links{z-index:1;pointer-events:none}.trust-core{z-index:2}.trust-reason{z-index:3}

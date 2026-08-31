@@ -1,0 +1,1 @@
+import{b as o}from"./diagram-connectors.3AVC452A.js";o({root:"[data-sg-console]",sources:".sg-context",core:".sg-console-core",svg:".sg-console-lines",output:".sg-console-output",outputPath:"[data-output-connector]"});

@@ -106,9 +106,14 @@
     document.querySelector(".architecture").setAttribute("aria-label", language === "ru" ? "Интерактивная карта корпоративного сайта" : "Interactive corporate website map");
     document.querySelector(".architecture-switch").setAttribute("aria-label", language === "ru" ? "Способ организации сайта" : "Website organisation mode");
     languageButton.textContent = language === "ru" ? "EN" : "RU";
-    const launchPrice = money(ManulCalculator.getPrice("commercialLaunch", language));
+    const launchPrice = money(ManulCalculator.getPrice("corporateLaunch", language));
     document.getElementById("corporateHeroPrice").textContent = launchPrice;
     document.getElementById("corporateScopePrice").textContent = language === "ru" ? `от ${launchPrice}` : `from ${launchPrice}`;
+    const pages = document.getElementById("corpPages");
+    if (!pages.dataset.languageInitialised) {
+      pages.value = language === "en" ? "25" : "15";
+      pages.dataset.languageInitialised = "true";
+    }
     renderMode(mode);
     updatePrices();
   }

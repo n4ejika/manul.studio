@@ -21,12 +21,12 @@ mark{background:var(--acid);color:var(--acid-ink);padding:0 .08em}
 .sys-rail{border-right:1px solid;padding:22px 16px;display:flex;flex-direction:column}.sys-rail>p,.sys-rail>small{font:9px "IBM Plex Mono";text-transform:uppercase}.sys-rail ol{list-style:none;padding:0;margin:45px 0 0}.sys-rail li{border-top:1px solid}.sys-rail button{border:0;background:transparent;width:100%;padding:13px 0;display:grid;grid-template-columns:28px 1fr;text-align:left;cursor:pointer}.sys-rail button b{font:9px "IBM Plex Mono"}.sys-rail button span{font-size:12px}.sys-rail li.active button{background:var(--acid);color:var(--acid-ink);margin:0 -16px;padding-left:16px;width:calc(100% + 32px)}.sys-rail>small{margin-top:auto}
 .sys-canvas{position:relative;overflow:hidden;background-image:linear-gradient(color-mix(in srgb,var(--fg) 12%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--fg) 12%,transparent) 1px,transparent 1px);background-size:38px 38px}
 .sys-canvas:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0 28%,var(--bg) 74%);opacity:.55;pointer-events:none}
-.sys-links{position:absolute;inset:0;width:100%;height:100%;z-index:1}.sys-links path{fill:none;stroke:color-mix(in srgb,var(--fg) 42%,transparent);stroke-width:1.5;stroke-dasharray:8 8;animation:flow 12s linear infinite}.sys-links .particle{fill:var(--acid);stroke:var(--acid-ink);stroke-width:1;filter:url(#glow)}
+.sys-links{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}.sys-links path{fill:none;stroke:color-mix(in srgb,var(--fg) 42%,transparent);stroke-width:1.5;stroke-dasharray:8 8;animation:flow 12s linear infinite}.sys-links .particle{fill:var(--acid);stroke:var(--acid-ink);stroke-width:1;filter:url(#glow)}
 .sys-node{position:absolute;z-index:4;width:138px;min-height:76px;border:1px solid var(--line);background:var(--bg);padding:10px;text-align:left;display:grid;grid-template-columns:25px 1fr;cursor:pointer;transition:transform .28s ease,background .28s ease,color .28s ease;transform:translate(calc(var(--mx) * .08),calc(var(--my) * .08))}
 .sys-node:hover,.sys-node.active{background:var(--acid);color:var(--acid-ink);transform:translate(calc(var(--mx) * .08),calc(var(--my) * .08)) scale(1.06);z-index:6}
 .sys-node b,.sys-node small{font:9px/1.35 "IBM Plex Mono";text-transform:uppercase}.sys-node span{font-size:13px}.sys-node small{grid-column:2;margin-top:8px}
 .node-task{left:8%;top:14%}.node-demand{left:32%;top:4%}.node-structure{right:8%;top:12%}.node-site{right:2%;top:44%}.node-launch{right:10%;bottom:10%}.node-leads{left:33%;bottom:3%}.node-growth{left:5%;bottom:13%}
-.sys-core{position:absolute;z-index:5;left:50%;top:50%;width:min(440px,46%);min-height:330px;transform:translate(calc(-50% + var(--mx) * -.035),calc(-50% + var(--my) * -.035));padding:28px;background:var(--fg);color:var(--bg);box-shadow:14px 14px 0 var(--acid);transition:transform .15s linear}
+.sys-core{position:absolute;z-index:2;left:50%;top:50%;width:min(440px,46%);min-height:330px;transform:translate(calc(-50% + var(--mx) * -.035),calc(-50% + var(--my) * -.035));padding:28px;background:var(--fg);color:var(--bg);box-shadow:14px 14px 0 var(--acid);transition:transform .15s linear}
 .sys-core>p:first-child{display:flex;gap:9px;align-items:center;margin:0;font:9px "IBM Plex Mono";text-transform:uppercase}.sys-core>p:first-child i{width:9px;height:9px;background:var(--acid);border:1px solid var(--acid-ink)}
 .sys-core h1{font-size:clamp(38px,4.1vw,66px);line-height:.92;letter-spacing:-.06em;margin:55px 0 24px}.sys-core>p:nth-of-type(2){font-size:14px;line-height:1.5;max-width:380px}
 .sys-core ul{list-style:none;padding:0;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:8px}.sys-core li{border:1px solid;padding:7px 9px;font:9px "IBM Plex Mono";text-transform:uppercase}
@@ -100,7 +100,7 @@ mark{background:var(--acid);color:var(--acid-ink);padding:0 .08em}
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes ringTurn{from{rotate:0deg}to{rotate:360deg}}
 @keyframes ringTurnReverse{from{rotate:360deg}to{rotate:0deg}}
-@keyframes choiceSignal{0%,12%{left:10%}28%,40%{left:30%}56%,68%{left:50%}84%,96%{left:70%}100%{left:90%}}
+@keyframes choiceSignal{0%,12%{left:10%}20%,32%{left:30%}40%,52%{left:50%}60%,72%{left:70%}80%,92%{left:90%}100%{left:10%}}
 @keyframes letterAssemble{0%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.25);filter:blur(9px)}70%{opacity:1;filter:blur(0);transform:translate(0,0) rotate(0) scale(1.08)}100%{opacity:1;filter:blur(0);transform:translate(0,0) rotate(0) scale(1)}}
 @keyframes letterAssembleCenter{0%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.25);filter:blur(9px)}70%{opacity:1;filter:blur(0);transform:translate(0,0) rotate(0) scale(.93)}100%{opacity:1;filter:blur(0);transform:translate(0,0) rotate(0) scale(1)}}
 
@@ -164,3 +164,21 @@ mark{background:var(--acid);color:var(--acid-ink);padding:0 .08em}
 .sys-author h2,.sys-demand h2,.sys-calculator h2,.sys-launch h2,.sys-proof h2,.sys-choice h2,.sys-final h2{font-size:var(--manul-display-editorial-size);font-weight:var(--manul-display-editorial-weight);line-height:var(--manul-display-editorial-line);letter-spacing:var(--manul-display-editorial-tracking)}
 .author-lead{font-size:var(--manul-lead-size);line-height:var(--manul-lead-line)}
 .sys-section-label{font-family:var(--manul-font-system);font-size:var(--manul-label-size);font-weight:var(--manul-label-weight);line-height:var(--manul-label-line);letter-spacing:var(--manul-label-tracking)}
+@media(max-width:760px){
+  .sys-author h2,.sys-demand h2,.sys-calculator h2,.sys-launch h2,.sys-proof h2,.sys-choice h2,.sys-final h2{font-size:var(--manul-display-section-size);line-height:var(--manul-display-section-line);letter-spacing:var(--manul-display-section-tracking);max-width:100%;overflow-wrap:normal;word-break:normal}
+  .sys-author h2 mark{white-space:normal}
+}
+
+/* The solution rail has one anchored state marker. A detached travelling dot made
+   the active option and the line communicate two different states. */
+.choice-system:after{display:none;animation:none}
+@media(min-width:721px){
+  .choice-system:before{z-index:1}
+  .choice-options{z-index:auto}
+  .choice-system:after{display:block;z-index:1;top:181px;transform:translate(-50%,-50%);animation:choiceSignal 10s ease-in-out infinite}
+  .choice-options button:hover,.choice-options button.active{transform:none}
+  .choice-options button:after{left:50%;transform:translateX(-50%)}
+  .choice-options button:hover:after,.choice-options button.active:after{transform:translateX(-50%) scale(1.25)}
+  .choice-options button.active:after{animation:choiceNodePulse 1.8s ease-in-out infinite}
+}
+@keyframes choiceNodePulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--acid) 36%,transparent)}50%{box-shadow:0 0 0 8px transparent}}
