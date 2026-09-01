@@ -54,6 +54,8 @@ for (const file of pages) {
   if (!/<link[^>]+rel=["']canonical["'][^>]+href=["']https:\/\/manul\.studio\//i.test(html)) failures.push(`${relative}: canonical missing`);
   if (!/<meta[^>]+name=["']description["'][^>]+content=["'][^"']+/i.test(html)) failures.push(`${relative}: description missing`);
   if (!html.includes('name="yandex-verification" content="ad407e95db9db722"')) failures.push(`${relative}: Yandex verification missing`);
+  if ((html.match(/name=["']yandex-verification["']/gi) || []).length !== 1) failures.push(`${relative}: expected exactly one Yandex verification tag`);
+  if (html.includes("0daa2fd0f427bbf5")) failures.push(`${relative}: obsolete Yandex verification remains`);
   if (!html.includes("111853232")) failures.push(`${relative}: Metrika missing`);
   if (!html.includes("mc.yandex.ru/metrika/tag.js")) failures.push(`${relative}: Metrika tag loader missing`);
   if (!html.includes("G-2REMPWTXLN")) failures.push(`${relative}: Google Analytics missing`);

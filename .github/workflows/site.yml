@@ -103,6 +103,7 @@ jobs:
           grep -q 'rel="canonical" href="https://manul.studio/ru/"' /tmp/manul-ru-home.html
           grep -q '<html lang="ru"' /tmp/manul-ru-home.html
           grep -q 'ad407e95db9db722' /tmp/manul-home.html
+          ! grep -q '0daa2fd0f427bbf5' /tmp/manul-home.html
           grep -q '111853232' /tmp/manul-home.html
           grep -q 'G-2REMPWTXLN' /tmp/manul-home.html
           grep -q '<loc>https://manul.studio/</loc>' /tmp/manul-sitemap.xml
