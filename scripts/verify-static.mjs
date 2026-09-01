@@ -59,6 +59,16 @@ for (const file of pages) {
   if (!html.includes("111853232")) failures.push(`${relative}: Metrika missing`);
   if (!html.includes("mc.yandex.ru/metrika/tag.js")) failures.push(`${relative}: Metrika tag loader missing`);
   if (!html.includes("G-2REMPWTXLN")) failures.push(`${relative}: Google Analytics missing`);
+  if ((html.match(/id="manulCookieConsent"/g) || []).length !== 1) failures.push(`${relative}: consent banner missing or duplicated`);
+  if ((html.match(/id="manulCookieSettings"/g) || []).length !== 1) failures.push(`${relative}: cookie settings control missing or duplicated`);
+  if (/<script\b[^>]*\bsrc=["'][^"']*mc\.yandex\.ru\/metrika/gi.test(html)) failures.push(`${relative}: Metrika loads before consent`);
+  if (html.includes("mc.yandex.ru/watch/111853232") || html.includes("<!-- Yandex.Metrika counter -->")) failures.push(`${relative}: legacy Metrika bypass remains`);
+  for (const consentType of ["analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"]) {
+    if (!html.includes(`${consentType}: "denied"`)) failures.push(`${relative}: ${consentType} default missing`);
+  }
+  const consentDefaultAt = html.indexOf('window.gtag("consent", "default"');
+  const googleLoaderAt = html.indexOf("googletagmanager.com/gtag/js?id=G-2REMPWTXLN");
+  if (consentDefaultAt < 0 || consentDefaultAt > googleLoaderAt) failures.push(`${relative}: consent default does not precede Google tag`);
 
   const expectedLanguage = relative.startsWith("/ru/")
     ? "ru"

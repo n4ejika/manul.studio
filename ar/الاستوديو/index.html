@@ -1,63 +1,123 @@
-<!DOCTYPE html><html lang="ar" dir="rtl" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات</title><meta name="description" content="Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ."><link rel="canonical" href="https://manul.studio/ar/الاستوديو/"><link rel="alternate" hreflang="en" href="https://manul.studio/about/"><link rel="alternate" hreflang="ru" href="https://manul.studio/ru/studio/"><link rel="alternate" hreflang="de" href="https://manul.studio/de/agentur/"><link rel="alternate" hreflang="fr" href="https://manul.studio/fr/agence/"><link rel="alternate" hreflang="ar" href="https://manul.studio/ar/الاستوديو/"><link rel="alternate" hreflang="x-default" href="https://manul.studio/about/"><link rel="icon" type="image/webp" href="/prototypes/assets/favicon-manul-mark.webp"><link rel="stylesheet" href="/prototypes/manul-design-system.css?v=12"><link rel="stylesheet" href="/prototypes/manul-global-shell.css?v=languages-4"><meta name="yandex-verification" content="ad407e95db9db722"><script>
-    (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j=0;j<e.scripts.length;j++) if(e.scripts[j].src===r) return;
-      k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
-    })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=111853232","ym");
-    ym(111853232,"init",{
-      ssr:true,
-      webvisor:true,
-      clickmap:true,
-      ecommerce:"dataLayer",
-      referrer:document.referrer,
-      url:location.href,
-      accurateTrackBounce:true,
-      trackLinks:true
-    });
-  </script><script async src="https://www.googletagmanager.com/gtag/js?id=G-2REMPWTXLN"></script><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
+<!DOCTYPE html><html lang="ar" dir="rtl" data-theme="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات</title><meta name="description" content="Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ."><link rel="canonical" href="https://manul.studio/ar/الاستوديو/"><link rel="alternate" hreflang="en" href="https://manul.studio/about/"><link rel="alternate" hreflang="ru" href="https://manul.studio/ru/studio/"><link rel="alternate" hreflang="de" href="https://manul.studio/de/agentur/"><link rel="alternate" hreflang="fr" href="https://manul.studio/fr/agence/"><link rel="alternate" hreflang="ar" href="https://manul.studio/ar/الاستوديو/"><link rel="alternate" hreflang="x-default" href="https://manul.studio/about/"><link rel="icon" type="image/webp" href="/prototypes/assets/favicon-manul-mark.webp"><link rel="stylesheet" href="/prototypes/manul-design-system.css?v=12"><link rel="stylesheet" href="/prototypes/manul-global-shell.css?v=languages-4"><meta name="yandex-verification" content="ad407e95db9db722"><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+  (function initialiseConsentAndAnalytics(window, document) {
+    var storageKey = "manul-analytics-consent-v1";
+    var metrikaId = 111853232;
+    var metrikaSource = "https://mc.yandex.ru/metrika/tag.js?id=111853232";
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      functionality_storage: "granted",
+      security_storage: "granted",
+      wait_for_update: 500
+    });
+
+    function readChoice() {
+      try {
+        var saved = JSON.parse(window.localStorage.getItem(storageKey));
+        return saved && saved.version === 1 && (saved.analytics === "granted" || saved.analytics === "denied")
+          ? saved.analytics
+          : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeChoice(value) {
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify({
+          version: 1,
+          analytics: value,
+          updatedAt: new Date().toISOString()
+        }));
+      } catch (error) {
+        // Consent remains valid for this page view when storage is unavailable.
+      }
+    }
+
+    function updateGoogleConsent(value) {
+      window.gtag("consent", "update", {
+        analytics_storage: value,
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    }
+
+    function loadMetrika() {
+      if (window.__manulMetrikaLoaded) return;
+      window.__manulMetrikaLoaded = true;
+      window.ym = window.ym || function ym(){ (window.ym.a = window.ym.a || []).push(arguments); };
+      window.ym.l = Number(new Date());
+
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = metrikaSource;
+      script.dataset.manulAnalytics = "yandex-metrika";
+      (document.head || document.documentElement).appendChild(script);
+
+      window.ym(metrikaId, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: window.location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+      });
+
+      if (!window.__manulMetrikaGoalsBound) {
+        window.__manulMetrikaGoalsBound = true;
+        document.addEventListener("click", function trackTelegramClick(event) {
+          var link = event.target.closest && event.target.closest('a[href*="t.me/hellomanul_bot"]');
+          if (!link || typeof window.ym !== "function") return;
+          window.ym(metrikaId, "reachGoal", "telegram_click", {
+            page: window.location.pathname,
+            destination: link.href
+          });
+        }, true);
+      }
+    }
+
+    var initialChoice = readChoice();
+    if (initialChoice) updateGoogleConsent(initialChoice);
+    if (initialChoice === "granted") loadMetrika();
+
+    window.ManulConsent = {
+      getAnalytics: readChoice,
+      setAnalytics: function setAnalytics(value) {
+        if (value !== "granted" && value !== "denied") return;
+        var previous = readChoice();
+        writeChoice(value);
+        updateGoogleConsent(value);
+        window.dispatchEvent(new CustomEvent("manul:consent-change", { detail: { analytics: value } }));
+
+        if (value === "granted") {
+          loadMetrika();
+        } else if (previous === "granted" && window.__manulMetrikaLoaded) {
+          window.setTimeout(function reloadWithoutMetrika(){ window.location.reload(); }, 50);
+        }
+      }
+    };
+  })(window, document);
+})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-2REMPWTXLN"></script><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
+
   window.gtag("js", new Date());
   window.gtag("config", googleMeasurementId, {
     allow_google_signals: false,
-    allow_ad_personalization_signals: false,
+    allow_ad_personalization_signals: false
   });
 })();</script><meta property="og:type" content="website"><meta property="og:site_name" content="Manul"><meta property="og:locale" content="ar_AE"><meta property="og:title" content="استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات"><meta property="og:description" content="Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ."><meta property="og:url" content="https://manul.studio/ar/الاستوديو/"><meta property="og:image" content="https://manul.studio/assets/social/en-home.png"><meta property="og:image:secure_url" content="https://manul.studio/assets/social/en-home.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات — Manul"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات"><meta name="twitter:description" content="Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ."><meta name="twitter:image" content="https://manul.studio/assets/social/en-home.png"><meta name="twitter:image:alt" content="استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات — Manul"><script>
       document.documentElement.dataset.theme =
         localStorage.getItem("manul-system-theme") ||
         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    </script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://manul.studio/ar/الاستوديو/#webpage","url":"https://manul.studio/ar/الاستوديو/","name":"استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات","description":"Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ.","inLanguage":"ar","isPartOf":{"@id":"https://manul.studio/#website"}},{"@type":"FAQPage","@id":"https://manul.studio/ar/الاستوديو/#faq","mainEntity":[{"@type":"Question","name":"أين تعمل Manul؟","acceptedAnswer":{"@type":"Answer","text":"عن بُعد مع شركات في أسواق متعددة، من دون ادعاء مكاتب غير موجودة."}},{"@type":"Question","name":"من يدير المشروع؟","acceptedAnswer":{"@type":"Answer","text":"يبقى السياق والقرار داخل مسار مشروع واحد."}},{"@type":"Question","name":"ما نماذج الخدمة؟","acceptedAnswer":{"@type":"Answer","text":"نفصل بين التطوير فقط والإطلاق الكامل والإدارة المستمرة."}}]}]}</script><style>.manul-enquiry-modal{width:min(1040px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid #4a4a4a;border-radius:0;background:#0a0b0a;color:#f1f0ea;overflow:auto}
-  .manul-enquiry-modal::backdrop{background:rgba(5,6,5,.78);backdrop-filter:blur(5px)}
-  .manul-enquiry-form{padding:clamp(22px,3vw,46px);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px}
-  .manul-enquiry-form>header{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid #484848}
-  .manul-enquiry-form small,.manul-enquiry-form label>span{font:500 10px/1.4 var(--manul-font-system);letter-spacing:.065em;text-transform:uppercase}
-  .manul-enquiry-form h2{max-width:780px;margin:18px 0 0;font:var(--manul-display-section-weight) var(--manul-display-section-size)/var(--manul-display-section-line) var(--manul-font-text);letter-spacing:var(--manul-display-section-tracking)}
-  .manul-enquiry-language-note{max-width:760px;margin:18px 0 0;color:#aaa;font:500 10px/1.55 var(--manul-font-system);letter-spacing:.025em}
-  .manul-enquiry-close{width:54px;height:54px;border:1px solid #555;background:#0a0b0a;color:#f1f0ea;font:300 32px/1 var(--manul-font-system);cursor:pointer}
-  .manul-enquiry-close:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}
-  .manul-enquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;padding-top:30px}
-  .manul-enquiry-grid label{min-width:0}.manul-enquiry-grid label>span{display:block;margin-bottom:7px}
-  .manul-enquiry-grid input:not([type=checkbox]),.manul-enquiry-grid select,.manul-enquiry-grid textarea{width:100%;min-height:50px;padding:10px 12px;border:1px solid #505050;border-radius:0;background:#111;color:#f1f0ea;font:400 16px/1.4 var(--manul-font-text)}
-  .manul-enquiry-grid textarea{min-height:120px;resize:vertical}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1/-1}
-  .manul-enquiry-grid .consent{display:grid;grid-template-columns:24px 1fr;gap:10px}.manul-enquiry-grid .consent input{width:18px;height:18px;accent-color:var(--acid,#d43dff)}.manul-enquiry-grid .consent span{margin:0;text-transform:none;line-height:1.55}.manul-enquiry-grid .consent a{text-decoration:underline;text-underline-offset:3px}
-  .manul-enquiry-grid .trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-  .manul-enquiry-grid .submit{min-height:64px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid currentColor;background:transparent;color:inherit;font:500 19px var(--manul-font-text);cursor:pointer}.manul-enquiry-grid .submit:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}.manul-enquiry-grid .submit:disabled{opacity:.55;cursor:wait}
-  .manul-enquiry-grid .status{min-height:22px;margin:0;font:500 11px/1.5 var(--manul-font-system)}.manul-enquiry-grid .status.is-success{color:var(--acid,#d43dff)}.manul-enquiry-grid .status.is-error{color:#ff7373}
-  @media(max-width:680px){.manul-enquiry-modal{width:100vw;max-width:none;max-height:100svh;height:100svh;margin:0}.manul-enquiry-form{padding:22px 18px}.manul-enquiry-form h2{font-size:clamp(38px,12vw,58px)}.manul-enquiry-grid{grid-template-columns:1fr}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1}.manul-enquiry-close{width:46px;height:46px}.manul-enquiry-grid textarea{min-height:140px}}/* Route-migration compatibility rules that must survive snapshot refreshes. */
-html,
-body {
-  margin: 0;
-  min-width: 0;
-}
-
-@media (max-width: 360px) {
-  html[lang="en"] .sys-author h2 {
-    font-size: clamp(26px, 8.3vw, 30px) !important;
-  }
-}
-</style>
+    </script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://manul.studio/ar/الاستوديو/#webpage","url":"https://manul.studio/ar/الاستوديو/","name":"استوديو Manul لتصميم المواقع | تطوير وSEO وإعلانات","description":"Manul استوديو لتصميم وتطوير المواقع التجارية وSEO والتحليلات والاستحواذ.","inLanguage":"ar","isPartOf":{"@id":"https://manul.studio/#website"}},{"@type":"FAQPage","@id":"https://manul.studio/ar/الاستوديو/#faq","mainEntity":[{"@type":"Question","name":"أين تعمل Manul؟","acceptedAnswer":{"@type":"Answer","text":"عن بُعد مع شركات في أسواق متعددة، من دون ادعاء مكاتب غير موجودة."}},{"@type":"Question","name":"من يدير المشروع؟","acceptedAnswer":{"@type":"Answer","text":"يبقى السياق والقرار داخل مسار مشروع واحد."}},{"@type":"Question","name":"ما نماذج الخدمة؟","acceptedAnswer":{"@type":"Answer","text":"نفصل بين التطوير فقط والإطلاق الكامل والإدارة المستمرة."}}]}]}</script><link rel="stylesheet" href="/_astro/_slug_.CSM72HEI.css">
 <link rel="stylesheet" href="/_astro/_slug_.BpIdkOLp.css">
 <link rel="stylesheet" href="/_astro/_slug_.DeDxh1Lp.css">
 <style>.locale-ar{direction:rtl}.locale-ar .uk-code i{margin-right:0;margin-left:18px}.locale-ar .de-shared-copy{border-right:0;border-left:1px solid var(--line)}.locale-ar .de-shared-copy>footer small{text-align:left}.locale-ar .de-signal>header i{margin-right:0;margin-left:12px}.locale-ar .de-signal button{text-align:right}.locale-ar .de-signal-stage:before,.locale-ar .de-signal-stage:after{right:auto;left:-8%}.locale-ar .de-shared-modules article,.locale-ar .de-shared-proof article{border-right:0;border-left:1px solid var(--line)}.locale-ar .de-case-directory a{border-right:0;border-left:1px solid var(--line)}.locale-ar .de-case-directory a i{grid-column:1;grid-row:1/3;transform:scaleX(-1)}.locale-ar .de-case-directory a b{grid-column:3}.locale-ar .de-case-directory a h3,.locale-ar .de-case-directory a p{grid-column:2}.locale-ar .de-shared-faq details{border-right:0;border-left:1px solid #333}.locale-ar .de-start-machine{border-right:0;border-left:1px solid #333}.locale-ar .de-shared-start a b,.locale-ar .de-legal-start a b{transform:scaleX(-1)}
@@ -212,4 +272,100 @@ const languageCode = "ar";
       }
     });
   })();
-})();</script>  <script src="/prototypes/manul-global-shell.js?v=languages-4"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>
+})();</script>  <section class="manul-cookie-consent" id="manulCookieConsent" aria-labelledby="manulCookieTitle" aria-describedby="manulCookieDescription" hidden data-astro-cid-garwan2p> <div class="manul-cookie-copy" data-astro-cid-garwan2p> <p class="manul-cookie-kicker" id="manulCookieKicker" data-astro-cid-garwan2p>PRIVACY / ANALYTICS</p> <h2 id="manulCookieTitle" data-astro-cid-garwan2p>Analytics cookies</h2> <p id="manulCookieDescription" data-astro-cid-garwan2p>We use Google Analytics and Yandex Metrica to understand how the site works. Analytics cookies and full measurement start only with your permission. Before then, Google may receive limited cookieless signals; Yandex is not loaded. Advertising storage stays disabled.</p> <a id="manulCookiePrivacy" href="/privacy-policy/" data-astro-cid-garwan2p>Privacy policy</a> </div> <div class="manul-cookie-actions" data-astro-cid-garwan2p> <button id="manulCookieReject" type="button" data-astro-cid-garwan2p>Essential only</button> <button id="manulCookieAccept" type="button" data-astro-cid-garwan2p>Allow analytics</button> </div> </section> <button class="manul-cookie-settings" id="manulCookieSettings" type="button" hidden data-astro-cid-garwan2p>Cookie settings</button> <script>
+  (function initialiseCookieBanner(window, document) {
+    var translations = {
+      en: {
+        kicker: "PRIVACY / ANALYTICS",
+        title: "Analytics cookies",
+        description: "We use Google Analytics and Yandex Metrica to understand how the site works. Analytics cookies and full measurement start only with your permission. Before then, Google may receive limited cookieless signals; Yandex is not loaded. Advertising storage stays disabled.",
+        privacy: "Privacy policy",
+        privacyHref: "/privacy-policy/",
+        reject: "Essential only",
+        accept: "Allow analytics",
+        settings: "Cookie settings"
+      },
+      ru: {
+        kicker: "ПРИВАТНОСТЬ / АНАЛИТИКА",
+        title: "Аналитические cookies",
+        description: "Мы используем Google Analytics и Яндекс Метрику, чтобы понимать работу сайта. Аналитические cookies и полное измерение включаются только с вашего разрешения. До этого Google может получать ограниченные сигналы без cookies, а Метрика не загружается. Рекламное хранение остаётся отключённым.",
+        privacy: "Политика конфиденциальности",
+        privacyHref: "/ru/privacy/",
+        reject: "Только необходимые",
+        accept: "Разрешить аналитику",
+        settings: "Настройки cookies"
+      },
+      de: {
+        kicker: "DATENSCHUTZ / ANALYSE",
+        title: "Analyse-Cookies",
+        description: "Wir nutzen Google Analytics und Yandex Metrica, um die Website zu verbessern. Analyse-Cookies und die vollständige Messung starten nur mit Ihrer Einwilligung. Zuvor kann Google begrenzte cookielose Signale erhalten; Yandex wird nicht geladen. Werbespeicher bleibt deaktiviert.",
+        privacy: "Datenschutzerklärung",
+        privacyHref: "/de/datenschutz/",
+        reject: "Nur erforderliche",
+        accept: "Analyse erlauben",
+        settings: "Cookie-Einstellungen"
+      },
+      fr: {
+        kicker: "CONFIDENTIALITÉ / ANALYSE",
+        title: "Cookies d’analyse",
+        description: "Nous utilisons Google Analytics et Yandex Metrica pour comprendre le fonctionnement du site. Les cookies d’analyse et la mesure complète ne démarrent qu’avec votre accord. Avant cela, Google peut recevoir des signaux limités sans cookie ; Yandex n’est pas chargé. Le stockage publicitaire reste désactivé.",
+        privacy: "Politique de confidentialité",
+        privacyHref: "/fr/politique-confidentialite/",
+        reject: "Nécessaires uniquement",
+        accept: "Autoriser l’analyse",
+        settings: "Paramètres des cookies"
+      },
+      ar: {
+        kicker: "الخصوصية / التحليلات",
+        title: "ملفات تعريف ارتباط التحليلات",
+        description: "نستخدم Google Analytics وYandex Metrica لفهم أداء الموقع. لا تبدأ ملفات التحليلات والقياس الكامل إلا بموافقتك. قبل ذلك قد تتلقى Google إشارات محدودة من دون ملفات ارتباط، ولا يتم تحميل Yandex. يظل التخزين الإعلاني معطّلاً.",
+        privacy: "سياسة الخصوصية",
+        privacyHref: "/ar/سياسة-الخصوصية/",
+        reject: "الضرورية فقط",
+        accept: "السماح بالتحليلات",
+        settings: "إعدادات ملفات الارتباط"
+      }
+    };
+
+    var language = (document.documentElement.lang || "en").toLowerCase().split("-")[0];
+    var copy = translations[language] || translations.en;
+    var banner = document.getElementById("manulCookieConsent");
+    var settings = document.getElementById("manulCookieSettings");
+    var accept = document.getElementById("manulCookieAccept");
+    var reject = document.getElementById("manulCookieReject");
+    var privacy = document.getElementById("manulCookiePrivacy");
+
+    document.getElementById("manulCookieKicker").textContent = copy.kicker;
+    document.getElementById("manulCookieTitle").textContent = copy.title;
+    document.getElementById("manulCookieDescription").textContent = copy.description;
+    privacy.textContent = copy.privacy;
+    privacy.href = copy.privacyHref;
+    reject.textContent = copy.reject;
+    accept.textContent = copy.accept;
+    settings.textContent = copy.settings;
+    settings.setAttribute("aria-label", copy.settings);
+
+    function showBanner(focus) {
+      banner.hidden = false;
+      settings.hidden = true;
+      if (focus) window.requestAnimationFrame(function focusChoice(){ reject.focus(); });
+    }
+
+    function hideBanner() {
+      banner.hidden = true;
+      settings.hidden = false;
+    }
+
+    function choose(value) {
+      if (window.ManulConsent) window.ManulConsent.setAnalytics(value);
+      hideBanner();
+    }
+
+    accept.addEventListener("click", function allowAnalytics(){ choose("granted"); });
+    reject.addEventListener("click", function rejectAnalytics(){ choose("denied"); });
+    settings.addEventListener("click", function reopenSettings(){ showBanner(true); });
+
+    if (window.ManulConsent && window.ManulConsent.getAnalytics()) hideBanner();
+    else showBanner(false);
+  })(window, document);
+</script>  <script src="/prototypes/manul-global-shell.js?v=languages-4"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>

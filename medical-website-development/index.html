@@ -22,66 +22,128 @@
   <meta name="twitter:description" content="We develop healthcare websites around patient demand, service structure and trust, with SEO, analytics, legal requirements and professional photography.">
   <meta name="twitter:image" content="https://manul.studio/assets/social/en-medicinskie-sajty.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://manul.studio/medical-website-development/#webpage","url":"https://manul.studio/medical-website-development/","name":"Healthcare website development for clinics | Manul","description":"We develop healthcare websites around patient demand, service structure and trust, with SEO, analytics, legal requirements and professional photography.","inLanguage":"en","isPartOf":{"@id":"https://manul.studio/#website"}}]}</script>
-  <!-- Yandex.Metrika counter -->
-<script>
-  (function(m,e,t,r,i,k,a){
-    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
-  })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=111853232","ym");
-  ym(111853232,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
-  document.addEventListener("click",function(event){
-    var link=event.target.closest&&event.target.closest('a[href*="t.me/hellomanul_bot"]');
-    if(!link||typeof ym!=="function"){return;}
-    ym(111853232,"reachGoal","telegram_click",{page:location.pathname,destination:link.href});
-  },true);
-</script>
-<!-- /Yandex.Metrika counter -->
+
   <script>try{localStorage.setItem("manul-system-language","en");localStorage.setItem("manul-language","en")}catch(e){}document.documentElement.lang="en";</script>
   <meta property="og:image:secure_url" content="https://manul.studio/assets/social/en-medicinskie-sajty.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="twitter:image:alt" content="Healthcare website development for clinics. — Manul"><meta name="yandex-verification" content="ad407e95db9db722"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2REMPWTXLN"></script><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
+  <meta name="twitter:image:alt" content="Healthcare website development for clinics. — Manul"><meta name="yandex-verification" content="ad407e95db9db722"><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+  (function initialiseConsentAndAnalytics(window, document) {
+    var storageKey = "manul-analytics-consent-v1";
+    var metrikaId = 111853232;
+    var metrikaSource = "https://mc.yandex.ru/metrika/tag.js?id=111853232";
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      functionality_storage: "granted",
+      security_storage: "granted",
+      wait_for_update: 500
+    });
+
+    function readChoice() {
+      try {
+        var saved = JSON.parse(window.localStorage.getItem(storageKey));
+        return saved && saved.version === 1 && (saved.analytics === "granted" || saved.analytics === "denied")
+          ? saved.analytics
+          : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeChoice(value) {
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify({
+          version: 1,
+          analytics: value,
+          updatedAt: new Date().toISOString()
+        }));
+      } catch (error) {
+        // Consent remains valid for this page view when storage is unavailable.
+      }
+    }
+
+    function updateGoogleConsent(value) {
+      window.gtag("consent", "update", {
+        analytics_storage: value,
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    }
+
+    function loadMetrika() {
+      if (window.__manulMetrikaLoaded) return;
+      window.__manulMetrikaLoaded = true;
+      window.ym = window.ym || function ym(){ (window.ym.a = window.ym.a || []).push(arguments); };
+      window.ym.l = Number(new Date());
+
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = metrikaSource;
+      script.dataset.manulAnalytics = "yandex-metrika";
+      (document.head || document.documentElement).appendChild(script);
+
+      window.ym(metrikaId, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: window.location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+      });
+
+      if (!window.__manulMetrikaGoalsBound) {
+        window.__manulMetrikaGoalsBound = true;
+        document.addEventListener("click", function trackTelegramClick(event) {
+          var link = event.target.closest && event.target.closest('a[href*="t.me/hellomanul_bot"]');
+          if (!link || typeof window.ym !== "function") return;
+          window.ym(metrikaId, "reachGoal", "telegram_click", {
+            page: window.location.pathname,
+            destination: link.href
+          });
+        }, true);
+      }
+    }
+
+    var initialChoice = readChoice();
+    if (initialChoice) updateGoogleConsent(initialChoice);
+    if (initialChoice === "granted") loadMetrika();
+
+    window.ManulConsent = {
+      getAnalytics: readChoice,
+      setAnalytics: function setAnalytics(value) {
+        if (value !== "granted" && value !== "denied") return;
+        var previous = readChoice();
+        writeChoice(value);
+        updateGoogleConsent(value);
+        window.dispatchEvent(new CustomEvent("manul:consent-change", { detail: { analytics: value } }));
+
+        if (value === "granted") {
+          loadMetrika();
+        } else if (previous === "granted" && window.__manulMetrikaLoaded) {
+          window.setTimeout(function reloadWithoutMetrika(){ window.location.reload(); }, 50);
+        }
+      }
+    };
+  })(window, document);
+})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-2REMPWTXLN"></script><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
+
   window.gtag("js", new Date());
   window.gtag("config", googleMeasurementId, {
     allow_google_signals: false,
-    allow_ad_personalization_signals: false,
+    allow_ad_personalization_signals: false
   });
-})();</script><style>.manul-enquiry-modal{width:min(1040px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid #4a4a4a;border-radius:0;background:#0a0b0a;color:#f1f0ea;overflow:auto}
-  .manul-enquiry-modal::backdrop{background:rgba(5,6,5,.78);backdrop-filter:blur(5px)}
-  .manul-enquiry-form{padding:clamp(22px,3vw,46px);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px}
-  .manul-enquiry-form>header{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid #484848}
-  .manul-enquiry-form small,.manul-enquiry-form label>span{font:500 10px/1.4 var(--manul-font-system);letter-spacing:.065em;text-transform:uppercase}
-  .manul-enquiry-form h2{max-width:780px;margin:18px 0 0;font:var(--manul-display-section-weight) var(--manul-display-section-size)/var(--manul-display-section-line) var(--manul-font-text);letter-spacing:var(--manul-display-section-tracking)}
-  .manul-enquiry-language-note{max-width:760px;margin:18px 0 0;color:#aaa;font:500 10px/1.55 var(--manul-font-system);letter-spacing:.025em}
-  .manul-enquiry-close{width:54px;height:54px;border:1px solid #555;background:#0a0b0a;color:#f1f0ea;font:300 32px/1 var(--manul-font-system);cursor:pointer}
-  .manul-enquiry-close:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}
-  .manul-enquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;padding-top:30px}
-  .manul-enquiry-grid label{min-width:0}.manul-enquiry-grid label>span{display:block;margin-bottom:7px}
-  .manul-enquiry-grid input:not([type=checkbox]),.manul-enquiry-grid select,.manul-enquiry-grid textarea{width:100%;min-height:50px;padding:10px 12px;border:1px solid #505050;border-radius:0;background:#111;color:#f1f0ea;font:400 16px/1.4 var(--manul-font-text)}
-  .manul-enquiry-grid textarea{min-height:120px;resize:vertical}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1/-1}
-  .manul-enquiry-grid .consent{display:grid;grid-template-columns:24px 1fr;gap:10px}.manul-enquiry-grid .consent input{width:18px;height:18px;accent-color:var(--acid,#d43dff)}.manul-enquiry-grid .consent span{margin:0;text-transform:none;line-height:1.55}.manul-enquiry-grid .consent a{text-decoration:underline;text-underline-offset:3px}
-  .manul-enquiry-grid .trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-  .manul-enquiry-grid .submit{min-height:64px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid currentColor;background:transparent;color:inherit;font:500 19px var(--manul-font-text);cursor:pointer}.manul-enquiry-grid .submit:hover{background:var(--acid,#d43dff);color:#050505;border-color:var(--acid,#d43dff)}.manul-enquiry-grid .submit:disabled{opacity:.55;cursor:wait}
-  .manul-enquiry-grid .status{min-height:22px;margin:0;font:500 11px/1.5 var(--manul-font-system)}.manul-enquiry-grid .status.is-success{color:var(--acid,#d43dff)}.manul-enquiry-grid .status.is-error{color:#ff7373}
-  @media(max-width:680px){.manul-enquiry-modal{width:100vw;max-width:none;max-height:100svh;height:100svh;margin:0}.manul-enquiry-form{padding:22px 18px}.manul-enquiry-form h2{font-size:clamp(38px,12vw,58px)}.manul-enquiry-grid{grid-template-columns:1fr}.manul-enquiry-grid .wide,.manul-enquiry-grid .submit{grid-column:1}.manul-enquiry-close{width:46px;height:46px}.manul-enquiry-grid textarea{min-height:140px}}/* Route-migration compatibility rules that must survive snapshot refreshes. */
-html,
-body {
-  margin: 0;
-  min-width: 0;
-}
-
-@media (max-width: 360px) {
-  html[lang="en"] .sys-author h2 {
-    font-size: clamp(26px, 8.3vw, 30px) !important;
-  }
-}
-</style></head> <body class="service-page medical-page manul-shell-installed"> <header class="manul-global-header">
+})();</script><link rel="stylesheet" href="/_astro/_slug_.CSM72HEI.css"></head> <body class="service-page medical-page manul-shell-installed"> <header class="manul-global-header">
   <a class="brand" href="/" aria-label="Manul — home"><span class="brand-crop"><img src="/prototypes/assets/logo-manul-header-en.webp?v=2" data-ru-src="/prototypes/assets/logo-manul-header.webp?v=2" data-en-src="/prototypes/assets/logo-manul-header-en.webp?v=2" width="440" height="365" alt="Manul"></span></a>
   <p class="system-status"><i></i><span data-ru="Система готова" data-en="System ready">System ready</span><time id="manulGlobalClock">00:00:00</time></p>
   <nav class="primary-nav" aria-label="Основная навигация">
@@ -111,7 +173,7 @@ body {
     <section><p>05 / MANUL</p><a href="/"><b>01</b><span data-ru="Главная" data-en="Home">Home</span></a><a href="/about/"><b>02</b><span data-ru="О студии" data-en="Studio">Studio</span></a><a href="/contact/"><b>03</b><span data-ru="Контакты" data-en="Contacts">Contacts</span></a><a href="/privacy-policy/"><b>04</b><span data-ru="Политика данных" data-en="Privacy policy">Privacy policy</span></a><a href="/data-processing-consent/"><b>05</b><span data-ru="Согласие" data-en="Consent">Consent</span></a></section>
   </div>
   <footer><p><span data-ru="Не знаете, с какой страницы начать?" data-en="Not sure where to begin?">Not sure where to begin?</span><small data-ru="Начнём с бизнес-задачи" data-en="We will start with the business task">We will start with the business task</small></p><a href="/contact/#enquiry"><span data-ru="Запустить проект" data-en="Start a project">Start a project</span><b>↗</b></a></footer>
-</aside> <noscript><div><img src="https://mc.yandex.ru/watch/111853232" style="position:absolute;left:-9999px" alt=""></div></noscript>
+</aside>
 <header class="topbar"><a class="lang" href="/medical-website-development/">RU</a><button class="theme" type="button">Theme</button></header><main><section class="svc-hero medical-hero"><div class="svc-hero-copy"><p class="svc-kicker">MANUL / HEALTHCARE WEBSITES / 01</p><div><h1>Healthcare website development <mark>for clinics.</mark></h1><p class="svc-lead">We connect patient demand, services, practitioners, evidence and a clear path to booking.</p></div><div class="svc-hero-bottom"><a class="svc-cta" href="/contact/#enquiry"><span>Discuss a medical website</span><b>↗</b></a></div></div><aside class="svc-panel"><div class="medical-trust"><header><span>BEFORE BOOKING</span><b>PATIENT CHECKS</b></header><div class="medical-trust-core"><small>01 / 04</small><strong id="medicalTrustTitle">Practitioner</strong><p id="medicalTrustText">Qualifications, specialization and connection to the required service.</p></div><nav><button class="medical-signal" type="button" aria-pressed="true" data-index="01 / 04" data-title="Practitioner" data-output="Qualifications, specialization and connection to the required service."><b>01</b><span>Practitioner</span></button><button class="medical-signal" type="button" aria-pressed="false" data-index="02 / 04" data-title="Clinic" data-output="A real environment, equipment and team — not stock imagery."><b>02</b><span>Clinic</span></button><button class="medical-signal" type="button" aria-pressed="false" data-index="03 / 04" data-title="Treatment" data-output="Clear stages, alternatives, limits and cost factors."><b>03</b><span>Treatment</span></button><button class="medical-signal" type="button" aria-pressed="false" data-index="04 / 04" data-title="Next step" data-output="An understandable and safe route to contact the clinic."><b>04</b><span>Next step</span></button></nav></div></aside></section><section class="svc-section"><header class="svc-section-head"><p class="svc-index">01 / STRUCTURE</p><h2>Healthcare website structure starts with <mark>patient demand.</mark></h2></header><div class="svc-rail medical-system"><article><b class="svc-code">01</b><h3>Demand</h3><p>The page set follows patient demand and clinic priorities.</p></article><article><b class="svc-code">02</b><h3>Services</h3><p>Directions and procedures do not compete with each other in navigation.</p></article><article><b class="svc-code">03</b><h3>Practitioners</h3><p>Expertise is connected to the service and the decision.</p></article><article><b class="svc-code">04</b><h3>Analytics</h3><p>Analytics connects traffic sources, website actions and enquiries.</p></article></div></section><section class="svc-section"><header class="svc-section-head"><p class="svc-index">02 / TRUST</p><h2>Before booking, patients decide <mark>whom to trust with their health.</mark></h2></header><div class="trust-grid"><article><b class="svc-code">01 / PERSON</b><h3>Real practitioners</h3><p>A name and position are not enough. The patient needs to see specialization, experience, approach and the practitioner’s connection to the relevant service.</p></article><article><b class="svc-code">02 / PLACE</b><h3>A clinic you can imagine</h3><p>Interiors, equipment, navigation and the team reduce uncertainty before the first visit. Stock imagery does not provide this evidence.</p></article><article><b class="svc-code">03 / CLARITY</b><h3>No inflated promises</h3><p>Clear explanations, cost factors and an honest next step create more trust than guaranteed outcomes and advertising superlatives.</p></article></div></section><section class="svc-section photo-stage"><div><p class="svc-index">03 / PHOTO PRODUCTION</p><h2>A medical website requires <mark>professional photography.</mark></h2><p class="svc-lead">Photography is planned from the page architecture: we define every required scene, format and crop before the shooting day. Photography is scoped and billed separately from website development.</p></div><div class="shot-list"><article><b>01</b><span>Practitioner portraits for service and profile pages</span></article><article><b>02</b><span>Team, reception and patient route</span></article><article><b>03</b><span>Interiors, equipment and treatment environments</span></article><article><b>04</b><span>Horizontal, vertical and mobile crops</span></article><article><b>05</b><span>Rights and consent for published materials</span></article></div></section><section class="svc-section"><header class="svc-section-head"><p class="svc-index">04 / PROCESS</p><h2>From demand research to <mark>the first measured enquiries.</mark></h2></header><div class="process-grid"><article><b class="svc-code">01</b><h3>Research</h3><p>Demand, geography, services and competitors.</p></article><article><b class="svc-code">02</b><h3>Legal requirements</h3><p>Licence, required information, advertising and data.</p></article><article><b class="svc-code">03</b><h3>Architecture</h3><p>Services, practitioners, evidence and routes.</p></article><article><b class="svc-code">04</b><h3>Photography</h3><p>Shot list, production and selection.</p></article><article><b class="svc-code">05</b><h3>Content</h3><p>Plain-language editing and approval by the clinic’s specialists.</p></article><article><b class="svc-code">06</b><h3>Website</h3><p>Three visual directions, design system and development.</p></article><article><b class="svc-code">07</b><h3>Launch</h3><p>Baseline SEO, analytics, advertising setup and QA.</p></article></div></section><section class="svc-section"><header class="svc-section-head"><p class="svc-index">05 / LEGAL REQUIREMENTS</p><h2>The website is designed for a <mark>regulated field.</mark></h2></header><div class="legal-grid"><article><b class="svc-code">323-FZ / 118n</b><h3>Clinic and practitioners</h3><p>We provide places for required information about the organisation, medical activity, practitioners, education and qualifications.</p></article><article><b class="svc-code">DECREE 736 / 659 FROM 01.09.2026</b><h3>Paid services</h3><p>Licence details, service and price information, terms and other consumer information are built into the structure.</p></article><article><b class="svc-code">38-FZ / ART. 24</b><h3>Medical advertising</h3><p>Advertising blocks are checked for prohibited promises, treatment claims and the required contraindication notice.</p></article><article><b class="svc-code">152-FZ</b><h3>Personal data</h3><p>Forms, consent, privacy policy, integrations and storage geography are included in the technical checklist.</p></article></div><p class="legal-note">Manul assembles and implements the required information. The clinic remains the source of medical and legal data and approves the final wording, with its legal adviser where required.</p></section><section class="svc-section"><header class="svc-section-head"><p class="svc-index">06 / EXPERIENCE</p><h2>Experience developing websites <mark>for clinics.</mark></h2></header><div class="svc-proof-grid"><a href="/case-studies/ocean-dental-clinic/"><span class="svc-code">01 / CASE</span><h3>Ocean</h3><p>Website, SEO, advertising and integrated development of patient acquisition.</p></a><a href="/case-studies/"><span class="svc-code">02 / PROJECT</span><h3>Atmosphere</h3><p>A clinic website built around service choice and trust.</p></a><a href="/case-studies/"><span class="svc-code">03 / PROJECT</span><h3>Stooma</h3><p>A medical website with a structured service offer.</p></a></div></section><section class="svc-section svc-faq"><div><p class="svc-index">07 / QUESTIONS</p><h2>Before architecture</h2></div><div><details><summary><span>Do you start with a page count?</span><b>+</b></summary><p>No. We first study demand, services, geography and business priorities.</p></details><details><summary><span>Is basic SEO included in launch?</span><b>+</b></summary><p>Yes. Research, search-ready structure and baseline optimization are part of commercial launch.</p></details><details><summary><span>How is the cost of a medical website calculated?</span><b>+</b></summary><p>The estimate follows the weighted page scope and product complexity. Expert content, required disclosures and additional reviews increase the workload; photography is billed separately.</p></details><details><summary><span>Do legal constraints affect scope?</span><b>+</b></summary><p>Yes. Regulated content and required disclosures increase research, editorial and review work.</p></details></div></section><section class="industry-system-final medical-system-final medical-entry-final"><div class="medical-entry-screen" data-entry="0"><header><span>PATIENT ENTRY / LIVE</span><b>01 / 04</b></header><div class="medical-entry-field"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path data-entry-link="0" d="M 22 17 C 34 17, 36 50, 50 50"/><path data-entry-link="1" d="M 22 39 C 34 39, 36 50, 50 50"/><path data-entry-link="2" d="M 22 61 C 34 61, 36 50, 50 50"/><path data-entry-link="3" d="M 22 83 C 34 83, 36 50, 50 50"/><path class="medical-route-link is-active" data-route-link="0" d="M 50 50 C 63 50, 65 15, 78 15"/><path class="medical-route-link" data-route-link="1" d="M 50 50 C 63 50, 65 32, 78 32"/><path class="medical-route-link" data-route-link="2" d="M 50 50 C 63 50, 65 50, 78 50"/><path class="medical-route-link" data-route-link="3" d="M 50 50 C 63 50, 65 86, 78 86"/></svg><nav><button type="button" class="medical-entry-choice is-active" data-entry-choice="0"><b>01</b><span>I HAVE A SYMPTOM</span></button><button type="button" class="medical-entry-choice" data-entry-choice="1"><b>02</b><span>I KNOW THE DIAGNOSIS</span></button><button type="button" class="medical-entry-choice" data-entry-choice="2"><b>03</b><span>I NEED A PROCEDURE</span></button><button type="button" class="medical-entry-choice" data-entry-choice="3"><b>04</b><span>I AM LOOKING FOR A DOCTOR</span></button></nav><div class="medical-entry-core"><small>ENTRY PAGE</small><strong data-entry-page="0" class="is-active">DIRECTION PAGE</strong><strong data-entry-page="1">CONDITION PAGE</strong><strong data-entry-page="2">SERVICE PAGE</strong><strong data-entry-page="3">PRACTITIONER PAGE</strong></div><div class="medical-route-stack"><span style="--route-delay:0ms"><b>01</b>DIRECTION</span><span style="--route-delay:70ms"><b>02</b>SERVICE</span><span style="--route-delay:140ms"><b>03</b>PRACTITIONER</span><span style="--route-delay:210ms"><b>04</b>EVIDENCE</span><span style="--route-delay:280ms"><b>05</b>BOOKING</span></div></div><p>CHOOSE HOW THE SEARCH STARTS</p></div><p class="svc-index">08 / START</p><h2>Patients begin their search <mark>in different ways.</mark></h2><p>A symptom, diagnosis, procedure or practitioner name requires a different entry page and an appropriate route to booking.</p><a href="/contact/#enquiry"><span>Discuss a medical website</span><b>↗</b></a><small>HELLO@MANUL.STUDIO</small></section></main><script src="/prototypes/manul-service-pages.js?v=20260822-2"></script> <footer class="manul-global-footer">
   <div class="footer-intro">
     <div class="footer-logo"><img src="/prototypes/assets/logo-manul-footer-en.webp?v=1" data-ru-src="/prototypes/assets/logo-manul-footer.webp?v=2" data-en-src="/prototypes/assets/logo-manul-footer-en.webp?v=1" width="1200" height="995" alt="Manul"></div>
@@ -219,4 +281,100 @@ const languageCode = "en";
       }
     });
   })();
-})();</script>  <script src="/prototypes/manul-global-shell.js?v=languages-4"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>
+})();</script>  <section class="manul-cookie-consent" id="manulCookieConsent" aria-labelledby="manulCookieTitle" aria-describedby="manulCookieDescription" hidden data-astro-cid-garwan2p> <div class="manul-cookie-copy" data-astro-cid-garwan2p> <p class="manul-cookie-kicker" id="manulCookieKicker" data-astro-cid-garwan2p>PRIVACY / ANALYTICS</p> <h2 id="manulCookieTitle" data-astro-cid-garwan2p>Analytics cookies</h2> <p id="manulCookieDescription" data-astro-cid-garwan2p>We use Google Analytics and Yandex Metrica to understand how the site works. Analytics cookies and full measurement start only with your permission. Before then, Google may receive limited cookieless signals; Yandex is not loaded. Advertising storage stays disabled.</p> <a id="manulCookiePrivacy" href="/privacy-policy/" data-astro-cid-garwan2p>Privacy policy</a> </div> <div class="manul-cookie-actions" data-astro-cid-garwan2p> <button id="manulCookieReject" type="button" data-astro-cid-garwan2p>Essential only</button> <button id="manulCookieAccept" type="button" data-astro-cid-garwan2p>Allow analytics</button> </div> </section> <button class="manul-cookie-settings" id="manulCookieSettings" type="button" hidden data-astro-cid-garwan2p>Cookie settings</button> <script>
+  (function initialiseCookieBanner(window, document) {
+    var translations = {
+      en: {
+        kicker: "PRIVACY / ANALYTICS",
+        title: "Analytics cookies",
+        description: "We use Google Analytics and Yandex Metrica to understand how the site works. Analytics cookies and full measurement start only with your permission. Before then, Google may receive limited cookieless signals; Yandex is not loaded. Advertising storage stays disabled.",
+        privacy: "Privacy policy",
+        privacyHref: "/privacy-policy/",
+        reject: "Essential only",
+        accept: "Allow analytics",
+        settings: "Cookie settings"
+      },
+      ru: {
+        kicker: "ПРИВАТНОСТЬ / АНАЛИТИКА",
+        title: "Аналитические cookies",
+        description: "Мы используем Google Analytics и Яндекс Метрику, чтобы понимать работу сайта. Аналитические cookies и полное измерение включаются только с вашего разрешения. До этого Google может получать ограниченные сигналы без cookies, а Метрика не загружается. Рекламное хранение остаётся отключённым.",
+        privacy: "Политика конфиденциальности",
+        privacyHref: "/ru/privacy/",
+        reject: "Только необходимые",
+        accept: "Разрешить аналитику",
+        settings: "Настройки cookies"
+      },
+      de: {
+        kicker: "DATENSCHUTZ / ANALYSE",
+        title: "Analyse-Cookies",
+        description: "Wir nutzen Google Analytics und Yandex Metrica, um die Website zu verbessern. Analyse-Cookies und die vollständige Messung starten nur mit Ihrer Einwilligung. Zuvor kann Google begrenzte cookielose Signale erhalten; Yandex wird nicht geladen. Werbespeicher bleibt deaktiviert.",
+        privacy: "Datenschutzerklärung",
+        privacyHref: "/de/datenschutz/",
+        reject: "Nur erforderliche",
+        accept: "Analyse erlauben",
+        settings: "Cookie-Einstellungen"
+      },
+      fr: {
+        kicker: "CONFIDENTIALITÉ / ANALYSE",
+        title: "Cookies d’analyse",
+        description: "Nous utilisons Google Analytics et Yandex Metrica pour comprendre le fonctionnement du site. Les cookies d’analyse et la mesure complète ne démarrent qu’avec votre accord. Avant cela, Google peut recevoir des signaux limités sans cookie ; Yandex n’est pas chargé. Le stockage publicitaire reste désactivé.",
+        privacy: "Politique de confidentialité",
+        privacyHref: "/fr/politique-confidentialite/",
+        reject: "Nécessaires uniquement",
+        accept: "Autoriser l’analyse",
+        settings: "Paramètres des cookies"
+      },
+      ar: {
+        kicker: "الخصوصية / التحليلات",
+        title: "ملفات تعريف ارتباط التحليلات",
+        description: "نستخدم Google Analytics وYandex Metrica لفهم أداء الموقع. لا تبدأ ملفات التحليلات والقياس الكامل إلا بموافقتك. قبل ذلك قد تتلقى Google إشارات محدودة من دون ملفات ارتباط، ولا يتم تحميل Yandex. يظل التخزين الإعلاني معطّلاً.",
+        privacy: "سياسة الخصوصية",
+        privacyHref: "/ar/سياسة-الخصوصية/",
+        reject: "الضرورية فقط",
+        accept: "السماح بالتحليلات",
+        settings: "إعدادات ملفات الارتباط"
+      }
+    };
+
+    var language = (document.documentElement.lang || "en").toLowerCase().split("-")[0];
+    var copy = translations[language] || translations.en;
+    var banner = document.getElementById("manulCookieConsent");
+    var settings = document.getElementById("manulCookieSettings");
+    var accept = document.getElementById("manulCookieAccept");
+    var reject = document.getElementById("manulCookieReject");
+    var privacy = document.getElementById("manulCookiePrivacy");
+
+    document.getElementById("manulCookieKicker").textContent = copy.kicker;
+    document.getElementById("manulCookieTitle").textContent = copy.title;
+    document.getElementById("manulCookieDescription").textContent = copy.description;
+    privacy.textContent = copy.privacy;
+    privacy.href = copy.privacyHref;
+    reject.textContent = copy.reject;
+    accept.textContent = copy.accept;
+    settings.textContent = copy.settings;
+    settings.setAttribute("aria-label", copy.settings);
+
+    function showBanner(focus) {
+      banner.hidden = false;
+      settings.hidden = true;
+      if (focus) window.requestAnimationFrame(function focusChoice(){ reject.focus(); });
+    }
+
+    function hideBanner() {
+      banner.hidden = true;
+      settings.hidden = false;
+    }
+
+    function choose(value) {
+      if (window.ManulConsent) window.ManulConsent.setAnalytics(value);
+      hideBanner();
+    }
+
+    accept.addEventListener("click", function allowAnalytics(){ choose("granted"); });
+    reject.addEventListener("click", function rejectAnalytics(){ choose("denied"); });
+    settings.addEventListener("click", function reopenSettings(){ showBanner(true); });
+
+    if (window.ManulConsent && window.ManulConsent.getAnalytics()) hideBanner();
+    else showBanner(false);
+  })(window, document);
+</script>  <script src="/prototypes/manul-global-shell.js?v=languages-4"></script> <script src="/assets/astro-route-adapter.js?v=1"></script> </body> </html>
