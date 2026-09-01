@@ -43,7 +43,16 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="twitter:image:alt" content="Technical support and website reliability. — Manul"><style>.manul-enquiry-modal{width:min(1040px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid #4a4a4a;border-radius:0;background:#0a0b0a;color:#f1f0ea;overflow:auto}
+  <meta name="twitter:image:alt" content="Technical support and website reliability. — Manul"><meta name="yandex-verification" content="ad407e95db9db722"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2REMPWTXLN"></script><script>(function(){const googleMeasurementId = "G-2REMPWTXLN";
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", googleMeasurementId, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+})();</script><style>.manul-enquiry-modal{width:min(1040px,calc(100vw - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid #4a4a4a;border-radius:0;background:#0a0b0a;color:#f1f0ea;overflow:auto}
   .manul-enquiry-modal::backdrop{background:rgba(5,6,5,.78);backdrop-filter:blur(5px)}
   .manul-enquiry-form{padding:clamp(22px,3vw,46px);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px}
   .manul-enquiry-form>header{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid #484848}
@@ -187,6 +196,13 @@ const languageCode = "en";
         status.classList.add("is-success");
         status.textContent = isArabic ? "شكراً. تم إرسال طلبك." : isRussian ? "Спасибо. Заявка отправлена." : isGerman ? "Vielen Dank. Ihre Anfrage wurde gesendet." : isFrench ? "Merci. Votre demande a été envoyée." : "Thank you. Your enquiry has been sent.";
         if (typeof window.ym === "function") window.ym(111853232, "reachGoal", "enquiry_submit_success");
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            form_name: "project_enquiry",
+            form_language: languageCode,
+            page_path: location.pathname,
+          });
+        }
       } catch {
         status.classList.add("is-error");
         status.innerHTML = isArabic
