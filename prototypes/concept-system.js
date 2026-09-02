@@ -170,8 +170,8 @@
     "точка старта":"starting point",
     "2 212 фраз":"2,212 phrases",
     "карта URL":"URL map",
-    "от 300 тыс. ₽":"from $4,000",
-    "от 500 тыс. ₽":"from $6,000",
+    "от 200 тыс. ₽":"from $4,000",
+    "от 400 тыс. ₽":"from $6,000",
     "источник известен":"source known",
     "следующий цикл":"next cycle",
     "единый контекст":"shared context",
@@ -722,10 +722,10 @@
       : "Manul — создание и развитие сайтов для бизнеса";
     nodeSitePrice.textContent = language === "en"
       ? `from ${formatMoney(ManulCalculator.getPrice("websiteDevelopment", language))}`
-      : "от 300 тыс. ₽";
+      : "от 200 тыс. ₽";
     nodeLaunchPrice.textContent = language === "en"
       ? `from ${formatMoney(ManulCalculator.getPrice("commercialLaunch", language))}`
-      : "от 500 тыс. ₽";
+      : "от 400 тыс. ₽";
     liveBasePrice.textContent = language === "en"
       ? formatMoney(ManulCalculator.getPrice("commercialLaunch", language))
       : "500";

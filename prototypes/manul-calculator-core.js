@@ -12,8 +12,8 @@
 
   const priceBooks = Object.freeze({
     ru: Object.freeze({
-      websiteDevelopment: 300000,
-      commercialLaunch: 500000,
+      websiteDevelopment: 200000,
+      commercialLaunch: 400000,
       landingDevelopment: 300000,
       landing: 350000,
       corporateDevelopment: 300000,
@@ -59,7 +59,8 @@
       else if (pages <= 15) raw = 7000;
       else if (pages <= 50) raw = 7000 + (pages - 15) * 300;
       else raw = 17500 + (pages - 50) * 250;
-    } else if (pages <= 15) raw = 300000;
+    } else if (pages <= 5) raw = 200000;
+    else if (pages <= 15) raw = 300000;
     else if (pages <= 50) raw = 300000 + (pages - 15) * 12000;
     else raw = 720000 + (pages - 50) * 9600;
     return roundUp(raw, config.roundingSteps[activeLanguage]);
