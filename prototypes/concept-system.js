@@ -194,9 +194,9 @@
     "Карта спроса / 02":"Demand map / 02",
     "Что ищут —":"What businesses search for —",
     "и куда должны попасть.":"and where they should land.",
-    "Реальные запросы объединяются по задаче. Каждая группа получает собственную страницу и понятный ответ Manul.":"Demo Google queries are grouped by intent. Every group receives its own page and a clear Manul response.",
-    "Что ищут в России":"What businesses search for on Google",
-    "точных запросов / месяц":"Google Search · demo data",
+    "Реальные запросы объединяются по задаче. Каждая группа получает собственную страницу и понятный ответ Manul.":"Selected commercial queries across the United States, United Kingdom, Canada, Australia, UAE, Singapore and Ireland. Values show combined average monthly search volume; close variants are not added together.",
+    "Что ищут в России":"What businesses search for in priority markets",
+    "точных запросов / месяц":"Google Keyword Planner · 7 markets · September 2026",
     "разработка сайта":"website development",
     "SEO-продвижение сайта":"website SEO",
     "настройка Яндекс Директ":"Google Ads setup",
@@ -280,8 +280,8 @@
     "Спрос определяет структуру. Структура — содержание и сценарии страниц. Дизайн, разработка, SEO, аналитика и реклама собираются вокруг одной бизнес-задачи.":"Demand defines the structure. The structure defines content and page journeys. Design, development, SEO, analytics and advertising work around one business objective.",
     "Результаты исследования переходят в карту страниц и требования к содержанию. Поэтому проект не начинается с произвольного числа страниц или выбранного шаблона.":"Research becomes a page map and clear content requirements. That is why a project does not begin with an arbitrary page count or a preselected template.",
     "Ключевые решения принимаются в одном контексте: не приходится заново объяснять задачу отдельным подрядчикам по дизайну, разработке, SEO и рекламе.":"Key decisions stay in one context, so the business does not have to re-explain the task to separate design, development, SEO and advertising contractors.",
-    "Запросы объединяются по намерению пользователя. Для самостоятельной задачи создаётся отдельная страница; близкие формулировки могут вести на один сильный ответ.":"Queries are grouped by user intent. A distinct task receives its own page, while closely related wording can lead to one strong answer.",
-    "Wordstat · фиксированная частотность · июль 2026":"Google Search · demo data",
+    "Запросы объединяются по намерению пользователя. Для самостоятельной задачи создаётся отдельная страница; близкие формулировки могут вести на один сильный ответ.":"Selected commercial queries across the United States, United Kingdom, Canada, Australia, UAE, Singapore and Ireland. Values show combined average monthly search volume; close variants are not added together.",
+    "Wordstat · фиксированная частотность · июль 2026":"Google Keyword Planner · 7 markets · September 2026",
     "Оцените масштаб":"Estimate the scope of",
     "коммерческого запуска.":"a commercial launch.",
     "Укажите ориентировочное число страниц, направлений и рекламных кампаний. Расчёт покажет порядок бюджета без интеграций, нестандартной логики и рекламного бюджета.":"Enter an approximate number of pages, business directions and advertising campaigns. The estimate excludes integrations, custom logic and media spend.",
@@ -494,13 +494,13 @@
   const mappedPage = document.getElementById("mappedPage");
   const mappedRole = document.getElementById("mappedRole");
   const demandEnglish = {
-    "/sozdanie-saytov/": { query: "website development", volume: "1,900" },
-    "/seo-prodvizhenie/": { query: "SEO services", volume: "1,300" },
-    "/nastrojka-yandex-direkt/": { query: "Google Ads setup", volume: "720" },
-    "/redizajn-sajta/": { query: "website redesign", volume: "590" },
-    "/landing/": { query: "landing page design", volume: "480" },
-    "/sajty-dlya-stomatologij/": { query: "dental website design", volume: "210" },
-    "/korporativnyj-sajt/": { query: "corporate website development", volume: "170" }
+    "/sozdanie-saytov/": { query: "website development company", volume: "12,010" },
+    "/seo-prodvizhenie/": { query: "SEO services", volume: "90,910" },
+    "/nastrojka-yandex-direkt/": { query: "Google Ads setup", volume: "880" },
+    "/redizajn-sajta/": { query: "website redesign", volume: "5,110" },
+    "/landing/": { query: "landing page design", volume: "3,750" },
+    "/sajty-dlya-stomatologij/": { query: "dental website design", volume: "2,130" },
+    "/korporativnyj-sajt/": { query: "corporate website development", volume: "290" }
   };
   const demandButtons = [...document.querySelectorAll("#demandStream button")];
   demandButtons.forEach(button => {
