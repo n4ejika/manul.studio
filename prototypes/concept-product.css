@@ -90,3 +90,11 @@ html[data-theme="dark"]{--bg:#0b0c0b;--fg:#f1f0e9;--panel:#232421;--soft:#9b9d95
 .product-hero .hero-copy h1{font-size:var(--manul-display-hero-size);font-weight:var(--manul-display-hero-weight);line-height:var(--manul-display-hero-line);letter-spacing:var(--manul-display-hero-tracking)}
 .product-thesis h2,.product-composition h2,.product-outputs h2,.product-estimate h2,.weighted-pages h2,.product-process h2,.product-faq h2,.product-final h2{font-size:var(--manul-display-section-size);font-weight:var(--manul-display-section-weight);line-height:var(--manul-display-section-line);letter-spacing:var(--manul-display-section-tracking)}
 .hero-lead{font-size:var(--manul-lead-size);line-height:var(--manul-lead-line)}
+
+@media(min-width:1101px){
+  .product-hero .hero-copy{display:grid;grid-template-rows:minmax(min-content,1fr) auto minmax(min-content,1fr)}
+  .product-hero .hero-copy>.section-code{align-self:start}
+  .product-hero .hero-message{align-self:center;width:100%}
+  .product-hero .hero-message h1{margin:0 0 clamp(24px,4vh,38px)}
+  .product-hero .hero-actions{align-self:end;margin-top:0;padding-top:0}
+}
