@@ -22,7 +22,7 @@ function respond(int $status, bool $ok, string $message): never
     }
 
     $state = $ok ? 'sent' : 'error';
-    header('Location: /en/contacts/?status=' . $state . '#enquiry', true, 303);
+    header('Location: /contact/?status=' . $state . '#enquiry', true, 303);
     exit;
 }
 
@@ -112,6 +112,7 @@ $service = field('service', 40);
 $budget = field('budget', 40);
 $message = field('message', 4000);
 $messenger = field('messenger', 180);
+$source = str_replace(["\r", "\n"], ' ', field('source', 1000));
 $consent = field('consent', 10);
 $startedAt = (int) field('form_started_at', 20);
 
@@ -119,6 +120,8 @@ $services = [
     'new_site' => 'New website',
     'redesign' => 'Website redesign',
     'seo' => 'SEO / organic growth',
+    'dental_seo' => 'Dental SEO',
+    'web_design_seo' => 'Web design + SEO',
     'ads' => 'Paid acquisition',
     'support' => 'Ongoing support',
     'other' => 'Other',
@@ -130,6 +133,8 @@ $budgets = [
     '30000_60000' => '$30,000–60,000',
     '60000_plus' => '$60,000+',
 ];
+// Generated from the existing form options; validation remains an exact allowlist.
+$budgets = array_merge($budgets, require __DIR__ . '/enquiry-budgets.php');
 
 $startedSeconds = $startedAt > 100000000000 ? (int) floor($startedAt / 1000) : $startedAt;
 $age = $startedSeconds > 0 ? time() - $startedSeconds : null;
@@ -156,7 +161,8 @@ $subject = function_exists('mb_encode_mimeheader')
     : '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
 
 $body = implode("\n", [
-    'New enquiry from manul.studio/en/contacts/',
+    'New enquiry from manul.studio',
+    'Source: ' . $source,
     '',
     'Name: ' . $name,
     'Email: ' . $cleanEmail,

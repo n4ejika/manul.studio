@@ -121,7 +121,7 @@
     if (languageButton && !languageSwitcher) languageButton.textContent = languageLabel || (language === "ru" ? "EN" : "RU");
     languageButton?.setAttribute(
       "aria-label",
-      language === "ar" ? "التبديل إلى الإنجليزية" : language === "en" && languageLabel === "العربية" ? "Switch to Arabic" : "Переключить язык",
+      ({ en: "Choose language", ru: "Выбрать язык", de: "Sprache wählen", fr: "Choisir la langue", ar: "اختر اللغة" })[language] || "Choose language",
     );
     themeButton.setAttribute("aria-label", language === "ar" ? "تبديل السمة" : language === "ru" ? "Переключить тему" : "Switch color theme");
   }
