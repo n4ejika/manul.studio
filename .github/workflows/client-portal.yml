@@ -1,0 +1,29 @@
+name: Publish protected client report
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: manul-client-prokatmaxim
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate decoder
+        run: node --test .github/client-portal/decode.test.mjs
+      - name: Download private encrypted package
+        env:
+          PACKAGE_URL: ${{ secrets.CLIENT_PORTAL_PROKATMAXIM_PACKAGE_URL }}
+        run: curl --fail --silent --show-error --location --proto '=https' --max-time 180 "$PACKAGE_URL" --output "$RUNNER_TEMP/client-report-package.json"
+      - name: Publish with authentication before data
+        env:
+          CLIENT_REPORT_KEY: ${{ secrets.CLIENT_PORTAL_PROKATMAXIM_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.FORNEX_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.FORNEX_KNOWN_HOSTS }}
+        run: bash .github/client-portal/deploy.sh

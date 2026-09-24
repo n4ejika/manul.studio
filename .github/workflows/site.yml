@@ -93,7 +93,7 @@ jobs:
 
       - name: Publish verified files
         run: |
-          rsync -az --delete --exclude='.well-known/' \
+          rsync -az --delete --exclude='.well-known/' --exclude='clients/' \
             -e "ssh -p $FORNEX_PORT -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519" \
             release/ "$FORNEX_USER@$FORNEX_HOST:$DEPLOY_PATH/"
 
@@ -169,7 +169,7 @@ jobs:
 
       - name: Publish verified files
         run: |
-          rsync -az --delete --exclude='.well-known/' \
+          rsync -az --delete --exclude='.well-known/' --exclude='clients/' \
             -e "ssh -p $VPS_PORT -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519" \
             release/ "$VPS_USER@$VPS_HOST:$DEPLOY_PATH/"
 

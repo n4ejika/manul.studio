@@ -1,0 +1,16 @@
+Options -Indexes
+DirectoryIndex index.html
+AuthType Basic
+AuthName "MANUL client portal"
+AuthBasicProvider file
+AuthUserFile /home/i54914/.client-access/prokatmaxim.htpasswd
+Require user prokatmaxim
+<IfModule mod_headers.c>
+ Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+ Header always set Cache-Control "no-store, private, max-age=0"
+ Header always set Pragma "no-cache"
+ Header always set X-Content-Type-Options "nosniff"
+ Header always set X-Frame-Options "DENY"
+ Header always set Referrer-Policy "no-referrer"
+ Header always set Content-Security-Policy "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'"
+</IfModule>
