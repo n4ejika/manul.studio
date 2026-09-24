@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+php -l .github/client-portal/index.php
 umask 077
 stage="$RUNNER_TEMP/client-report"
 node .github/client-portal/decode.mjs "$RUNNER_TEMP/client-report-package.json" "$stage"
@@ -15,13 +16,17 @@ base='/home/i54914/public_html/manul.studio/clients/prokatmaxim'
 ssh "${sshargs[@]}" "$remote" 'set -eu; p=/home/i54914/public_html/manul.studio/clients/prokatmaxim; test ! -e "$p" || test -f "$p/.client-portal-managed"; mkdir -p /home/i54914/.client-access /home/i54914/.deploy-backups/client-portals; chmod 700 /home/i54914/.client-access; if test -d "$p"; then stamp=$(date -u +%Y%m%dT%H%M%SZ); tar -czf "/home/i54914/.deploy-backups/client-portals/prokatmaxim-$stamp.tar.gz" -C "$p" .; if test -f /home/i54914/.client-access/prokatmaxim.htpasswd; then cp /home/i54914/.client-access/prokatmaxim.htpasswd "/home/i54914/.deploy-backups/client-portals/prokatmaxim-$stamp.htpasswd"; fi; fi; mkdir -p "$p"; touch "$p/.client-portal-managed"'
 scp "${scpArgs[@]}" "$stage/access.htpasswd" "$remote:/home/i54914/.client-access/prokatmaxim.htpasswd"
 ssh "${sshargs[@]}" "$remote" 'chmod 600 /home/i54914/.client-access/prokatmaxim.htpasswd'
-scp "${scpArgs[@]}" .github/client-portal/client.htaccess "$remote:$base/.htaccess"
+# Reports stay outside web-root, readable only by the hosting account/PHP.
+ssh "${sshargs[@]}" "$remote" 'mkdir -p /home/i54914/.client-reports/prokatmaxim; chmod 700 /home/i54914/.client-reports /home/i54914/.client-reports/prokatmaxim'
+rsync -az --delete --chmod=D700,F600 -e "ssh -p 20022 -o BatchMode=yes -o IdentitiesOnly=yes -i $HOME/.ssh/id_ed25519" "$stage/public/" "$remote:/home/i54914/.client-reports/prokatmaxim/"
+# Preserve any previous web directory privately; never leave report files under web-root.
+ssh "${sshargs[@]}" "$remote" 'set -eu; p=/home/i54914/public_html/manul.studio/clients/prokatmaxim; test -f "$p/.client-portal-managed"; stamp=$(date -u +%Y%m%dT%H%M%SZ); mv "$p" "/home/i54914/.deploy-backups/client-portals/prokatmaxim-old-web-$stamp"; mkdir -p "$p"; chmod 755 "$p"; touch "$p/.client-portal-managed"'
+scp "${scpArgs[@]}" .github/client-portal/index.php .github/client-portal/client.htaccess "$remote:$base/"
+ssh "${sshargs[@]}" "$remote" 'set -eu; p=/home/i54914/public_html/manul.studio/clients/prokatmaxim; mv "$p/client.htaccess" "$p/.htaccess"; chmod 644 "$p/.htaccess" "$p/index.php"'
 url='https://manul.studio/clients/prokatmaxim/'
-# Fail closed before uploading any report data.
 status=$(curl -sS --max-time 30 -D "$stage/anonymous.headers" -o /dev/null -w '%{http_code}' "$url")
 test "$status" = 401 || { echo "Authentication guard failed: $status"; exit 1; }
 grep -iq 'x-robots-tag:.*noindex' "$stage/anonymous.headers"
-rsync -az --delete --exclude='.htaccess' --exclude='.client-portal-managed' -e "ssh -p 20022 -o BatchMode=yes -o IdentitiesOnly=yes -i $HOME/.ssh/id_ed25519" "$stage/public/" "$remote:$base/"
 printf 'user = "prokatmaxim:%s"\n' "$(cat "$stage/password")" > "$stage/auth.curl"
 for path in '' report.html report.json; do
  test "$(curl -sS --max-time 40 -o /dev/null -w '%{http_code}' "$url$path")" = 401
